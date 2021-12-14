@@ -17,3 +17,764 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+@import url(http://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
+
+@mixin media($device) {
+  @if $device== "pc" {
+    @media print, screen and (min-width: 771px) {
+      @content;
+    }
+    // } @else if $device== "tb" {
+    //   @media print, screen and (max-width: 1440px) and (min-width: 771px) {
+    //     @content;
+    //   }
+  } @else if $device== "sp" {
+    @media screen and (max-width: 770px) {
+      @content;
+    }
+  }
+}
+
+@mixin width($value) {
+  width: calc(#{$value} / 770 * 100vw);
+}
+
+@mixin height($value) {
+  height: calc(#{$value} / 770 * 100vw);
+}
+
+@mixin font-size($value) {
+  font-size: calc(#{$value} / 770 * 100vw);
+}
+
+@mixin line-heght($value) {
+  line-height: calc(#{$value} / 770 * 100vw);
+}
+
+@mixin padding_vw($top, $right, $bottom, $left) {
+  padding-top: calc(#{$top} / 770 * 100vw);
+  padding-right: calc(#{$right} / 770 * 100vw);
+  padding-bottom: calc(#{$bottom} / 770 * 100vw);
+  padding-left: calc(#{$left} / 770 * 100vw);
+}
+
+@mixin margin_vw($top, $right, $bottom, $left) {
+  margin-top: calc(#{$top} / 770 * 100vw);
+  margin-right: calc(#{$right} / 770 * 100vw);
+  margin-bottom: calc(#{$bottom} / 770 * 100vw);
+  margin-left: calc(#{$left} / 770 * 100vw);
+}
+
+a:hover {
+  opacity: 0.7;
+  transition: 0.3s;
+}
+
+.u-pc {
+  @include media(pc) {
+  }
+
+  @include media(tb) {
+    display: none;
+  }
+
+  @include media(sp) {
+    display: none;
+  }
+}
+
+.u-tb {
+  @include media(pc) {
+    display: none;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    display: none;
+  }
+}
+
+.u-sp {
+  @include media(pc) {
+    display: none;
+  }
+
+  @include media(tb) {
+    display: none;
+  }
+
+  @include media(sp) {
+  }
+}
+
+// ----------------------------------------------------------
+.l-header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  z-index: 100;
+  background-color: khaki;
+
+  @include media(pc) {
+    width: 100%;
+    height: 140px;
+    padding-left: 40px;
+    padding-right: 40px;
+    position: fixed;
+    transition: 0.4s;
+  }
+
+  @include media(tb) {
+    width: 100%;
+    height: 110px;
+    padding-right: 30px;
+    position: fixed;
+    transition: 0.4s;
+  }
+
+  @include media(sp) {
+    @include height(120);
+    position: fixed;
+    background-color: white;
+    width: 100%;
+    top: 0;
+    z-index: 1;
+  }
+}
+
+.l-header_title {
+  display: flex;
+
+  @include media(pc) {
+    height: 140px;
+    align-items: center;
+  }
+
+  @include media(tb) {
+    height: 110px;
+    align-items: center;
+  }
+
+  @include media(sp) {
+    margin-left: calc(50 / 770 * 100vw);
+  }
+}
+/* ------------------------------------- スクロール時 -------------------------------------------------*/
+.UpMove {
+  animation: UpAnime 0.5s forwards;
+  // position: fixed;
+}
+
+@keyframes UpAnime {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+}
+
+/*　上に上がる動き　*/
+.t {
+  background-color: rgba(0, 0, 0, 0) !important;
+}
+
+.l-header.UpMove {
+  animation: UpAnime 0.5s forwards;
+  background-color: rgba(0, 0, 0, 0);
+  // position: fixed;
+}
+
+@keyframes UpAnime {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+}
+
+/*　下に下がる動き　*/
+
+.l-header.DownMove {
+  animation: DownAnime 0.5s forwards;
+  // background-color: #fff;
+  transition: 0.2s;
+}
+
+@keyframes DownAnime {
+  from {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*-----------------------------------ヘッダーボタン-------------------------------------------*/
+.l-nav_btn {
+  @include media(pc) {
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    z-index: 5;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #000;
+    @include width(120);
+    @include height(120);
+    @include padding_vw(45, 35, 45, 35);
+  }
+}
+
+.l-nav_btn_bar {
+  @include media(pc) {
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    @include width(50);
+    @include height(4);
+    display: block;
+    background-color: #0168b7;
+    display: flex;
+    justify-content: center;
+    transition: 0.3s;
+    position: absolute;
+
+    &:nth-child(1) {
+      top: calc(46 / 770 * 100vw);
+    }
+
+    &:nth-child(2) {
+      top: calc(58 / 770 * 100vw);
+    }
+
+    &:nth-child(3) {
+      top: calc(70 / 770 * 100vw);
+    }
+  }
+}
+
+.open {
+  position: absolute;
+
+  &:nth-child(1) {
+    top: calc(56 / 770 * 100vw);
+    transition: 0.3s;
+    transform: rotate(45deg);
+  }
+
+  &:nth-child(2) {
+    transition: 0.3s;
+    display: none;
+  }
+
+  &:nth-child(3) {
+    top: calc(55 / 770 * 100vw);
+    transition: 0.3s;
+    transform: rotate(-45deg);
+  }
+}
+
+/*----------------------------------------------ナビ---------------------------------------------------------------*/
+
+.l-nav {
+  @include media(pc) {
+    padding-left: 10px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    background-color: #f5f5f7;
+    position: absolute;
+    top: 0;
+    // margin-top: calc(120 / 770 * 100vw);
+    left: 100%;
+    height: 100vh;
+    width: 100vw;
+    @include padding_vw(150, 40, 150, 40);
+    transition: 0.3s;
+  }
+}
+
+.show {
+  position: absolute;
+  position: fixed;
+  overflow: scroll;
+  top: 0;
+  left: 0%;
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  transition: 0.3s;
+}
+
+.l-navbar {
+  @include media(pc) {
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+.l-navbarnav_list {
+  display: flex;
+
+  @include media(pc) {
+    justify-content: flex-end;
+    margin-bottom: 20px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    height: 100%;
+  }
+}
+
+.l-nav_item {
+  @include media(pc) {
+    justify-content: flex-end;
+    margin-bottom: 20px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    justify-content: space-between;
+  }
+}
+
+.l-nav_item_anchor {
+  background-color: blue;
+  display: inline-block;
+  color: #fff;
+
+  @include media(pc) {
+    margin-left: 10px;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  @include media(tb) {
+    margin-left: 10px;
+  }
+
+  @include media(sp) {
+    margin-left: calc(28 / 770 * 100vw);
+    @include padding_vw(10, 10, 10, 10);
+    border-radius: 5px;
+  }
+}
+
+.l-search {
+  @include media(pc) {
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    display: none;
+  }
+}
+/*-----------------------------------footer--------------------------------------------*/
+.l-footer {
+  background-color: cadetblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include media(pc) {
+    height: 100px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    height: calc(100 / 770 * 100vw);
+  }
+}
+
+.l-footer_copy {
+  @include media(pc) {
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+/*-----------------------------------main--------------------------------------------*/
+.l-main {
+  @include media(pc) {
+    padding-top: 140px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    padding-top: calc(120 / 770 * 100vw);
+  }
+}
+
+.l-main_container {
+  @include media(pc) {
+    justify-content: space-between;
+    margin-left: 80px;
+    margin-right: 80px;
+    margin-top: 120px;
+    margin-bottom: 120px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    margin-top: calc(80 / 770 * 100vw);
+    margin-left: calc(60 / 770 * 100vw);
+    margin-right: calc(60 / 770 * 100vw);
+    margin-bottom: calc(80 / 770 * 100vw);
+  }
+}
+
+.flex {
+  display: flex;
+}
+
+/* -----------------------------------------l-main------------------------------------------------------*/
+.m-sidebar {
+  @include media(pc) {
+    max-width: calc(280 / 1440 * 100%);
+    height: 100%;
+    min-width: 150px;
+    margin-right: 80px;
+    border: 1px solid black;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+.m-sidebar_title {
+  @include media(pc) {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+.m-sidebar_list {
+  @include media(pc) {
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+.m-sidebar_list_item {
+  @include media(pc) {
+    height: 40px;
+    max-width: 100%;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+.m-sidebar_list_item_anchor {
+  @include media(pc) {
+    padding: 10px 20px 10px 20px;
+    font-size: 15px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    &:hover {
+      background-color: blue;
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+
+.m-article {
+  @include media(pc) {
+    max-width: calc(1000 / 1440 * 100vw);
+    width: 100%;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+
+.product_title {
+  @include media(pc) {
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+.product_list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  @include media(pc) {
+    margin-left: -10px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    width: calc(600 / 770 * 100vw);
+    margin: auto;
+  }
+}
+.product_list_item {
+  display: flex;
+  flex-direction: column;
+  @include media(pc) {
+    margin: 0 10px;
+    width: 180px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    @include margin_vw(10, 20, 10, 20);
+  }
+}
+.product_list_item_image {
+  @include media(pc) {
+    img {
+      max-width: 180px;
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    img {
+      width: calc(250 / 770 * 100vw);
+    }
+  }
+}
+.product_list_item_name {
+  @include media(pc) {
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+.product_list_item_praice {
+  @include media(pc) {
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+
+.cell.is-empty {
+  width: 200px;
+  height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+//顧客(customers)
+/* -----------------------------------/customers/sign_in（ログイン画面）---------------------------*/
+
+/* -----------------------------------/customers/sign_up（新規登録画面）---------------------------*/
+
+/* -----------------------------------/customers/:id（顧客詳細画面[マイページ]）---------------------------*/
+
+/* -----------------------------------/customers/:id/edit（顧客編集画面）---------------------------*/
+
+/* -----------------------------------/customers/:id/unsubscribe(退会画面)---------------------------*/
+
+/* -----------------------------------トップページ（新着商品）---------------------------*/
+
+/* -----------------------------------/customers/products（商品一覧[顧客用]）---------------------------*/
+
+/* -----------------------------------/customers/products/:id（商品詳細[顧客用]）---------------------------*/
+
+/* -----------------------------------aboutページ--------------------------------------------------*/
+.about-title {
+  font-weight: bold;
+  text-align: center;
+  @include media(pc) {
+    font-size: 60px;
+    margin-bottom: 40px;
+  }
+
+  @include media(tb) {}
+
+  @include media(sp) {
+    font-size: calc(40 / 770 * 100vw);
+    margin-bottom: calc(40 / 770 * 100vw);
+  }
+}
+
+.about-text {
+  display: block;
+  text-align: center;
+  @include media(pc) {
+    font-size: 23px;
+    line-height: 2.0;
+    margin-bottom: 80px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    font-size: calc(25 / 770 * 100vw);
+    line-height: calc(40 / 770 * 100vw);
+    margin-bottom: calc(60 / 770 * 100vw);
+  }
+}
+
+.about-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  @include media(pc) {
+    max-width: 1000px;
+    width: 100%;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    width: calc(500 / 770 * 100vw);
+  }
+}
+//カート(cart_products)
+/*----------------------------------/customers/cart_products（カート一覧画面）-------------------------*/
+
+//注文(orders)
+/*----------------------------------/customers/orders/new（注文入力画面）------------------------------*/
+
+/*----------------------------------/customers/orders/check(確認画面)----------------------------------*/
+
+/*----------------------------------/customers/orders（注文履歴一覧）----------------------------------*/
+
+/*----------------------------------/customers/orders/:id（注文詳細）----------------------------------*/
+
+/*---------------------------------/customers/orders/rend------------------------------------------------*/
+
+.order_thanks_message{
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include media(pc) {
+    font-size: 40px;
+    height: calc(100vh - 480px);
+  }
+  
+  @include media(tb) {
+  }
+  
+  @include media(sp) {
+    font-size: calc(30 / 770 * 100vw);
+    height: calc(100vh - 49vw );//l-headerのheightとl-mainのmargin-top計算後のの合計//
+}
+}
+
+//宛先(deliveries)
+/*----------------------------------/deliveries/index（宛先一覧画面）---------------------------*/
+
+/*----------------------------------/deliveries/:id/edit（宛先編集画面の表示）-------------------------*/
+
+//管理者(admins)
+
+/*---------------------------------/admins/sign_in（管理者ログイン）---------------------------------------*/
+
+/*---------------------------------/admins/genres（ジャンル一覧画面）---------------------------------------*/
+
+/*---------------------------------/admins/genres/:id/edit（ジャンル編集画面）---------------------------------------*/
+
+/*---------------------------------/admins/products（商品一覧画面[管理者用]）---------------------------------------*/
+
+/*---------------------------------/admins/products/:id（商品詳細画面[管理者用]）---------------------------------------*/
+
+/*---------------------------------/admins/products/:id/edit（商品編集画面[管理者用]）------------------------------*/
+
+/*--------------------------------/admins/products（新規商品登録画面[管理者用]）---------------------------------------*/
+
+/*-------------------------------/customers（顧客一覧画面[管理者用]）---------------------------------------*/
+
+/*-------------------------------/customers/:id（顧客詳細画面[管理者用]）---------------------------------------*/
+
+/*-------------------------------/customers/:id/edit（顧客編集画面[管理者用]）---------------------------------------*/
+
+/*------------------------/admins/orders（注文履歴一覧画面（管理者トップページ））-------------------------*/
+
+/*-------------------------------/admins/orders/:id（注文履歴一覧画面（個人ごと））------------------------*/
+
+/*-------------------------------/admins/orders/:id/edit（注文履歴詳細画面[管理者用]）--------------------------*/
