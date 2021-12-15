@@ -17,6 +17,64 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+margin: 0;
+padding: 0;
+border: 0;
+font-size: 100%;
+font: inherit;
+font-family: 'Noto Sans JP';
+vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+display: block;
+}
+body {
+line-height: 1;
+font-family: 'Noto Sans Javanese', sans-serif;
+}
+ol, ul {
+list-style: none;
+}
+blockquote, q {
+quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+content: '';
+content: none;
+}
+table {
+border-collapse: collapse;
+border-spacing: 0;
+}
+
+a{
+text-decoration: none;
+}
+body{
+margin: 0px;
+}
+*{box-sizing: border-box;}
+img{
+max-width: 100%;
+height: auto;
+}
+
 
 @import url(http://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
 
@@ -120,7 +178,7 @@ a:hover {
 
   @include media(pc) {
     width: 100%;
-    height: 140px;
+    height: 110px;
     padding-left: 40px;
     padding-right: 40px;
     position: fixed;
@@ -232,6 +290,7 @@ a:hover {
   }
 
   @include media(sp) {
+    cursor: pointer;
     z-index: 5;
     position: absolute;
     top: 0;
@@ -362,7 +421,6 @@ a:hover {
 .l-nav_item {
   @include media(pc) {
     justify-content: flex-end;
-    margin-bottom: 20px;
   }
 
   @include media(tb) {
@@ -377,11 +435,16 @@ a:hover {
   background-color: blue;
   display: inline-block;
   color: #fff;
-
+  transition-duration: 0.3s;
   @include media(pc) {
-    margin-left: 10px;
+    margin-left: 30px;
     padding: 10px;
     border-radius: 5px;
+    font-size: 14px;
+    &:hover {
+      transform: scale(1.2);
+      transition-duration: 0.3s;
+    }
   }
 
   @include media(tb) {
@@ -397,6 +460,7 @@ a:hover {
 
 .l-search {
   @include media(pc) {
+    margin-left: 30px;
   }
 
   @include media(tb) {
@@ -412,6 +476,7 @@ a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+
   @include media(pc) {
     height: 100px;
   }
@@ -434,10 +499,48 @@ a:hover {
   @include media(sp) {
   }
 }
+.top-btn {
+  background-color: blueviolet;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 0;
+  bottom: 0px;
+  transition-duration: 0.3s;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.2);
+  }
+  @include media(pc) {
+    width: 100px;
+    height: 100px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    width: calc(100 / 770 * 100vw);
+    height: calc(100 / 770 * 100vw);
+  }
+}
+
+.top-btn_text {
+  @include media(pc) {
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+
 /*-----------------------------------main--------------------------------------------*/
 .l-main {
   @include media(pc) {
-    padding-top: 140px;
+    padding-top: 110px;
   }
 
   @include media(tb) {
@@ -470,6 +573,15 @@ a:hover {
 
 .flex {
   display: flex;
+  @include media(pc) {
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    flex-direction: column-reverse;
+  }
 }
 
 /* -----------------------------------------l-main------------------------------------------------------*/
@@ -557,6 +669,21 @@ a:hover {
   }
 }
 
+//顧客(customers)
+/* -----------------------------------/customers/sign_in（ログイン画面）---------------------------*/
+
+/* -----------------------------------/customers/sign_up（新規登録画面）---------------------------*/
+
+/* -----------------------------------/customers/:id（顧客詳細画面[マイページ]）---------------------------*/
+
+/* -----------------------------------/customers/:id/edit（顧客編集画面）---------------------------*/
+
+/* -----------------------------------/customers/:id/unsubscribe(退会画面)---------------------------*/
+
+/* -----------------------------------トップページ（新着商品）---------------------------*/
+
+/* -----------------------------------/customers/products（商品一覧[顧客用]）---------------------------*/
+
 .product_title {
   @include media(pc) {
   }
@@ -634,7 +761,6 @@ a:hover {
   @include media(sp) {
   }
 }
-
 .cell.is-empty {
   width: 200px;
   height: 0;
@@ -643,21 +769,6 @@ a:hover {
   margin-top: 0;
   margin-bottom: 0;
 }
-
-//顧客(customers)
-/* -----------------------------------/customers/sign_in（ログイン画面）---------------------------*/
-
-/* -----------------------------------/customers/sign_up（新規登録画面）---------------------------*/
-
-/* -----------------------------------/customers/:id（顧客詳細画面[マイページ]）---------------------------*/
-
-/* -----------------------------------/customers/:id/edit（顧客編集画面）---------------------------*/
-
-/* -----------------------------------/customers/:id/unsubscribe(退会画面)---------------------------*/
-
-/* -----------------------------------トップページ（新着商品）---------------------------*/
-
-/* -----------------------------------/customers/products（商品一覧[顧客用]）---------------------------*/
 
 /* -----------------------------------/customers/products/:id（商品詳細[顧客用]）---------------------------*/
 
@@ -670,7 +781,8 @@ a:hover {
     margin-bottom: 40px;
   }
 
-  @include media(tb) {}
+  @include media(tb) {
+  }
 
   @include media(sp) {
     font-size: calc(40 / 770 * 100vw);
@@ -683,7 +795,7 @@ a:hover {
   text-align: center;
   @include media(pc) {
     font-size: 23px;
-    line-height: 2.0;
+    line-height: 2;
     margin-bottom: 80px;
   }
 
@@ -727,23 +839,25 @@ a:hover {
 
 /*---------------------------------/customers/orders/rend------------------------------------------------*/
 
-.order_thanks_message{
+.order_thanks_message {
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
   @include media(pc) {
     font-size: 40px;
-    height: calc(100vh - 480px);
+    height: calc(100vh - 450px);
   }
-  
+
   @include media(tb) {
   }
-  
+
   @include media(sp) {
     font-size: calc(30 / 770 * 100vw);
-    height: calc(100vh - 49vw );//l-headerのheightとl-mainのmargin-top計算後のの合計//
-}
+    height: calc(
+      100vh - 49vw
+    ); //l-headerのheightとl-mainのmargin-top計算後のの合計//
+  }
 }
 
 //宛先(deliveries)
@@ -774,7 +888,148 @@ a:hover {
 /*-------------------------------/customers/:id/edit（顧客編集画面[管理者用]）---------------------------------------*/
 
 /*------------------------/admins/orders（注文履歴一覧画面（管理者トップページ））-------------------------*/
+.m-page_title {
+  margin-left: auto;
+  margin-right: auto;
+  @include media(pc) {
+    max-width: 1100px;
+    width: 100%;
+    font-size: 26px;
+    margin-bottom: 40px;
+  }
 
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    @include width(600);
+    @include font-size(30);
+    margin-bottom: calc(30 / 770 * 100vw);
+  }
+}
+.order-table {
+  margin-left: auto;
+  margin-right: auto;
+  @include media(pc) {
+    max-width: 1100px;
+    width: 100%;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    @include width(600);
+  }
+}
+.orde-table_row {
+  text-align: left;
+  border-bottom: 1px solid #000;
+  th {
+    font-weight: bold;
+    background-color: #eee;
+  }
+  td {
+    padding: 10px;
+  }
+  @include media(pc) {
+    th {
+      padding: 10px;
+    }
+    td {
+      padding: 10px;
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    th {
+      @include font-size(18);
+      @include padding_vw(10, 10, 10, 10);
+    }
+    td {
+      @include font-size(18);
+      @include padding_vw(15, 10, 15, 10);
+    }
+  }
+}
 /*-------------------------------/admins/orders/:id（注文履歴一覧画面（個人ごと））------------------------*/
 
 /*-------------------------------/admins/orders/:id/edit（注文履歴詳細画面[管理者用]）--------------------------*/
+
+.order-edit_info {
+  @include media(pc) {
+    margin-bottom: 50px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+.order-edit_info_row {
+  @include media(pc) {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+.order-edit_info_row_title {
+  font-weight: bold;
+  display: inline-block;
+  @include media(pc) {
+    max-width: 200px;
+    width: 100%;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+.order-edit_info_row_text {
+  @include media(pc) {
+    display: inline-block;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+.update-btn {
+  @include media(pc) {
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+
+.order-edit_table {
+  margin-right: auto;
+  @include media(pc) {
+    max-width: 700px;
+    width: 100%;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    @include width(600);
+  }
+}
