@@ -1,23 +1,29 @@
-<h2>ログイン</h2>
-<div>会員の方はこちらからログイン</div>
+<div class=“l-main_container”>
+  <div class="row">
+    <div class="col-xs-offset-1 col-xs-11">
+      <h2>ログイン</h2>
+        <div class="head-line">会員の方はこちらからログイン</div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :"メールアドレス" %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="field form-group col-xs-12">
+            <%= f.label :"メールアドレス", class: "col-sm-5 control-label" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"col-sm-6 form-control-static" %>
+          </div>
+
+          <div class="field form-group col-xs-12">
+            <%= f.label :"パスワード", class: "col-sm-5 control-label" %>
+            <%= f.password_field :password, autocomplete: "current-password", class:"col-sm-6 form-control-static" %>
+          </div>
+
+          <div class="actions col-4 mx-auto">
+            <%= f.submit "ログイン", class: "btn btn-primary col-sm-12" %>
+          </div>
+        <% end %>
+
+        <h4 class="head-line">会員登録がお済みでない方</h4>
+
+        <%= link_to "こちら" ,"/customers/sign_up "%>　から新規登録を行ってください。</br>
+        <%= link_to ' logout', destroy_customer_session_path, method: :delete %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :"パスワード" %>
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "ログイン" %>
-  </div>
-<% end %>
-
-<h4>会員登録がお済みでない方</h4>
-
-<%= link_to "こちら" ,"/customers/sign_up "%>　から新規登録を行ってください。
-<%= link_to ' logout', destroy_customer_session_path, method: :delete,class: 'fas fa-sign-out-alt nav-link text-light' %>
+</div>
