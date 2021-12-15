@@ -8,8 +8,36 @@
         </span>
         <div class="l-nav">
           <ul class="l-navbarnav_list">
-
-
+            <% if customer_signed_in? %>
+            <li class="l-nav_item active">
+              <a class="l-nav_item_anchor">マイページ</a>
+            </li>
+            <li class="l-nav_item active">
+              <a class="l-nav_item_anchor">商品一覧</a>
+            </li>
+            <li class="l-nav_item active">
+              <a class="l-nav_item_anchor">カート</a>
+            </li>
+            <li class="l-nav_item">
+              <%= link_to ' ログアウト', destroy_customer_session_path, method: :delete ,class: "l-nav_item_anchor"%>
+            </li>
+            <% elsif admin_signed_in? %>
+            <li class="l-nav_item active">
+              <a class="l-nav_item_anchor">商品一覧</a>
+            </li>
+            <li class="l-nav_item">
+              <a class="l-nav_item_anchor">会員一覧</a>
+            </li>
+            <li class="l-nav_item">
+              <a class="l-nav_item_anchor">注文一覧</a>
+            <li class="l-nav_item">
+              <a class="l-nav_item_anchor">ジャンル一覧</a>
+            </li>              
+            </li>
+            <li class="l-nav_item">
+              <%= link_to ' ログアウト', destroy_customer_session_path, method: :delete ,class: "l-nav_item_anchor"%>
+            </li>            
+            <% else %>
             <li class="l-nav_item active">
               <a class="l-nav_item_anchor">About</a>
             </li>
@@ -17,16 +45,13 @@
               <a class="l-nav_item_anchor">商品登録</a>
             </li>
             <li class="l-nav_item">
-              <a class="l-nav_item_anchor">新規登録</a>
+              <%= link_to '新規登録','/customers/sign_up ',class: 'l-nav_item_anchor' %>
             </li>
             <li class="l-nav_item">
               <%=link_to "ログイン" ,new_customer_session_path,class: "l-nav_item_anchor" %>
             </li>
-            <li class="l-nav_item">
-              <% if user_signed_in? %>
-              <%= link_to ' ログアウト', destroy_customer_session_path, method: :delete ,class: "l-nav_item_anchor"%>
               <% end%>
-            </li>
+            
 
           </ul>
           <input class="l-search" type="text"/>
