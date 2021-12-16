@@ -1,3 +1,69 @@
 // Place all the styles related to the public/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import url(http://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
+
+@mixin media($device) {
+  @if $device== "pc" {
+    @media print, screen and (min-width: 771px) {
+      @content;
+    }
+    // } @else if $device== "tb" {
+    //   @media print, screen and (max-width: 1440px) and (min-width: 771px) {
+    //     @content;
+    //   }
+  } @else if $device== "sp" {
+    @media screen and (max-width: 770px) {
+      @content;
+    }
+  }
+}
+
+.top-title {
+  margin-top : 20px;
+  font-weight:  bold;
+  @include media(pc) {
+    font-size: 40px;
+    margin-bottom: 10px;
+
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    font-size: calc(40 / 770 * 100vw);
+    margin-bottom: calc(40 / 770 * 100vw);
+  }
+}
+
+.to_index {
+  margin-right : auto;
+  @include media(pc) {
+    font-size: 20px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    font-size: calc(40 / 770 * 100vw);
+    margin-bottom: calc(40 / 770 * 100vw);
+  }
+}
+
+.product_list_item {
+  display: flex;
+  flex-direction: column;
+  @include media(pc) {
+    margin: 0 5px 5px 5px;
+    width: 205px;
+
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
