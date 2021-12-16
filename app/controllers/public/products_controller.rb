@@ -9,11 +9,6 @@ class Public::ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     @genres = Genre.all
-
-    @quantity_array = []
-    @quantity_array = (1..10).to_a
-
-    # @product_order = ProductOrder.new
-
+    @cart_product = CartProduct.new
   end
 end
