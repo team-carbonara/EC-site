@@ -1,39 +1,39 @@
-<h3>商品詳細</h3>
-
-<div class="row">
-  <div class="">
-    <%= attachment_image_tag(@product, :image, size: "400x220") %>
-  </div>
-
-  <div class="">
-    <table>
-      <tr>
-        <td>商品名</td>
-        <td><%= @product.name %></td>
-      </tr>
-      <tr>
-        <td>商品説明</td>
-        <td><%= @product.description %></td>
-      </tr>
-      <tr>
-        <td>ジャンル</td>
-        <td><%= @product.genre.name %></td>
-      </tr>
-      <tr>
-        <td>税込価格</td>
-        <td><%= @product.price %></td>
-      </tr>
-      <tr>
-        <td>販売ステータス</td>
-        <td>
-          <% if @product.sale_status %>
-            販売中
-          <% else %>
-            販売停止中
-          <% end %>
-        </td>
-      </tr>
-    </table>
-    <%= link_to '編集する', edit_admin_product_path(@product) %>
+ <div class="l-main_container">
+  <h3>商品詳細</h3>
+  <div class="row">
+    <div class="">
+      <%= attachment_image_tag(@product, :image, size: "400x220") %>
+    </div>
+    <div class="">
+      <table>
+        <tr>
+          <td>商品名</td>
+          <td width="250"><%= @product.name %></td>
+        </tr>
+        <tr>
+          <td>商品説明</td>
+          <td><%= @product.description %></td>
+        </tr>
+        <tr>
+          <td>ジャンル</td>
+          <td><%= @product.genre.name %></td>
+        </tr>
+        <tr>
+          <td>税込価格</td>
+          <td><%= @product.price %></td>
+        </tr>
+        <tr>
+          <td>販売ステータス</td>
+          <td>
+            <% if @product.sale_status %>
+              販売中
+            <% else %>
+              販売停止中
+            <% end %>
+          </td>
+        </tr>
+      </table>
+      <%= link_to '編集する', edit_admin_product_path(@product) %>
+    </div>
   </div>
 </div>
