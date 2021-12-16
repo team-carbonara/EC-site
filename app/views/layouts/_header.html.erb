@@ -39,10 +39,10 @@
             </li>
             <% else %>
             <li class="l-nav_item active">
-              <a class="l-nav_item_anchor">About</a>
+              <%= link_to 'About',  public_about_path,class: "l-nav_item_anchor"%>
             </li>
             <li class="l-nav_item">
-              <a class="l-nav_item_anchor">商品登録</a>
+              <%= link_to '商品一覧',  public_products_path,class: "l-nav_item_anchor"%>
             </li>
             <li class="l-nav_item">
               <%= link_to '新規登録','/customers/sign_up ',class: 'l-nav_item_anchor' %>
