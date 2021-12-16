@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'cart_products/index'
-  end
   namespace :admin do
     root to: 'admin/products#index'
     resources :products
@@ -28,7 +25,7 @@ Rails.application.routes.draw do
   resources :cart_products, only: [:index,:create,:update,:destroy]
   resources :deliveries,only: [:index,:edit,:create,:update,:destroy]
   resources :orders,only: [:index,:show,:new,:create,] do
-    member do
+    collection do
       get 'check'
       get 'thanks'
     end
