@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   namespace :admin do
-    root to: 'homes#top'
+    root to: 'admin/products#index'
     resources :products
     resources :genres
     resources :customers, only: [:index,:show,:edit,:update]
@@ -10,19 +10,19 @@ Rails.application.routes.draw do
   end
 
   namespace :public do
-  root to: 'admin/products#index'
+  root to: 'homes#top'
   get '/about' => 'homes#about'
-  resources :customers,only: [:edit,:update] do
+  delete '/cart_products' => '/public/cart_products#destroy_all'
+
+  resource :customers,only: [:edit,:update,:show] do
     collection do
-      get 'show'
-      get 'unsubscribe' 
+      get 'unsubscribe'
     end
     patch 'withdrawal'
   end
+
   resources :products, only: [:index,:show]
-  resources :cart_products, only: [:index,:create,:update,:destroy] do 
-    get 'destroy_all'
-  end
+  resources :cart_products, only: [:index,:create,:update,:destroy]
   resources :deliveries,only: [:index,:edit,:create,:update,:destroy]
   resources :orders,only: [:index,:show,:new,:create,] do
     member do
@@ -30,11 +30,12 @@ Rails.application.routes.draw do
       get 'thanks'
     end
   end
-    resource :customer, only: [:show, :edit] do
-      collection do
-    get 'unsubscribe', action: :unsubscribe
-      end
-    end
+
+    # resource :customer, only: [:show, :edit] do
+    #   collection do
+    # get 'unsubscribe', action: :unsubscribe
+    #   end
+    # end
   end
 
   # 顧客用
