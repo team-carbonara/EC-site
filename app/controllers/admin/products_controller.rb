@@ -1,5 +1,5 @@
 class Admin::ProductsController < ApplicationController
-   
+
   def new
     @genres = Genre.all
   end
@@ -37,5 +37,5 @@ class Admin::ProductsController < ApplicationController
   def params_product
     params.require(:product).permit(:id, :genre_id, :name, :description, :image, :price, :sale_status)
   end
-  
+
 end

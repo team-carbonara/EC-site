@@ -26,8 +26,8 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 margin: 0;
@@ -39,7 +39,7 @@ font-family: 'Noto Sans JP';
 vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
+article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 display: block;
 }
@@ -65,6 +65,9 @@ border-spacing: 0;
 
 a{
 text-decoration: none;
+&:hover{
+  text-decoration: none;
+}
 }
 body{
 margin: 0px;
@@ -74,7 +77,6 @@ img{
 max-width: 100%;
 height: auto;
 }
-
 
 @import url(http://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
 
@@ -127,6 +129,7 @@ height: auto;
 a:hover {
   opacity: 0.7;
   transition: 0.3s;
+  
 }
 
 .u-pc {
@@ -166,6 +169,10 @@ a:hover {
 
   @include media(sp) {
   }
+}
+
+button{
+  border:none;
 }
 
 // ----------------------------------------------------------
@@ -554,8 +561,8 @@ a:hover {
 .l-main_container {
   @include media(pc) {
     justify-content: space-between;
-    margin-left: 80px;
-    margin-right: 80px;
+    margin-left: 70px;
+    margin-right: 70px;
     margin-top: 120px;
     margin-bottom: 120px;
   }
@@ -658,7 +665,8 @@ a:hover {
 
 .m-article {
   @include media(pc) {
-    max-width: calc(1000 / 1440 * 100vw);
+    max-width: calc(1150 / 1440 * 100vw);
+    min-width: calc(810 / 1440 * 100vw);
     width: 100%;
   }
 
@@ -685,13 +693,20 @@ a:hover {
 /* -----------------------------------/customers/products（商品一覧[顧客用]）---------------------------*/
 
 .product_title {
+  font-weight: bold;
   @include media(pc) {
+    font-size: 24px;
+    margin-bottom: 20px;
   }
 
   @include media(tb) {
   }
 
   @include media(sp) {
+    font-size: calc(30 / 770 * 100vw);
+    width: calc(600 / 770 * 100vw);
+    margin: auto;
+    margin-bottom: calc(20 / 770 * 100vw);
   }
 }
 .product_list {
@@ -699,7 +714,8 @@ a:hover {
   flex-flow: row wrap;
   justify-content: space-between;
   @include media(pc) {
-    margin-left: -10px;
+    position: relative;
+    right: 10px;
   }
 
   @include media(tb) {
@@ -714,8 +730,9 @@ a:hover {
   display: flex;
   flex-direction: column;
   @include media(pc) {
-    margin: 0 10px;
-    width: 180px;
+    margin: 0 5px 20px 5px;
+    width: 205px;
+
   }
 
   @include media(tb) {
@@ -728,7 +745,7 @@ a:hover {
 .product_list_item_image {
   @include media(pc) {
     img {
-      max-width: 180px;
+      max-width: 205px;
     }
   }
 
@@ -743,22 +760,28 @@ a:hover {
 }
 .product_list_item_name {
   @include media(pc) {
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 5px;
   }
 
   @include media(tb) {
   }
 
   @include media(sp) {
+    font-size: calc(20 / 770 * 100vw);
   }
 }
-.product_list_item_praice {
+.product_list_item_price {
   @include media(pc) {
+    font-size: 16px;
   }
 
   @include media(tb) {
   }
 
   @include media(sp) {
+    font-size: calc(20 / 770 * 100vw);
   }
 }
 .cell.is-empty {
@@ -770,7 +793,7 @@ a:hover {
   margin-bottom: 0;
 }
 
-/* -----------------------------------/customers/products/:id（商品詳細[顧客用]）---------------------------*/
+/* ----------------------------/customers/products/:id（商品詳細[顧客用]）------------------------*/
 
 /* -----------------------------------aboutページ--------------------------------------------------*/
 .about-title {
@@ -827,6 +850,218 @@ a:hover {
 }
 //カート(cart_products)
 /*----------------------------------/customers/cart_products（カート一覧画面）-------------------------*/
+.cart-puroduct_title {
+  @include media(pc) {
+    font-size: 26px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+.cart_delete_btn {
+  border: none;
+  background-color: #b83636;
+  color: #fff;
+  border-radius: 5px;
+  @include media(pc) {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    @include font-size(15);
+    @include padding_vw(7, 7, 7, 7);
+  }
+}
+.cart-puroduct_table {
+  border: 1px solid #000;
+  margin-left: auto;
+  margin-right: auto;
+  @include media(pc) {
+    max-width: 1000px;
+    width: 100%;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+.cart-puroduct_table_row {
+  text-align: left;
+  @include media(pc) {
+    border-bottom: 1px solid #000;
+    th {
+      font-weight: bold;
+      background-color: #eee;
+      padding: 10px;
+    }
+    td {
+      padding: 10px;
+      
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    th {
+      @include font-size(15);
+      @include padding_vw(10, 10, 10, 10);
+      border: calc(1 / 770 * 100vw) solid #000;
+    }
+    td {
+      @include font-size(15);
+      @include padding_vw(15, 10, 15, 10);
+      border: calc(1 / 770 * 100vw) solid #000;
+    }
+  }
+}
+
+.cart-puroduct_image {
+  @include media(pc) {
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+
+.cart-product_update_btn {
+  background-color: rgb(46, 163, 41);
+  border-radius: 5px;
+  color: #fff;
+  @include media(pc) {
+    padding: 10px;
+    margin-left: 20px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    @include font-size(15);
+    @include padding_vw(7, 7, 7, 7);
+    margin-left: calc(5 / 770 * 100vw);
+  }
+} 
+
+.select_design {
+  display: inline-flex;
+  overflow: hidden;
+  text-align: center;
+  position: relative;
+  border: 1px solid #bbbbbb; /*** セレクトボックスのボーター設定 ***/
+  border-radius: 5px; /*** セレクトボックスの角丸 ***/
+  background: #ffffff; /*** セレクトボックスの背景色 ***/
+  @include media(pc) {
+    width: 50px; /*** セレクトボックスの横幅 ***/
+    
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    width: calc(45 / 770 * 100vw);
+  }
+
+}
+.select_design select {
+  width: 100%;
+  cursor: pointer;
+  text-indent: 0.01px;
+  text-overflow: ellipsis;
+  border: none;
+  outline: none;
+  background: transparent;
+  background-image: none;
+  box-shadow: none;
+  -webkit-appearance: none;
+  appearance: none;
+  color: #666666;
+  @include media(pc) {
+    line-height: 1.5;
+    padding: 8px 30px 8px 8px;
+    
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    @include padding_vw(4, 10, 4, 4);
+    line-height: calc(25 / 770 * 100vw);
+
+  }
+}
+.select_design select::-ms-expand {
+  display: none;
+}
+.select_design::before {
+  position: absolute;
+  content: '';
+  pointer-events: none;
+  z-index: 1;
+  transform: rotate(135deg);
+  @include media(pc) {
+    border-top: 2px solid #ffffff; /*** 矢印の色 ***/
+    border-right: 2px solid #ffffff; /*** 矢印の色 ***/
+    top: 12px;
+    right: 8px;
+    width: 4px;
+    height: 4px;
+    padding: 0;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    border-top: calc(3 / 770 * 100vw) solid #ffffff; /*** 矢印の色 ***/
+    border-right: calc(3 / 770 * 100vw) solid #ffffff; /*** 矢印の色 ***/
+    top: calc(10 / 770 * 100vw);
+    right: calc(7 / 770 * 100vw);
+    width: calc(4 / 770 * 100vw);
+    height: calc(4 / 770 * 100vw);
+    padding: 0;
+  }
+}
+.select_design:after {
+  position: absolute;
+  content: '';
+  background: #76c0c3; /*** 右側の背景色 ***/
+  pointer-events: none;
+  @include media(pc) {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 20px;    
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: calc(20 / 770 * 100vw);    
+
+  }
+}
+
+
 
 //注文(orders)
 /*----------------------------------/customers/orders/new（注文入力画面）------------------------------*/
@@ -892,9 +1127,10 @@ a:hover {
   margin-left: auto;
   margin-right: auto;
   @include media(pc) {
+    display: flex;
+    justify-content: space-between;
     max-width: 1100px;
     width: 100%;
-    font-size: 26px;
     margin-bottom: 40px;
   }
 
@@ -1000,6 +1236,7 @@ a:hover {
 .order-edit_info_row_text {
   @include media(pc) {
     display: inline-block;
+    padding: 5px;
   }
 
   @include media(tb) {
@@ -1009,7 +1246,12 @@ a:hover {
   }
 }
 .update-btn {
+  border: none;
+  background-color: #0168b7;
+  color: #fff;
   @include media(pc) {
+    margin-left: 20px;
+    padding: 3px 6px;
   }
 
   @include media(tb) {

@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'cart_products/index'
+  end
   namespace :admin do
     root to: 'admin/products#index'
     resources :products
