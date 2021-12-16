@@ -16,13 +16,14 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get '/about' => 'homes#about'
   delete '/cart_products' => '/public/cart_products#destroy_all'
-  resources :customers,only: [:edit,:update] do
+
+  resource :customers,only: [:edit,:update,:show] do
     collection do
-      get 'show'
       get 'unsubscribe'
     end
     patch 'withdrawal'
   end
+
   resources :products, only: [:index,:show]
   resources :cart_products, only: [:index,:create,:update,:destroy]
   resources :deliveries,only: [:index,:edit,:create,:update,:destroy]
@@ -32,11 +33,12 @@ Rails.application.routes.draw do
       get 'thanks'
     end
   end
-    resource :customer, only: [:show, :edit] do
-      collection do
-    get 'unsubscribe', action: :unsubscribe
-      end
-    end
+
+    # resource :customer, only: [:show, :edit] do
+    #   collection do
+    # get 'unsubscribe', action: :unsubscribe
+    #   end
+    # end
   end
 
   # 顧客用
