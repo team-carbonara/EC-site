@@ -2,18 +2,20 @@ class Admin::ProductsController < ApplicationController
 
   def new
     @genres = Genre.all
+    @action = "new"
   end
 
   def index
-    @products = Product.all
+    @products = Product.all.page(params[:page]).per(10)
   end
 
   def create
     @product = Product.new(params_product)
     if @product.save
-      redirect_to admin_product_path(@product)
+      redirect_to admin_product_path(@product), notice: "登録しました"
     else
-      render "new"
+      @products = Product.all
+      render 'new'
     end
   end
 
@@ -24,12 +26,16 @@ class Admin::ProductsController < ApplicationController
   def edit
     @genres = Genre.all
     @product = Product.find(params[:id])
+    @action = "edit"
   end
 
   def update
     @product = Product.find(params[:id])
-    @product.update(params_product)
-    redirect_to admin_product_path(@product)
+    if @product.update(params_product)
+      redirect_to admin_product_path(@product), notice: "変更しました"
+    else
+      render 'edit'
+    end
   end
 
   private
