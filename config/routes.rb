@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   resources :orders,only: [:index,:show,:new,:create,] do
     collection do
       get 'check'
+      post 'check'
       get 'thanks'
     end
   end

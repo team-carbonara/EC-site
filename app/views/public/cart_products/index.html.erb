@@ -13,7 +13,7 @@
             <th></th>
           </tr>
           <% @cart_products.each do |cart_product| %>
-          <%= form_with model: @cart_product, url: "/public/cart_products/#{cart_product.id}",method: :PATCH,local:true  do |f| %>
+          <%= form_with model: @cart_product, url: "/public/cart_products/#{cart_product.id}",method: :PATCH ,local: true  do |f| %>
           <tr class="cart-puroduct_table_row">
             <td><img class="cart-puroduct_image" src="" alt=""><%= cart_product.product.name %></td>
             <td><%= cart_product.product.price %></td>
@@ -37,7 +37,7 @@
           カートには商品はありません
           </div>
           <% end %>
-          
+
           <div class="cart-product_other">
             <%= link_to '買い物を続ける', public_products_path ,class: "cart-product_continue_btn"%>
             <div class="price-total">
