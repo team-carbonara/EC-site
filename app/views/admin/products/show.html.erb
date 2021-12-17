@@ -1,29 +1,29 @@
  <div class="l-main_container">
   <h3>商品詳細</h3>
   <div class="row">
-    <div class="">
-      <%= attachment_image_tag(@product, :image, size: "400x220") %>
+    <div class="col-sm-4">
+      <div class="admin_product_image"><%= attachment_image_tag(@product, :image, size: "300x217") %></div>
     </div>
-    <div class="">
-      <table>
+    <div class="col-sm-7 offset-sm-1">
+      <table class="admin_product_detail">
         <tr>
-          <td>商品名</td>
-          <td width="250"><%= @product.name %></td>
+          <th>商品名</th>
+          <td><%= @product.name %></td>
         </tr>
         <tr>
-          <td>商品説明</td>
+          <th>商品説明</th>
           <td><%= @product.description %></td>
         </tr>
         <tr>
-          <td>ジャンル</td>
+          <th>ジャンル</th>
           <td><%= @product.genre.name %></td>
         </tr>
         <tr>
-          <td>税込価格</td>
-          <td><%= @product.price %></td>
+          <th>税込価格<br>(税抜価格)</th>
+          <td><%= "#{@product.add_tax_price.to_s(:delimited, delimiter:',')} (#{@product.price.to_s(:delimited, delimiter:',')}) 円" %></td>
         </tr>
         <tr>
-          <td>販売ステータス</td>
+          <th>販売ステータス</th>
           <td>
             <% if @product.sale_status %>
               販売中
@@ -33,7 +33,9 @@
           </td>
         </tr>
       </table>
-      <%= link_to '編集する', edit_admin_product_path(@product) %>
+      <div class="col-sm-7 offset-sm-1 mt-3 mx-auto">
+        <%= link_to '編集する', edit_admin_product_path(@product), class: "btn btn-success btn-lg" %>
+      </div>
     </div>
   </div>
 </div>

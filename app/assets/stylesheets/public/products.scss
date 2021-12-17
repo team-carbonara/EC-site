@@ -20,16 +20,20 @@
   }
 }
 
+.product_index_title{
+  font-size: 35px;
+  font-weight: bold;
+}
+
+
 .product_detail{
   display: flex;
 }
 
-.product_image {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+.product_detail_image {
   @include media(pc) {
-    max-width: 1000px;
+    max-width: calc(1150 / 1440 * 100vw);
+    min-width: calc(810 / 1440 * 100vw);
     width: 100%;
   }
 
