@@ -2,7 +2,7 @@
   <div class="m-page_title">
     <h2 class="cart-puroduct_title">注文情報入力</h2>
   </div>
-      <%= form_with model: @order ,url: check_public_orders_path ,local: true   do |f| %>
+      <%= form_with model: @order ,url: check_orders_path ,local: true   do |f| %>
   <div>
     <%= f.label :支払い方法, class: "" %>
     <%= f.radio_button :payment_method, :true, checked: true %>

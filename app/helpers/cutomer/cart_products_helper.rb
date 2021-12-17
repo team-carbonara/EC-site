@@ -1,0 +1,2 @@
+module Cutomer::CartProductsHelper
+end
