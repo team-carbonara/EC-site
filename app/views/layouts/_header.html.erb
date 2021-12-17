@@ -10,13 +10,13 @@
           <ul class="l-navbarnav_list">
             <% if customer_signed_in? %>
             <li class="l-nav_item active">
-              <%= link_to 'マイページ', public_customers_path ,class: "l-nav_item_anchor"%>
+              <%= link_to 'マイページ',customers_path ,class: "l-nav_item_anchor"%>
             </li>
             <li class="l-nav_item active">
-              <%= link_to '商品一覧',  public_products_path,class: "l-nav_item_anchor"%>
+              <%= link_to '商品一覧',  products_path,class: "l-nav_item_anchor"%>
             </li>
             <li class="l-nav_item active">
-              <%= link_to 'カート',public_cart_products_path,class: "l-nav_item_anchor"%>
+              <%= link_to 'カート',cart_products_path,class: "l-nav_item_anchor"%>
             </li>
             <li class="l-nav_item">
               <%= link_to ' ログアウト', destroy_customer_session_path, method: :delete ,class: "l-nav_item_anchor"%>
@@ -39,10 +39,10 @@
             </li>
             <% else %>
             <li class="l-nav_item active">
-              <%= link_to 'About',  public_about_path,class: "l-nav_item_anchor"%>
+              <%= link_to 'About',  about_path,class: "l-nav_item_anchor"%>
             </li>
             <li class="l-nav_item">
-              <%= link_to '商品一覧',  public_products_path,class: "l-nav_item_anchor"%>
+              <%= link_to '商品一覧',  products_path,class: "l-nav_item_anchor"%>
             </li>
             <li class="l-nav_item">
               <%= link_to '新規登録','/customers/sign_up ',class: 'l-nav_item_anchor' %>
