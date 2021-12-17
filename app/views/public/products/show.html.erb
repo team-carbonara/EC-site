@@ -10,7 +10,7 @@
         <h2><%= @product.name %></h2>
         <p class="mt-3"><%= @product.description %></p>
         <p class="mt-5"><%= @product.add_tax_price.to_s(:delimited, delimiter:',') %>(税込)</p>
-        <%= form_with model: @cart_product, url: '/public/cart_products', method: :POST, local:true do |f| %>
+        <%= form_with model: @cart_product, local:true do |f| %>
           <%= f.hidden_field :customer_id, value: current_customer.id %>
           <%= f.hidden_field :product_id, value: @product.id %>
           <%= f.select :quantity, *[1..10], { include_blank: '個数選択'} %>
