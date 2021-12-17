@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  root to: 'public/homes#top'
   namespace :admin do
     root to: 'admin/products#index'
     resources :products

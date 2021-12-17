@@ -77,7 +77,6 @@ img{
 max-width: 100%;
 height: auto;
 }
-
 @import url(http://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
 
 @mixin media($device) {
@@ -129,7 +128,6 @@ height: auto;
 a:hover {
   opacity: 0.7;
   transition: 0.3s;
-  
 }
 
 .u-pc {
@@ -171,8 +169,8 @@ a:hover {
   }
 }
 
-button{
-  border:none;
+button {
+  border: none;
 }
 
 // ----------------------------------------------------------
@@ -548,6 +546,7 @@ button{
 .l-main {
   @include media(pc) {
     padding-top: 110px;
+    padding-bottom: 100px;
   }
 
   @include media(tb) {
@@ -555,6 +554,7 @@ button{
 
   @include media(sp) {
     padding-top: calc(120 / 770 * 100vw);
+    padding-bottom: calc(120 / 770 * 100vw);
   }
 }
 
@@ -732,7 +732,6 @@ button{
   @include media(pc) {
     margin: 0 5px 20px 5px;
     width: 205px;
-
   }
 
   @include media(tb) {
@@ -875,6 +874,7 @@ button{
   }
 
   @include media(sp) {
+    margin-top: calc(30 / 770 * 100vw);
     @include font-size(15);
     @include padding_vw(7, 7, 7, 7);
   }
@@ -905,7 +905,6 @@ button{
     }
     td {
       padding: 10px;
-      
     }
   }
 
@@ -954,7 +953,7 @@ button{
     @include padding_vw(7, 7, 7, 7);
     margin-left: calc(5 / 770 * 100vw);
   }
-} 
+}
 
 .select_design {
   display: inline-flex;
@@ -966,7 +965,6 @@ button{
   background: #ffffff; /*** セレクトボックスの背景色 ***/
   @include media(pc) {
     width: 50px; /*** セレクトボックスの横幅 ***/
-    
   }
 
   @include media(tb) {
@@ -975,7 +973,6 @@ button{
   @include media(sp) {
     width: calc(45 / 770 * 100vw);
   }
-
 }
 .select_design select {
   width: 100%;
@@ -993,7 +990,6 @@ button{
   @include media(pc) {
     line-height: 1.5;
     padding: 8px 30px 8px 8px;
-    
   }
 
   @include media(tb) {
@@ -1002,7 +998,6 @@ button{
   @include media(sp) {
     @include padding_vw(4, 10, 4, 4);
     line-height: calc(25 / 770 * 100vw);
-
   }
 }
 .select_design select::-ms-expand {
@@ -1010,7 +1005,7 @@ button{
 }
 .select_design::before {
   position: absolute;
-  content: '';
+  content: "";
   pointer-events: none;
   z-index: 1;
   transform: rotate(135deg);
@@ -1039,14 +1034,14 @@ button{
 }
 .select_design:after {
   position: absolute;
-  content: '';
+  content: "";
   background: #76c0c3; /*** 右側の背景色 ***/
   pointer-events: none;
   @include media(pc) {
     top: 0;
     right: 0;
     bottom: 0;
-    width: 20px;    
+    width: 20px;
   }
 
   @include media(tb) {
@@ -1056,12 +1051,119 @@ button{
     top: 0;
     right: 0;
     bottom: 0;
-    width: calc(20 / 770 * 100vw);    
-
+    width: calc(20 / 770 * 100vw);
   }
 }
 
+.cart-product_other{
+  justify-content: space-between;
+  display: flex;
+  @include media(pc) {
+    margin: 40px auto 0px;
+    max-width: 1100px;
+    width: 100%;
+  }
 
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    width: calc(600 / 770 * 100vw);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: calc(30 / 770 * 100vw);
+  }
+}
+
+.cart-product_continue_btn {
+  border: none;
+  display: flex;
+  align-items: center;
+  background-color: #3654b8;
+  color: #fff;
+  border-radius: 5px;
+  @include media(pc) {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    @include font-size(15);
+    @include padding_vw(7, 8, 7, 8);
+  }
+}
+.price-total {
+  border: 1px solid #000;
+  display: flex;
+  align-items: center;
+  @include media(pc) {
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+.price-total_text {
+  @include media(pc) {
+    font-size: 16px;
+    padding: 10px;
+    border-right: 1px solid #000;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    @include padding_vw(10, 10, 10, 10);
+    border-right: calc(1 / 770 * 100vw) solid #000;
+    @include font-size(15);
+  }
+}
+.price-total_value {
+  @include media(pc) {
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    @include padding_vw(10, 10, 10, 10);
+    @include font-size(20);
+  }
+}
+
+.cart-product_info_btn{
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  border: none;
+  background-color: #28ad75;
+  color: #fff;
+  border-radius: 5px;
+  @include media(pc) {
+    margin-top: 50px;
+    padding: 10px;
+    font-size: 18px;
+    max-width: 200px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    width: calc(200 / 770 * 100vw);
+    @include font-size(15);
+    @include padding_vw(15, 15, 15, 15);
+  }
+}
 
 //注文(orders)
 /*----------------------------------/customers/orders/new（注文入力画面）------------------------------*/
