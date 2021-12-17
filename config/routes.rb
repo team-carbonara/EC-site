@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :order_products,only: [:update]
   end
 
-  scope module: :customer do
+  scope module: :public do
     root to: 'homes#top'
     get '/about' => 'homes#about'
 
