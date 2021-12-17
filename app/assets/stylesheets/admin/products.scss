@@ -1,3 +1,22 @@
 // Place all the styles related to the admin/products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.admin_product_image{
+
+}
+
+
+.admin_product_detail {
+  tr{
+    margin-bottom: 10px;
+  }
+  th, td {
+    padding: 10px;
+    font-size: 20px;
+  }
+  th {
+    width:200px;
+    white-space: nowrap;
+  }
+}

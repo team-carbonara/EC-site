@@ -2,10 +2,11 @@ class Admin::ProductsController < ApplicationController
 
   def new
     @genres = Genre.all
+    @action = "new"
   end
 
   def index
-    @products = Product.all
+    @products = Product.all.page(params[:page]).per(10)
   end
 
   def create
@@ -24,6 +25,7 @@ class Admin::ProductsController < ApplicationController
   def edit
     @genres = Genre.all
     @product = Product.find(params[:id])
+    @action = "edit"
   end
 
   def update
