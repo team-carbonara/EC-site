@@ -10,7 +10,7 @@ class Public::CustomersController < ApplicationController
   def update
     @customer = current_customer
     if @customer.update(customer_params)
-      redirect_to public_customers_path, notice: "Success!"
+      redirect_to customers_path, notice: "Success!"
     else
       render 'edit'
     end
@@ -24,7 +24,7 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
     @customer.update(withdrawal_status: true)
     reset_session
-    redirect_to public_root_path
+    redirect_to root_path
   end
 
   def customer_params
