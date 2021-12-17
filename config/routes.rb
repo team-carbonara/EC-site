@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'public/homes#top'
+
   namespace :admin do
     root to: 'admin/products#index'
     resources :products
@@ -9,33 +9,30 @@ Rails.application.routes.draw do
     resources :order_products,only: [:update]
   end
 
-  namespace :public do
-  root to: 'homes#top'
-  get '/about' => 'homes#about'
-  delete '/cart_products' => '/public/cart_products#destroy_all'
+  scope module: :customer do
+    root to: 'homes#top'
+    get '/about' => 'homes#about'
 
-  resource :customers,only: [:edit,:update,:show] do
-    collection do
-      get 'unsubscribe'
+    resource :customers,only: [:edit,:update,:show] do
+      collection do
+        get 'unsubscribe'
+      end
+      patch 'withdrawal'
     end
-    patch 'withdrawal'
-  end
 
-  resources :products, only: [:index,:show]
-  resources :cart_products, only: [:index,:create,:update,:destroy]
-  resources :deliveries,only: [:index,:edit,:create,:update,:destroy]
-  resources :orders,only: [:index,:show,:new,:create,] do
-    collection do
-      get 'check'
-      get 'thanks'
+    resources :products, only: [:index,:show]
+    resources :cart_products, only: [:index,:create,:update,:destroy] do
+      collection do
+        delete '/' => '/customer/cart_products#destroy_all'
+      end
     end
-  end
-
-    # resource :customer, only: [:show, :edit] do
-    #   collection do
-    # get 'unsubscribe', action: :unsubscribe
-    #   end
-    # end
+    resources :deliveries,only: [:index,:edit,:create,:update,:destroy]
+    resources :orders,only: [:index,:show,:new,:create,] do
+      collection do
+        get 'check'
+        get 'thanks'
+      end
+    end
   end
 
   # 顧客用
