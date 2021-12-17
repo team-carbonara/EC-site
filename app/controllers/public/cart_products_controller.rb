@@ -21,7 +21,8 @@ class Public::CartProductsController < ApplicationController
 
   def update
 
-    @cart_product = current_customer.cart_products.find_by(params[:id])
+    # @cart_product = current_customer.cart_products.find_by(params[:id])
+    @cart_product = CartProduct.find_by(params[:id])
     if  @cart_product.update(cart_product_params)
     redirect_to public_cart_products_path ,notice:"カート内容を変更しました"
     else
@@ -43,6 +44,6 @@ class Public::CartProductsController < ApplicationController
   private
   def cart_product_params
       # params.require(:cart_product).permit(:product_id,:customer_id, :quantity )
-    params.require(:cart_product).permit(:product_id,:customer_id, :quantity )
+    params.require(:cart_product).permit(:quantity, :customer_id, :product_id)
   end
 end
