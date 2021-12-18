@@ -1,6 +1,5 @@
 class Public::CartProductsController < ApplicationController
   def index
-
     @cart_products = current_customer.cart_products.all
     total = [] #空の配列を用意
      @cart_products.each do |cart_product|
@@ -20,8 +19,7 @@ class Public::CartProductsController < ApplicationController
   end
 
   def update
-
-    @cart_product = current_customer.cart_products.find_by(params[:id])
+    @cart_product = current_customer.cart_products.find(params[:id])
     if  @cart_product.update(cart_product_params)
     redirect_to cart_products_path ,notice:"カート内容を変更しました"
     else
@@ -45,3 +43,4 @@ class Public::CartProductsController < ApplicationController
       params.require(:cart_product).permit(:product_id,:customer_id, :quantity )
   end
 end
+# {"cart_product" => {"product_id"=> "値", "customer_id"=> "値", "quantiry" => "値"}}
