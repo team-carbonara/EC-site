@@ -1,6 +1,6 @@
 class Public::HomesController < ApplicationController
   def top
-    @products = Product.limit(4).order("created_at DESC")
+    @products = Product.where(sale_status: true).limit(4).order("created_at DESC")
     @genres = Genre.all
   end
 

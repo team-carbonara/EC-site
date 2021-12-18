@@ -1,8 +1,14 @@
 class Public::ProductsController < ApplicationController
 
   def index
-    @products = Product.all
-    @product_count = Product.count
+    if params[:genre_id].nil?
+      @products = Product.where(sale_status: true)
+      @title = "商品"
+    else
+      @products = Product.where(sale_status: true, genre_id: params[:genre_id])
+      @title = params[:genre_name]
+    end
+    @product_count = @products.count
     @genres = Genre.all
   end
 
