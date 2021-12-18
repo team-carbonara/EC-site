@@ -3,8 +3,8 @@
     <div class="offset-1 col-md-4">
       <div class="shadow p-1 mb-5 col-md-3 bg-light rounded-lg head-line text-center">会員情報編集</div>
         <table class="table table-borderless">
+          
           <tbody>
-
             <%= form_with model: @customer, url: customers_path, local: true do |f| %>
               <tr class="field form-group col-sm-12">
                 <th><%= f.label :"氏名", class: "control-label" %></th>
