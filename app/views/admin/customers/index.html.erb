@@ -1,33 +1,36 @@
 <div class="l-main_container">
-<div class='row'>
-
-  <div>会員一覧</div>
-    <table class="table table-hover table-inverse col-sm-6 col-sm-offset-6 mx-auto">
-      <thead>
-        <tr class="table-info">
-          <td>会員ID</td>
-          <td>氏名</td>
-          <td>メールアドレス</td>
-          <td>ステータス</td>
-        </tr>
-        <% @customers.each do |customer| %>
-          <tr>
-            <td><%= customer.id %></td>
-            <td>
-              <%= link_to admin_customer_path(customer) do %>
-              <%= customer.last_name %><%= customer.first_name %>
-              <% end %>
-            </td>
-            <td><%= customer.email %></td>
-
-            <% if customer.withdrawal_status == true%>
-              <td>退会</td>
-            <% else %>
-              <td>有効</td>
+  <div class="row">
+    <div class="offset-1 col-md-10">
+      <div class="shadow p-1 mb-5 col-md-2 bg-light rounded-lg head-line">会員一覧</div>
+        <table class="table table-hover table-inverse col-sm-8">
+          <tbody>
+            <tr class="table-info">
+              <th>会員ID</th>
+              <th>氏名</th>
+              <th>メールアドレス</th>
+              <th>ステータス</th>
+            </tr>
+            <% @customers.each do |customer| %>
+              <tr>
+                <td><%= customer.id %></td>
+                <td>
+                  <%= link_to admin_customer_path(customer) do %>
+                  <%= customer.last_name %><%= customer.first_name %>
+                  <% end %>
+                </td>
+                <td><%= customer.email %></td>
+                <td>
+                  <% if customer.withdrawal_status == true%>
+                    <div class="text-secondary">退会</div>
+                  <% else %>
+                    <div class="text-success">有効</div>
+                  <% end %>
+                </td>
+              </tr>
             <% end %>
-
-          </tr>
-        <% end %>
-      </thead>
-    </table>
+          </tbody>
+        </table>
+    </div>
+  </div>
 </div>
+<%= paginate @customers %>

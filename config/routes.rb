@@ -19,7 +19,6 @@ Rails.application.routes.draw do
       end
       patch 'withdrawal'
     end
-
     resources :products, only: [:index,:show]
     resources :cart_products, only: [:index,:create,:update,:destroy] do
       collection do
