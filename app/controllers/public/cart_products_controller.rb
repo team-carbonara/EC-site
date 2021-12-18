@@ -43,3 +43,4 @@ class Public::CartProductsController < ApplicationController
       params.require(:cart_product).permit(:product_id,:customer_id, :quantity )
   end
 end
+# {"cart_product" => {"product_id"=> "値", "customer_id"=> "値", "quantiry" => "値"}}
