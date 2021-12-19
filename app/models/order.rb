@@ -7,6 +7,8 @@ class Order < ApplicationRecord
   }
 
   enum payment_method: {
-     credit_card:0, transfer:1
+     クレジット:0, 銀行振込:1
   }
+
+
 end

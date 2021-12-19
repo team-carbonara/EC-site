@@ -1,0 +1,27 @@
+<div class="l-main_container">
+  <div class="m-page_title">
+    <h2 class="cart-puroduct_title">注文履歴一覧</h2>
+  </div>
+
+  <table class="admin-orders_table">
+    <tr class="admin-orders_table_row">
+      <td>購入日時</td>
+      <td>購入者</td>
+      <td>注文回数</td>
+      <td>注文ステータス</td>
+    </tr>
+    <% @orders.each do |order| %>
+      <% order.order_products.each do |item| %>
+    <tr class="admin-orders_table_row">
+      <td><%= link_to admin_order_path(order.id) do %>
+        <%= order.created_at.strftime('%Y/%m/%d') %>　<%= order.created_at.strftime('%H:%M:%S') %>
+        <% end %></td>
+      <td><%= order.name %></td>
+      <td><%= item.quantity %></td>
+      <td><%= item.production_status %></td>
+    </tr>
+      <% end %>
+    <% end %>
+  </table>
+
+</div>

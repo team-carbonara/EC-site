@@ -77,6 +77,7 @@ img{
 max-width: 100%;
 height: auto;
 }
+
 @import url(http://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
 
 @mixin media($device) {
@@ -172,7 +173,19 @@ a:hover {
 button {
   border: none;
 }
+.notice {
+  color: rgb(223, 128, 74);
+  @include media(pc) {
+    margin-bottom: 20px;
+  }
 
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    margin-bottom: calc(20 / 770 * 100vw);
+  }
+}
 // ----------------------------------------------------------
 .l-header {
   align-items: center;
@@ -1053,7 +1066,7 @@ button {
   }
 }
 
-.cart-product_other{
+.cart-product_other {
   justify-content: space-between;
   display: flex;
   @include media(pc) {
@@ -1137,7 +1150,7 @@ button {
   }
 }
 
-.cart-product_info_btn{
+.cart-product_info_btn {
   margin-left: auto;
   margin-right: auto;
   display: flex;
@@ -1170,59 +1183,6 @@ button {
 
 /*----------------------------------/customers/orders（注文履歴一覧）----------------------------------*/
 
-/*----------------------------------/customers/orders/:id（注文詳細）----------------------------------*/
-
-/*---------------------------------/customers/orders/rend------------------------------------------------*/
-
-.order_thanks_message {
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  @include media(pc) {
-    font-size: 40px;
-    height: calc(100vh - 450px);
-  }
-
-  @include media(tb) {
-  }
-
-  @include media(sp) {
-    font-size: calc(30 / 770 * 100vw);
-    height: calc(
-      100vh - 49vw
-    ); //l-headerのheightとl-mainのmargin-top計算後のの合計//
-  }
-}
-
-//宛先(deliveries)
-/*----------------------------------/deliveries/index（宛先一覧画面）---------------------------*/
-
-/*----------------------------------/deliveries/:id/edit（宛先編集画面の表示）-------------------------*/
-
-//管理者(admins)
-
-/*---------------------------------/admins/sign_in（管理者ログイン）---------------------------------------*/
-
-/*---------------------------------/admins/genres（ジャンル一覧画面）---------------------------------------*/
-
-/*---------------------------------/admins/genres/:id/edit（ジャンル編集画面）---------------------------------------*/
-
-/*---------------------------------/admins/products（商品一覧画面[管理者用]）---------------------------------------*/
-
-/*---------------------------------/admins/products/:id（商品詳細画面[管理者用]）---------------------------------------*/
-
-/*---------------------------------/admins/products/:id/edit（商品編集画面[管理者用]）------------------------------*/
-
-/*--------------------------------/admins/products（新規商品登録画面[管理者用]）---------------------------------------*/
-
-/*-------------------------------/customers（顧客一覧画面[管理者用]）---------------------------------------*/
-
-/*-------------------------------/customers/:id（顧客詳細画面[管理者用]）---------------------------------------*/
-
-/*-------------------------------/customers/:id/edit（顧客編集画面[管理者用]）---------------------------------------*/
-
-/*------------------------/admins/orders（注文履歴一覧画面（管理者トップページ））-------------------------*/
 .m-page_title {
   margin-left: auto;
   margin-right: auto;
@@ -1291,7 +1251,301 @@ button {
     }
   }
 }
+
+/*----------------------------------/customers/orders/:id（注文詳細）----------------------------------*/
+
+/*---------------------------------/customers/orders/rend------------------------------------------------*/
+
+.order_thanks_message {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include media(pc) {
+    font-size: 40px;
+    height: calc(100vh - 450px);
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    font-size: calc(30 / 770 * 100vw);
+    height: calc(
+      100vh - 49vw
+    ); //l-headerのheightとl-mainのmargin-top計算後のの合計//
+  }
+}
+
+//宛先(deliveries)
+/*----------------------------------/deliveries/index（宛先一覧画面）---------------------------*/
+
+/*----------------------------------/deliveries/:id/edit（宛先編集画面の表示）-------------------------*/
+
+//管理者(admins)
+
+/*---------------------------------/admins/sign_in（管理者ログイン）---------------------------------------*/
+
+/*---------------------------------/admins/genres（ジャンル一覧画面）---------------------------------------*/
+
+/*---------------------------------/admins/genres/:id/edit（ジャンル編集画面）---------------------------------------*/
+
+/*---------------------------------/admins/products（商品一覧画面[管理者用]）---------------------------------------*/
+
+/*---------------------------------/admins/products/:id（商品詳細画面[管理者用]）---------------------------------------*/
+
+/*---------------------------------/admins/products/:id/edit（商品編集画面[管理者用]）------------------------------*/
+
+/*--------------------------------/admins/products（新規商品登録画面[管理者用]）---------------------------------------*/
+
+/*-------------------------------/customers（顧客一覧画面[管理者用]）---------------------------------------*/
+
+/*-------------------------------/customers/:id（顧客詳細画面[管理者用]）---------------------------------------*/
+
+/*-------------------------------/customers/:id/edit（顧客編集画面[管理者用]）---------------------------------------*/
+
+/*------------------------/admins/orders（注文履歴一覧画面（管理者トップページ））-------------------------*/
+
+.admin-orders_table {
+  margin-left: auto;
+  margin-right: auto;
+  @include media(pc) {
+    max-width: 1100px;
+    width: 100%;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    @include width(600);
+  }
+}
+.admin-orders_table_row {
+  text-align: left;
+  border-bottom: 1px solid #000;
+  th {
+    font-weight: bold;
+    background-color: #eee;
+  }
+  td {
+    padding: 10px;
+  }
+  @include media(pc) {
+    th {
+      padding: 10px;
+    }
+    td {
+      padding: 10px;
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    th {
+      @include font-size(18);
+      @include padding_vw(10, 10, 10, 10);
+    }
+    td {
+      @include font-size(18);
+      @include padding_vw(15, 10, 15, 10);
+    }
+  }
+}
+
 /*-------------------------------/admins/orders/:id（注文履歴一覧画面（個人ごと））------------------------*/
+.admin-orders_show_table {
+  margin-right: auto;
+  margin-left: auto;
+  @include media(pc) {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1100px;
+    width: 100%;
+    margin-bottom: 40px;
+    tbody {
+      width: 100%;
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    width: 100%;
+  }
+}
+.admin-orders_show_table_row {
+  text-align: left;
+  border-bottom: 1px solid #000;
+  th {
+    font-weight: bold;
+    background-color: #eee;
+  }
+  td {
+  }
+  @include media(pc) {
+    th {
+      width: 30%;
+      padding: 10px;
+    }
+    td {
+      width: 100%;
+      line-height: 1.5;
+      padding: 10px;
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    th {
+      @include width(200);
+      @include font-size(18);
+      @include padding_vw(10, 10, 10, 10);
+    }
+    td {
+      line-height: calc(30 / 770 * 100vw);
+      @include width(570);
+      @include font-size(18);
+      @include padding_vw(15, 10, 15, 10);
+    }
+  }
+}
+.admin-orders_show_column {
+  @include media(pc) {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 100px;
+    max-width: 1100px;
+    width: 100%;
+    margin-bottom: 40px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+
+.admin-orders_show_product_table {
+  tr:nth-of-type(1) {
+    background-color: #eee;
+  }
+  @include media(pc) {
+    max-width: 700px;
+    min-width: 400px;
+    width: 100%;
+    margin-right: 40px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+    margin-top: calc(50 / 770 * 100vw);
+  }
+}
+
+.admin-orders_show_product_table_row {
+  
+  text-align: left;
+  border-bottom: 1px solid #000;
+  th {
+    font-weight: bold;
+    background-color: #eee;
+  }
+  td {
+    padding: 10px;
+  }
+  @include media(pc) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    th {
+      padding: 10px;
+      font-size: 13px;
+    }
+    td {
+      padding: 10px;
+      font-size: 12px;
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    th {
+      @include font-size(18);
+      @include padding_vw(10, 10, 10, 10);
+    }
+    td {
+      @include font-size(18);
+      @include padding_vw(15, 10, 15, 10);
+    }
+  }
+}
+
+.admin-orders_show_price_table {
+  @include media(pc) {
+    max-width: 250px;
+    width: 100%;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    margin-right: auto;
+    width: 100%;
+    margin-top: calc(50 / 770 * 100vw);
+  }
+}
+.admin-orders_show_price_table_row {
+  border-bottom: 1px solid #000;
+  th {
+    text-align: left;
+    font-weight: bold;
+    background-color: #eee;
+  }
+  td {
+    padding: 10px;
+  }
+  @include media(pc) {
+    th {
+      padding: 10px;
+      font-size: 15px;
+    }
+    td {
+      padding: 10px;
+      font-size: 15px;
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    th {
+      @include font-size(18);
+      @include padding_vw(10, 10, 10, 10);
+    }
+    td {
+      @include font-size(18);
+      @include padding_vw(15, 10, 15, 10);
+    }
+  }
+}
 
 /*-------------------------------/admins/orders/:id/edit（注文履歴詳細画面[管理者用]）--------------------------*/
 
