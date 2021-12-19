@@ -1,6 +1,4 @@
 class Admin::OrdersController < ApplicationController
-  before_action :authenticate_admin!
-
   def index
     @orders = Order.all
   end
@@ -11,12 +9,8 @@ class Admin::OrdersController < ApplicationController
 
   def update
     @orders = Order.find(params[:id])
-
-    if  @orders.update(order_params)
-      redirect_to admin_orders_path
-    else @orders.order_products.update(orders_params)
-    redirect_to admin_orders_path
-    end
+    @orders.update(order_params)
+    redirect_to admin_order_path(@orders.id)
   end
 
   def edit

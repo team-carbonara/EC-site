@@ -6,7 +6,7 @@
   <table class="admin-orders_show_table">
     <tr class="admin-orders_show_table_row">
       <th>購入者</th>
-      <td><%= current_customer.last_name %><%= current_customer.first_name %></td>
+      <td><%= @orders.customer.last_name %><%= @orders.customer.first_name %></td>
     </tr>
     <tr class="admin-orders_show_table_row">
       <th>注文日</th>
