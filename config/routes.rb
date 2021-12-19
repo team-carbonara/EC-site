@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   namespace :admin do
-    root to: 'admin/products#index'
+    root to: 'products#index'
     resources :products
     resources :genres
     resources :customers, only: [:index,:show,:edit,:update]

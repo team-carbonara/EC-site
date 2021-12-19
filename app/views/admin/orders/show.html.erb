@@ -1,0 +1,66 @@
+<div class="l-main_container">
+  <div class="m-page_title">
+    <h2 class="cart-puroduct_title">注文履歴詳細</h2>
+  </div>
+
+  <table class="admin-orders_show_table">
+    <tr class="admin-orders_show_table_row">
+      <th>購入者</th>
+      <td><%= current_customer.last_name %><%= current_customer.first_name %></td>
+    </tr>
+    <tr class="admin-orders_show_table_row">
+      <th>注文日</th>
+      <td><%= @orders.created_at.strftime('%Y/%m/%d') %></td>
+    </tr>
+    <tr class="admin-orders_show_table_row">
+      <th>配送先</th>
+      <td>〒<%= @orders.post_code %><br><%= @orders.address %><br>
+          <%= @orders.name %>
+      </td>
+    </tr>
+    <tr class="admin-orders_show_table_row">
+      <th>支払方法</th>
+      <td><%= @orders.payment_method %></td>
+    </tr>
+    <tr class="admin-orders_show_table_row">
+      <th>注文ステータス</th>
+      <td><%= @orders.status %></td>
+    </tr>
+  </table>
+
+  <div class="admin-orders_show_column">
+    <table class="admin-orders_show_product_table">
+      <tr class="admin-orders_show_product_table_row">
+        <th>商品名</th>
+        <th>単価（税込）</th>
+        <th>数量</th>
+        <th>小計</th>
+        <th>制作ステータス</th>
+        <% @orders.order_products.each do |order|%>
+      </tr>
+      <tr class="admin-orders_show_product_table_row">
+        <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
+        <td><%= order.product.name %></td>
+        <td><%= order.quantity %></td>
+        <td><%= order.product.add_tax_price %></td>
+        <td><%= order.production_status %></td>
+      </tr>
+      <% end %>
+    </table>
+
+    <table class="admin-orders_show_price_table">
+      <tr class="admin-orders_show_price_table_row">
+        <th>商品合計</th>
+        <td><%= @orders.total_price %></td>
+      </tr>
+      <tr class="admin-orders_show_price_table_row">
+        <th>送料</th>
+        <td><%= @orders.postage %></td>
+      </tr>
+      <tr class="admin-orders_show_price_table_row">
+        <th>請求金額合計</th>
+        <td><%= @orders.total_price+@orders.postage   %></td>
+      </tr>
+    </table>
+  </div>
+</div>
