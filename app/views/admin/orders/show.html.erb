@@ -6,7 +6,7 @@
   <table class="admin-orders_show_table">
     <tr class="admin-orders_show_table_row">
       <th>購入者</th>
-      <td><%= @orders.customer.last_name %><%= @orders.customer.first_name %></td>
+      <td><%= current_customer.last_name %><%= current_customer.first_name %></td>
     </tr>
     <tr class="admin-orders_show_table_row">
       <th>注文日</th>
@@ -23,11 +23,11 @@
       <td><%= @orders.payment_method %></td>
     </tr>
     <tr class="admin-orders_show_table_row">
-    <%= form_with model: @orders ,url: admin_order_path(@orders.id),method: :patch ,local: true  do |f| %>
+    <%= form_with model: @order ,url: admin_order_path(@orders.id),method: :patch ,local: true  do |f| %>
       <th>注文ステータス</th>
-      <td>
-        <%= f.select :status , Order.statuses.keys.map %>
+      <td><%= @orders.status %>
         <%= f.submit '変更', class: "cart-product_update_btn" %>
+        <%= f.select :status , Order.statuses.keys.map %>
       </td>
     <% end %>
     </tr>
@@ -42,9 +42,8 @@
         <th>小計</th>
         <th>制作ステータス</th>
 
-
         <% @orders.order_products.each do |order|%>
-        <%= form_with model: order ,url: admin_order_product_path(order.id),method: :patch ,local: true  do |f| %>
+          <%= form_with model: @order_product ,url: admin_order_path,method: :patch ,local: true  do |f| %>
       </tr>
 
       <tr class="admin-orders_show_product_table_row">
