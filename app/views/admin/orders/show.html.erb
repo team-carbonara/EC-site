@@ -23,8 +23,13 @@
       <td><%= @orders.payment_method %></td>
     </tr>
     <tr class="admin-orders_show_table_row">
+    <%= form_with model: @orders ,url: admin_order_path(@orders.id),method: :patch ,local: true  do |f| %>
       <th>注文ステータス</th>
-      <td><%= @orders.status %></td>
+      <td>
+        <%= f.select :status , Order.statuses.keys.map %>
+        <%= f.submit '変更', class: "cart-product_update_btn" %>
+      </td>
+    <% end %>
     </tr>
   </table>
 
@@ -36,15 +41,23 @@
         <th>数量</th>
         <th>小計</th>
         <th>制作ステータス</th>
+
+
         <% @orders.order_products.each do |order|%>
+        <%= form_with model: order ,url: admin_order_product_path(order.id),method: :patch ,local: true  do |f| %>
       </tr>
+
       <tr class="admin-orders_show_product_table_row">
         <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
         <td><%= order.product.name %></td>
         <td><%= order.quantity %></td>
         <td><%= order.product.add_tax_price %></td>
-        <td><%= order.production_status %></td>
+        <td>
+        <%= f.select :production_status , OrderProduct.production_statuses.keys.map %>
+        <%= f.submit '変更', class: "cart-product_update_btn" %>
+        </td>
       </tr>
+        <% end %>
       <% end %>
     </table>
 

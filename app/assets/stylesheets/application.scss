@@ -1457,20 +1457,20 @@ button {
 }
 
 .admin-orders_show_product_table_row {
-  
+
   text-align: left;
   border-bottom: 1px solid #000;
   th {
     font-weight: bold;
     background-color: #eee;
+    vertical-align: middle;
   }
   td {
     padding: 10px;
+    vertical-align: middle;
   }
   @include media(pc) {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+
     th {
       padding: 10px;
       font-size: 13px;
