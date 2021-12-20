@@ -1,21 +1,19 @@
 class Public::OrdersController < ApplicationController
   def index
     @orders = current_customer.orders.all
-
   end
 
   def show
     @order = current_customer.orders.find(params[:id])
-
   end
 
   def new
-        if current_customer.cart_products.count != 0
+    if current_customer.cart_products.count != 0
   @cart_products = current_customer.cart_products.all
   total = [] #空の配列を用意
-   @cart_products.each do |cart_product|
-    total << cart_product.product.add_tax_price * cart_product.quantity
-   end
+     @cart_products.each do |cart_product|
+      total << cart_product.product.add_tax_price * cart_product.quantity
+      end
   @total = total.to_a.sum
   @order = Order.new
     else
@@ -26,7 +24,6 @@ class Public::OrdersController < ApplicationController
   def create
     cart_products = current_customer.cart_products.all
     @order = current_customer.orders.new(orders_params)
-
     if @order.save
       cart_products.each do |cart|
         order_product = OrderProduct.new
@@ -45,47 +42,45 @@ class Public::OrdersController < ApplicationController
   end
 
   def check
-
     @postage = 800
     @cart_products = current_customer.cart_products.all
     total = [] #空の配列を用意
      @cart_products.each do |cart_product|
       total << cart_product.product.add_tax_price * cart_product.quantity
-     end
-    @total = total.to_a.sum
-      if params[:order][:payment_method] == Order.payment_methods.key(0)
-        @payment_method = Order.payment_methods.key(0)
-      elsif params[:order][:payment_method] == Order.payment_methods.key(1)
-        @payment_method = Order.payment_methods.key(1)
       end
+    @total = total.to_a.sum
+    if params[:order][:payment_method] == Order.payment_methods.key(0)
+        @payment_method = Order.payment_methods.key(0)
+    elsif params[:order][:payment_method] == Order.payment_methods.key(1)
+        @payment_method = Order.payment_methods.key(1)
+    end
 
      @order = Order.new(order_params)
-      if params[:order][:address_number] == "1"
-        @order.name = current_customer.first_name
+    if params[:order][:address_number] == "1"
+        @order.name = current_customer.last_name+current_customer.first_name
         @order.post_code = current_customer.post_code
         @order.address = current_customer.address
 
-      elsif params[:order][:address_number] == "2"
-        if Delivery.exists?(params[:order][:registered])
-          @order.name = Delivery.find(params[:order][:registered]).name
-          @order.address = Delivery.find(params[:order][:registered]).address
-          @order.post_code = Delivery.find(params[:order][:registered]).post_code
-        else
-
-          render :new
-        end
-
-      elsif params[:order][:address_number] == "3"
-        address_new = current_customer.deliveries.new(address_params)
-        @order.name = address_new.name
-        if address_new.save
-        else
-          render :new
-        end
+    elsif params[:order][:address_number] == "2"
+      if Delivery.exists?(params[:order][:registered])
+        @order.name = Delivery.find(params[:order][:registered]).name
+        @order.address = Delivery.find(params[:order][:registered]).address
+        @order.post_code = Delivery.find(params[:order][:registered]).post_code
       else
-        redirect_to 遷移したいページ
+
+        render :new
       end
 
+    elsif params[:order][:address_number] == "3"
+        address_new = current_customer.deliveries.new(address_params)
+        @order.name = address_new.name
+      if address_new.save
+      else
+        render :new
+      end
+    else
+     render :new
+    end
   end
 
   def thanks
@@ -100,6 +95,6 @@ class Public::OrdersController < ApplicationController
     params.require(:order).permit(:name,:post_code, :address)
   end
   def orders_params
-    params.require(:order).permit(:customer_id,:post_code, :address, :name, :payment_method, :postage, :total_price, :status )
+    params.require(:order).permit(:post_code, :address, :name, :postage, :total_price, )
   end
 end

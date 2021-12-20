@@ -10,3 +10,5 @@
   Genre.create(name: 'プリン')
   Genre.create(name: '焼き菓子')
   Genre.create(name: 'キャンディ')
+
+  Admin.create!(email: 'admin@admin', password: 'adminpass')

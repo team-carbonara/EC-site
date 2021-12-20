@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   namespace :admin do
-    root to: 'products#index'
+    root 'products#index'
     resources :products
     resources :genres
     resources :customers, only: [:index,:show,:edit,:update]
@@ -10,8 +10,9 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-    root to: 'homes#top'
+    root 'homes#top'
     get '/about' => 'homes#about'
+    get '/search' => 'searches#search'
 
     resource :customers,only: [:edit,:update,:show] do
       collection do

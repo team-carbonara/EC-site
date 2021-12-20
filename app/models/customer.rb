@@ -7,4 +7,6 @@ class Customer < ApplicationRecord
   has_many :deliveries
   has_many :cart_products
   has_many :orders
+
+  enum role: { normal: 0, staff: 1 }
 end
