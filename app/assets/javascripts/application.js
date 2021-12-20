@@ -127,7 +127,7 @@ $(function () {
       });
     };
   };
-  let $grid = $('.product_list'),   
+  let $grid = $('.product_list'),
     emptyCells = [],
     i;
 
@@ -137,4 +137,11 @@ for (i = 0; i < $grid.find('.product_list_item').length; i++) {
 }
 
 $grid.append(emptyCells);
+
+    $('.top-visual').slick({
+      autoplay: true,
+      autoplaySpeed: 1000,
+      fade : true,
+    });
+
 });
