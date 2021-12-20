@@ -1,23 +1,21 @@
 class Public::DeliveriesController < ApplicationController
+  before_action :authenticate_customer!
 
   def index
     @delivery = Delivery.new
-    @deliverys = Delivery.all
-  end
-
-  def edit
-    @delivery = Delivery.find(params[:id])
+    # @deliverys = Delivery.all
+    @deliverys = current_customer.deliveries
   end
 
   def create
     @delivery = Delivery.new(delivery_params)
     @delivery.customer_id = current_customer.id
-    if @delivery.save
-      redirect_to deliveries_path, notice: "Success"
-    else
-      @delivery = Delivery.all
-      render 'index'
-    end
+    @deliverys = current_customer.deliveries
+    @delivery.save
+  end
+
+  def edit
+    @delivery = Delivery.find(params[:id])
   end
 
   def update
@@ -32,7 +30,7 @@ class Public::DeliveriesController < ApplicationController
   def destroy
     delivery = Delivery.find(params[:id])
     delivery.destroy
-    redirect_to deliveries_path, notice: "Deleted"
+    @deliverys = current_customer.deliveries
   end
 
   def delivery_params

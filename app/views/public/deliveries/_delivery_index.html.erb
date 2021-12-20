@@ -1,0 +1,20 @@
+<table class="table table-bordered col-sm-10">
+  <tr class="table-info">
+    <th>郵便番号</th>
+    <th>住所</th>
+    <th>宛名</th>
+    <th></th>
+  </tr>
+    <% deliverys.each do |delivery| %>
+      <tr>
+        <td><%= delivery.post_code %></td>
+        <td><%= delivery.address %></td>
+        <td><%= delivery.name %></td>
+        <td class="d-flex justify-content-center">
+          <%= link_to "編集する", edit_delivery_path(delivery), class: "btn btn-success" %>
+          <%= link_to "削除する", delivery_path(delivery), method: :delete, remote: true, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger ml-3" %>
+        </td>
+      </tr>
+    <% end %>
+</table>
+
