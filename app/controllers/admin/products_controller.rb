@@ -14,7 +14,7 @@ class Admin::ProductsController < ApplicationController
     if @product.save
       redirect_to admin_product_path(@product), notice: "登録しました"
     else
-      @products = Product.all
+      @action = "new"
       render 'new'
     end
   end

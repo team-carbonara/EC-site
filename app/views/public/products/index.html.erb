@@ -1,12 +1,12 @@
 <div class="l-main_container flex">
   <aside class="m-sidebar">
     <span class="m-sidebar_title">ジャンル検索</span>
-    <%= render 'genre_search' %>
+    <%= render 'public/products/genre_search' %>
   </aside>
   <article class="m-article">
     <div class="row">
-      <h2 class="product_index_title"><%= @title %>一覧</h2><p>（全<%= @product_count %>件）</p>
+      <h2 class="product_index_title"><%= @title %>一覧</h2><p>（全<%= @products.count %>件）</p>
     </div>
-    <%= render 'product_list' %>
+    <%= render 'public/products/product_list' %>
   </article>
 </div>
