@@ -2,26 +2,3 @@ $('#create').html("<%= j(render 'public/deliveries/delivery_index', deliverys: @
 ('#create').show();
 ('input').val("");
 
-<!--$(function (){-->
-<!--  $('#create').on('click', function(e){-->
-<!--    e.preventDefault();-->
-<!--    var formData = new FormData(this);-->
-<!--    var url = $(this).attr('action');-->
-<!--    $.ajax({-->
-<!--      url: url,-->
-<!--      type: "POST",-->
-<!--      data: formData,-->
-<!--      dataType: 'json',-->
-<!--      processData: false,-->
-<!--      contentType: false-->
-<!--    })-->
-<!--  });-->
-<!--});-->
-<!--$(function(){-->
-<!--  $(#delivery_create).on(click, function(){-->
-<!--    $.ajax({-->
-<!--    url: '/deliverys',-->
-<!--    dataType: 'json'-->
-<!--    })-->
-<!--  });-->
-<!--});-->
