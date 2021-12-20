@@ -53,7 +53,11 @@
               <% end%>
 
           </ul>
-          <input class="l-search" type="text"/>
+          <!--<input class="l-search" type="text"/>-->
+          <%= form_with url: search_path, method: :get, local: true do |f| %>
+            <%= f.text_field :keyword, placeholder: "search" %>
+            <% f.submit %>
+          <% end %>
         </div>
       </nav>
     </header>

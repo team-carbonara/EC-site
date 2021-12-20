@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root 'homes#top'
     get '/about' => 'homes#about'
+    get '/search' => 'searches#search'
 
     resource :customers,only: [:edit,:update,:show] do
       collection do
