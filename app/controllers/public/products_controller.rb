@@ -2,7 +2,8 @@ class Public::ProductsController < ApplicationController
 
   def index
     if params[:genre_id].nil?
-      @products = Product.where(sale_status: true)
+      # @products = Product.where(sale_status: true)
+      @products = Product.all
       @title = "商品"
     else
       @products = Product.where(sale_status: true, genre_id: params[:genre_id])
