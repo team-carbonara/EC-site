@@ -1,5 +1,5 @@
 class Customer::CartProductsController < ApplicationController
-  before_action :authenticate_admin!
+
 
   def destroy_all
     current_customer.cart_products.destroy_all
