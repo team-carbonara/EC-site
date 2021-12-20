@@ -46,8 +46,8 @@
         <tr>
           <th>お届け先</th>
           <td>
-            <%= f.label :post_code,@order.post_code %>
-            <%= f.label :address, @order.address %>
+            <%= f.label :post_code,@order.post_code %><br>
+            <%= f.label :address, @order.address %><br>
             <%= f.label :name ,@order.name %>
           </td>
         </tr>
@@ -58,6 +58,6 @@
       <%= f.hidden_field :total_price, value: @total %>
       <%= f.hidden_field :postage, value: @postage %>
       <%= f.submit "注文を確定する" ,class: "order_check_btn" %>
+      <% end %>
     </div>
 </div>
-<% end %>

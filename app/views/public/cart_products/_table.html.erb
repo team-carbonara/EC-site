@@ -1,5 +1,6 @@
 <table class="cart-puroduct_table">
   <% if current_customer.cart_products.present? %>
+  
   <tr class="cart-puroduct_table_row">
     <th>商品名</th>
     <th>単価（税込）</th>
@@ -7,24 +8,26 @@
     <th>小計</th>
     <th></th>
   </tr>
+  
     <%  cart.each do |cart_product| %>
-    <%= form_with model: cart_product, url: "/cart_products/#{cart_product.id}",method: :PATCH, remote: true  do |f| %>
+    
   <tr class="cart-puroduct_table_row">
     <td><img class="cart-puroduct_image" src="" alt=""><%= cart_product.product.name %></td>
     <td><%= cart_product.product.price.to_s(:delimited) %></td>
     <td>
+      <%= form_with model: cart_product, url: "/cart_products/#{cart_product.id}",method: :PATCH, remote: true  do |f| %>
       <div class="select_design">
         <%= f.select :quantity , options_for_select((1..50).to_a, :selected => cart_product.quantity ) %>
       </div>
         <%= f.hidden_field :customer_id, value: current_customer.id %>
         <%= f.hidden_field :product_id, value: cart_product.product.id %>
         <%= f.submit '変更', class: "cart-product_update_btn" %>
+      <% end %>
     </td>
     <td><%= total= (cart_product.product.add_tax_price * cart_product.quantity).to_s(:delimited)  %></td>
-
     <td><%= link_to '削除', cart_product_path(cart_product), method: :delete ,class: "cart_delete_btn"%></td>
   </tr>
-    <% end %>
+
     <% end %>
   <% else %>
     <div class="notice"><%= notice %></div>
