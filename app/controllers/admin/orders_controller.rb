@@ -14,6 +14,7 @@ class Admin::OrdersController < ApplicationController
   end
 
   def edit
+    @customers = Customer.find(params[:id])
   end
 
   private

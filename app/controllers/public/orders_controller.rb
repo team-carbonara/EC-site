@@ -79,7 +79,7 @@ class Public::OrdersController < ApplicationController
         render :new
       end
     else
-      redirect_to 遷移したいページ
+     render :new
     end
   end
 
@@ -95,6 +95,6 @@ class Public::OrdersController < ApplicationController
     params.require(:order).permit(:name,:post_code, :address)
   end
   def orders_params
-    params.require(:order).permit(:customer_id,:post_code, :address, :name, :payment_method, :postage, :total_price, :status )
+    params.require(:order).permit(:post_code, :address, :name, :postage, :total_price, )
   end
 end

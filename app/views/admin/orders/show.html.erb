@@ -4,33 +4,7 @@
   </div>
 
   <table class="admin-orders_show_table">
-    <tr class="admin-orders_show_table_row">
-      <th>購入者</th>
-      <td><%= @orders.customer.last_name %><%= @orders.customer.first_name %></td>
-    </tr>
-    <tr class="admin-orders_show_table_row">
-      <th>注文日</th>
-      <td><%= @orders.created_at.strftime('%Y/%m/%d') %></td>
-    </tr>
-    <tr class="admin-orders_show_table_row">
-      <th>配送先</th>
-      <td>〒<%= @orders.post_code %><br><%= @orders.address %><br>
-          <%= @orders.name %>
-      </td>
-    </tr>
-    <tr class="admin-orders_show_table_row">
-      <th>支払方法</th>
-      <td><%= @orders.payment_method %></td>
-    </tr>
-    <tr class="admin-orders_show_table_row">
-    <%= form_with model: @orders ,url: admin_order_path(@orders.id),method: :patch ,local: true  do |f| %>
-      <th>注文ステータス</th>
-      <td>
-        <%= f.select :status , Order.statuses.keys.map %>
-        <%= f.submit '変更', class: "cart-product_update_btn" %>
-      </td>
-    <% end %>
-    </tr>
+    <%= render 'order', orders: @orders %>
   </table>
 
   <div class="admin-orders_show_column">
