@@ -1,12 +1,6 @@
 class Public::CartProductsController < ApplicationController
   def index
     @cart_products = current_customer.cart_products.all
-    total = [] #空の配列を用意
-     @cart_products.each do |cart_product|
-      total << cart_product.product.add_tax_price * cart_product.quantity
-     end
-    @total = total.to_a.sum
-
   end
 
   def create
@@ -21,7 +15,9 @@ class Public::CartProductsController < ApplicationController
   def update
     @cart_product = current_customer.cart_products.find(params[:id])
     if  @cart_product.update(cart_product_params)
-    redirect_to cart_products_path ,notice:"カート内容を変更しました"
+    @cart_products = current_customer.cart_products.all
+    render :index
+
     else
     redirect_to cart_products_path ,notice:"カート内容を変更に失敗しました"
     end

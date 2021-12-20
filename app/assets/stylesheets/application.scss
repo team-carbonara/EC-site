@@ -17,6 +17,7 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -77,6 +78,7 @@ img{
 max-width: 100%;
 height: auto;
 }
+
 
 @import url(http://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
 
@@ -583,8 +585,8 @@ button {
 
   @include media(sp) {
     margin-top: calc(80 / 770 * 100vw);
-    margin-left: calc(60 / 770 * 100vw);
-    margin-right: calc(60 / 770 * 100vw);
+    margin-left: calc(45 / 770 * 100vw);
+    margin-right: calc(45 / 770 * 100vw);
     margin-bottom: calc(80 / 770 * 100vw);
   }
 }
@@ -903,6 +905,7 @@ button {
   }
 
   @include media(sp) {
+    width: calc(680 / 770 * 100vw);
   }
 }
 .cart-puroduct_table_row {
@@ -930,7 +933,7 @@ button {
     }
     td {
       @include font-size(15);
-      @include padding_vw(15, 10, 15, 10);
+      @include padding_vw(15, 8, 15, 8);
       border: calc(1 / 770 * 100vw) solid #000;
     }
   }
@@ -962,7 +965,7 @@ button {
   @include media(sp) {
     @include font-size(15);
     @include padding_vw(7, 7, 7, 7);
-    margin-left: calc(5 / 770 * 100vw);
+
   }
 }
 
@@ -983,6 +986,8 @@ button {
 
   @include media(sp) {
     width: calc(45 / 770 * 100vw);
+    display: block;
+    margin-bottom: calc(25 / 770 * 100vw);
   }
 }
 .select_design select {
@@ -1000,13 +1005,15 @@ button {
   color: #666666;
   @include media(pc) {
     line-height: 1.5;
-    padding: 8px 30px 8px 8px;
+    padding: 8px 10px 8px 4px;
+    font-size: 14px;
   }
 
   @include media(tb) {
   }
 
   @include media(sp) {
+    font-size: calc(10 / 770 * 100vw);
     @include padding_vw(4, 10, 4, 4);
     line-height: calc(25 / 770 * 100vw);
   }
@@ -1062,7 +1069,7 @@ button {
     top: 0;
     right: 0;
     bottom: 0;
-    width: calc(20 / 770 * 100vw);
+    width: calc(16 / 770 * 100vw);
   }
 }
 
@@ -1170,17 +1177,250 @@ button {
   }
 
   @include media(sp) {
-    width: calc(200 / 770 * 100vw);
+    width: calc(300 / 770 * 100vw);
     @include font-size(15);
-    @include padding_vw(15, 15, 15, 15);
+    @include padding_vw(15, 25, 15, 25);
+    margin-top: calc(100 / 770 * 100vw);
   }
 }
 
 //注文(orders)
 /*----------------------------------/customers/orders/new（注文入力画面）------------------------------*/
+.cart-puroduct_form_title{
+  display: block;
+  @include media(pc) {
+    font-size: 22px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    font-size: calc(30 / 770 * 100vw);
+    margin-top: calc(20 / 770 * 100vw);
+    margin-bottom: calc(20 / 770 * 100vw);
+  }
+}
+
+.cart-puroduct_payment_contents{
+  @include media(pc) {
+    label{
+    font-size: 16px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    label{
+    font-size: calc(26 / 770 * 100vw);
+    margin-top: calc(5 / 770 * 100vw);
+    margin-bottom: calc(5 / 770 * 100vw);
+    margin-right: calc(20 / 770 * 100vw);
+    }
+  }
+}
+
+.cart-puroduct_form_address{
+  display: block;
+  @include media(pc) {
+    margin-top: 30px;
+    margin-bottom: 40px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    font-size: calc(22 / 770 * 100vw);
+  }
+}
+.cart-puroduct_form_address_title{
+  @include media(pc) {
+    display: block;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    font-size: calc(26 / 770 * 100vw);
+  }
+}
+
+.cart-puroduct_form_address_contents {
+  display: block;
+  @include media(pc) {
+    margin-left: 25px;
+    margin-top: 15px;
+    margin-bottom: 40px;
+    line-height: 1.8;
+    select{
+      width: 70%;
+    }
+    input{
+      width: 100%;
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    margin-left: calc(30 / 770 * 100vw);
+    margin-top: calc(30 / 770 * 100vw);
+    margin-bottom: calc(60 / 770 * 100vw);
+    line-height: calc(45 / 770 * 100vw);
+      select{
+      width: 100%;
+    }
+    input{
+      width: 100%;
+    }
+  }
+}
+.cart-puroduct_form_address_contents_table {
+  text-align: left;
+
+  th {
+
+  }
+  td {
+    padding: 10px;
+  }
+  @include media(pc) {
+    width: 70%;
+    th {
+      padding: 10px;
+    }
+    td {
+      padding: 10px;
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    tr{
+      display: block;
+    }
+    th {
+      display: block;
+      @include font-size(22);
+      @include padding_vw(10, 10, 10, 10);
+      width: 100%;
+    }
+    td {
+      @include font-size(22);
+      @include padding_vw(5, 10, 15, 10);
+      width: calc(770 / 770 * 100vw);
+    }
+  }
+}
+
+
+.cart-puroduct_form_btn {
+  border: none;
+  display: flex;
+  align-items: center;
+  background-color: #3654b8;
+  color: #fff;
+  border-radius: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  @include media(pc) {
+    margin-top: 80px;
+    padding: 20px;
+    font-size: 14px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    @include font-size(24);
+    @include padding_vw(20, 25, 20, 25);
+  }
+}
 
 /*----------------------------------/customers/orders/check(確認画面)----------------------------------*/
 
+.order_check_other{
+    @include media(pc) {
+    max-width: 1100px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.8;
+    tr{
+      display: block;
+    }
+    th {
+      font-size: 16px;
+      padding: 10px;
+      width: 10%;
+    }
+    td {
+      font-size: 16px;
+      padding: 10px;
+      width: 20%;
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    @include font-size(24);
+    @include padding_vw(20, 25, 20, 25);
+    tr{
+      display: block;
+    }
+    th {
+      display: block;
+      @include font-size(22);
+      @include padding_vw(10, 10, 10, 10);
+      width: 100%;
+    }
+    td {
+      @include font-size(22);
+      @include padding_vw(5, 10, 15, 10);
+      width: calc(770 / 770 * 100vw);
+    }
+  }
+}
+
+.order_check_btn{
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  border: none;
+  background-color: #28ad75;
+  color: #fff;
+  border-radius: 5px;
+  @include media(pc) {
+    margin-top: 50px;
+    padding: 10px;
+    font-size: 18px;
+    max-width: 200px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    width: calc(200 / 770 * 100vw);
+    @include font-size(15);
+    @include padding_vw(15, 15, 15, 15);
+  }
+}
 /*----------------------------------/customers/orders（注文履歴一覧）----------------------------------*/
 
 .m-page_title {
@@ -1199,7 +1439,7 @@ button {
 
   @include media(sp) {
     @include width(600);
-    @include font-size(30);
+    @include font-size(40);
     margin-bottom: calc(30 / 770 * 100vw);
   }
 }
@@ -1439,7 +1679,7 @@ button {
     background-color: #eee;
   }
   @include media(pc) {
-    max-width: 700px;
+    max-width: 650px;
     min-width: 400px;
     width: 100%;
     margin-right: 40px;
@@ -1500,6 +1740,7 @@ button {
   @include media(pc) {
     max-width: 250px;
     width: 100%;
+    line-height: 1.5;
   }
 
   @include media(tb) {

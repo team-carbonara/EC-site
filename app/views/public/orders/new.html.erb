@@ -3,41 +3,60 @@
     <h2 class="cart-puroduct_title">注文情報入力</h2>
   </div>
       <%= form_with model: @order ,url: check_orders_path,method: :GET ,local: true   do |f| %>
-  <div>
-    <%= f.label :支払い方法, class: "" %>
+
+    <h2 class="cart-puroduct_form_title">支払方法</h2>
+    <div class="cart-puroduct_payment_contents">
     <%= f.radio_button :payment_method, Order.payment_methods.key(0), checked: "checked"%>
     <%= f.label :payment_method, 'クレジットカード' %>
     <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
     <%= f.label :payment_method, '銀行振込' %>
   </div>
-  <div>
 
-    <h2>お届け先<h2>
-      <div>
+    <h2 class="cart-puroduct_form_title">お届け先</h2>
+      <div class="cart-puroduct_form_address">
+        <div class="cart-puroduct_form_address_title">
         <%= f.radio_button :address_number, 1 %> <!-- address_number と定義して1～3の番号を check に送ります -->
         <%= f.label :address_number_1, "ご自身の住所" %>
-        <%= current_customer.post_code %>
-        <%= current_customer.address %>
+        </div>
+        <div class="cart-puroduct_form_address_contents">
+        〒<%= current_customer.post_code %><br class="u-sp">
+        <%= current_customer.address %><br class="sp">
         <%= current_customer.last_name %><%= current_customer.first_name %>
+        </div>
       </div>
-      <div>
-      <%= f.radio_button :address_number, 2 %>
-      <%= f.label :address_number_2, "登録先から選択" %>
-      <%= f.collection_select :registered, current_customer.deliveries.all, :id, :address ,:include_blank => "選択してください" %>
-      </div>
-      <div>
-      <%= f.radio_button :address_number, 3 %>
-        <%= f.label :address_number_3, "新しいお届け先" %>
-      <%= f.label :郵便番号（ハイフンなし）, class: "" %>
-      <%= f.text_field :post_code, :placeholder => "0000000", size:"35", class: "product_name" %>
-      <%= f.label :住所, class: "" %>
-      <%= f.text_field :address, :placeholder => "東京都渋谷区代々木神園町0-0", size:"35", class: "product_name" %>
-      <%= f.label :宛名, class: "" %>
-      <%= f.text_field :name, :placeholder => "山田太郎", size:"35",value:"" %>
+      <div class="cart-puroduct_form_address">
+        <div class="cart-puroduct_form_address_title">
+          <%= f.radio_button :address_number, 2 %>
+          <%= f.label :address_number_2, "登録先から選択" %>
+        </div>
+        <div class="cart-puroduct_form_address_contents">
+          <%= f.collection_select :registered, current_customer.deliveries.all, :id, :address ,:include_blank => "選択してください",class: "address-selec" %>
+        </div>
+        </div>
+      <div class="cart-puroduct_form_address">
+        <div class="cart-puroduct_form_address_title">
+          <%= f.radio_button :address_number, 3 %>
+          <%= f.label :address_number_3, "新しいお届け先" %>
+        </div>
+        <div class="cart-puroduct_form_address_contents">
+        <table class="cart-puroduct_form_address_contents_table">
+          <tr>
+            <th><%= f.label :郵便番号（ハイフンなし）, class: "" %></th>
+            <td><%= f.text_field :post_code, :placeholder => "0000000", size:"35", class: "product_name" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :住所, class: "" %></th>
+            <td><%= f.text_field :address, :placeholder => "東京都渋谷区代々木神園町0-0", size:"35", class: "product_name" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :宛名, class: "" %></th>
+            <td><%= f.text_field :name, :placeholder => "山田太郎", size:"35",value:"" %></td>
+          </tr>
+        </table>
+        </div>
 
-  </div>
       <%= f.hidden_field :status, value: 0 %>
       <%= f.hidden_field :total_price, value: @total %>
-      <%= f.submit '確認画面へ進む', class: "cart-product_continue_btn" %>
+      <%= f.submit '確認画面へ進む', class: "cart-puroduct_form_btn" %>
       <% end %>
 </div>
