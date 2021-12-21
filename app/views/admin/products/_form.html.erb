@@ -1,4 +1,5 @@
 <%= form_with model: [:admin, product], local: true do |f| %>
+
   <div class="form-group">
     <%= f.label :"商品画像", class: "col-md-3" %>
     <%= f.attachment_field :image, class:"col-md-8" %>
