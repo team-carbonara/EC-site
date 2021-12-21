@@ -14,70 +14,70 @@
  *= require_self
  */
 
-@import "bootstrap";
-@import 'font-awesome-sprockets';
-@import 'font-awesome';
+ @import "bootstrap";
+ @import 'font-awesome-sprockets';
+ @import 'font-awesome';
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-margin: 0;
-padding: 0;
-border: 0;
-font-size: 100%;
-font: inherit;
-font-family: 'Noto Sans JP';
-vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-display: block;
-}
-body {
-line-height: 1;
-font-family: 'Noto Sans Javanese', sans-serif;
-}
-ol, ul {
-list-style: none;
-}
-blockquote, q {
-quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-content: '';
-content: none;
-}
-table {
-border-collapse: collapse;
-border-spacing: 0;
-}
+ html, body, div, span, applet, object, iframe,
+ h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+ a, abbr, acronym, address, big, cite, code,
+ del, dfn, em, img, ins, kbd, q, s, samp,
+ small, strike, strong, sub, sup, tt, var,
+ b, u, i, center,
+ dl, dt, dd, ol, ul, li,
+ fieldset, form, label, legend,
+ table, caption, tbody, tfoot, thead, tr, th, td,
+ article, aside, canvas, details, embed,
+ figure, figcaption, footer, header, hgroup,
+ menu, nav, output, ruby, section, summary,
+ time, mark, audio, video {
+ margin: 0;
+ padding: 0;
+ border: 0;
+ font-size: 100%;
+ font: inherit;
+ font-family: 'Noto Sans JP';
+ vertical-align: baseline;
+ }
+ /* HTML5 display-role reset for older browsers */
+ article, aside, details, figcaption, figure,
+ footer, header, hgroup, menu, nav, section {
+ display: block;
+ }
+ body {
+ line-height: 1;
+ font-family: 'Noto Sans Javanese', sans-serif;
+ }
+ ol, ul {
+ list-style: none;
+ }
+ blockquote, q {
+ quotes: none;
+ }
+ blockquote:before, blockquote:after,
+ q:before, q:after {
+ content: '';
+ content: none;
+ }
+ table {
+ border-collapse: collapse;
+ border-spacing: 0;
+ }
 
-a{
-text-decoration: none;
-&:hover{
-  text-decoration: none;
-}
-}
-body{
-margin: 0px;
-}
-*{box-sizing: border-box;}
-img{
-max-width: 100%;
-height: auto;
-}
+ a{
+ text-decoration: none;
+ &:hover{
+   text-decoration: none;
+ }
+ }
+ body{
+ margin: 0px;
+ }
+ *{box-sizing: border-box;}
+ img{
+ max-width: 100%;
+ height: auto;
+ }
 
 .pagination>li>a {
   border: none;
@@ -159,13 +159,13 @@ a:hover {
   }
 
   @include media(sp) {
-    display: none;
+    display: none !important;
   }
 }
 
 .u-tb {
   @include media(pc) {
-    display: none;
+    display: none !important;
   }
 
   @include media(tb) {
@@ -178,7 +178,7 @@ a:hover {
 
 .u-sp {
   @include media(pc) {
-    display: none;
+    display: none !important;
   }
 
   @include media(tb) {
@@ -207,11 +207,9 @@ button {
 }
 
 .top-visual {
-  img {
-    width: 100vw;
-    height: 100vh;
-    z-index: 1;
-  }
+  width: 100vw;
+  height: 100vh;
+
   @include media(pc) {
     margin-top: -110px;
   }
@@ -225,12 +223,58 @@ button {
   }
 }
 
-.b {
-  width: 100vw !important ;
-}
-
 .slick-next {
   display: none !important ;
+}
+
+.top-visual_1 {
+  background-size: cover;
+  @include media(pc) {
+    background-position: center;
+    background-image: image-url("cat-christmas.jpg");
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    // background-position: bottom;
+    background-image: image-url("cookie_01_sp.jpg");
+  }
+}
+
+.top-visual_2 {
+  background-position: center;
+  background-size: cover;
+  @include media(pc) {
+    background-image: image-url("chocolate_cake.jpg");
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    background-image: image-url("ice_01_sp.jpg");
+  }
+}
+
+.top-visual_3 {
+  background-position: center;
+  background-size: cover;
+  @include media(pc) {
+    background-image: image-url("peropero_candy.png");
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    background-image: image-url("candy_01_sp.png");
+  }
+}
+
+.slick-track {
+  height: 100vh;
 }
 
 // ----------------------------------------------------------
@@ -239,13 +283,13 @@ button {
   display: flex;
   justify-content: space-between;
   z-index: 100;
-  background-color: khaki;
 
   @include media(pc) {
     width: 100%;
     height: 110px;
     position: fixed;
     transition: 0.4s;
+    background-color: khaki;
   }
 
   @include media(tb) {
@@ -259,7 +303,6 @@ button {
   @include media(sp) {
     @include height(120);
     position: fixed;
-    background-color: white;
     width: 100%;
     top: 0;
     z-index: 1;
@@ -282,11 +325,12 @@ button {
   }
 
   @include media(sp) {
-    margin-left: calc(50 / 770 * 100vw);
+    background-color: #ffffffaa;
   }
   img {
     @include media(pc) {
       height: 110px;
+      width: auto;
     }
 
     @include media(tb) {
@@ -296,6 +340,7 @@ button {
 
     @include media(sp) {
       height: calc(120 / 770 * 100vw);
+      width: auto;
     }
   }
 }
@@ -473,7 +518,6 @@ button {
   opacity: 1;
 }
 
-
 .l-navbar {
   @include media(pc) {
   }
@@ -554,9 +598,8 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  margin-top: 25px;
-  margin-bottom: 25px;
+  justify-content: center;
+
   @include media(pc) {
   }
 
@@ -568,6 +611,7 @@ button {
 }
 .l-nav_item_other_name {
   @include media(pc) {
+    margin-bottom: 15px;
   }
 
   @include media(tb) {
@@ -679,6 +723,7 @@ button {
 
   @include media(sp) {
     padding-top: calc(120 / 770 * 100vw);
+    min-height: 100vh;
   }
 }
 
@@ -695,10 +740,10 @@ button {
   }
 
   @include media(sp) {
-    padding-top: calc(80 / 770 * 100vw);
+    padding-top: calc(100 / 770 * 100vw);
     padding-left: calc(45 / 770 * 100vw);
     padding-right: calc(45 / 770 * 100vw);
-    padding-bottom: calc(80 / 770 * 100vw);
+    padding-bottom: calc(100 / 770 * 100vw);
   }
 }
 
@@ -1005,6 +1050,61 @@ button {
   }
 }
 
+.unsubscribe-title {
+  text-align: center;
+  @include media(pc) {
+    font-size: 26px;
+    margin-bottom: 40px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    @include font-size(40);
+    margin-bottom: calc(100 / 770 * 100vw);
+  }
+}
+
+.unsubscribe-container {
+  text-align: center;
+  @include media(pc) {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 60px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    font-size: calc(26 / 770 * 100vw);
+    line-height: calc(50 / 770 * 100vw);
+    margin-bottom: calc(120 / 770 * 100vw);
+  }
+}
+
+.unsubscribe-other {
+  display: flex;
+  @include media(pc) {
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 60px;
+    max-width: 600px;
+    width: 100%;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    flex-direction: column;
+    font-size: calc(50 / 770 * 100vw);
+  }
+}
+
 /* -----------------------------------トップページ（新着商品）---------------------------*/
 
 /* -----------------------------------/customers/products（商品一覧[顧客用]）---------------------------*/
@@ -1015,6 +1115,7 @@ button {
     font-size: 24px;
     margin-bottom: 20px;
     margin-right: 10px;
+    display: inline-block;
   }
 
   @include media(tb) {
@@ -1120,6 +1221,111 @@ button {
 }
 
 /* ----------------------------/customers/products/:id（商品詳細[顧客用]）------------------------*/
+
+.product-show_container {
+  @include media(pc) {
+    margin-top: 50px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+.product-show_container_product{
+  @include media(pc) {
+    margin-top: 50px;
+    margin-left: 10px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+
+.product_show_image {
+  @include media(pc) {
+    img {
+      max-width: 300px;
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    img {
+      width: calc(300 / 770 * 100vw);
+    }
+  }
+}
+.product-show_product_title{
+  font-weight: bold;
+  @include media(pc) {
+    font-size: 24px;
+    margin-bottom: 30px;
+
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+.product-show_text {
+  @include media(pc) {
+    font-size: 15px;
+    margin-bottom: 50px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+
+.prpduct-show_other{
+  display: flex;
+}
+.product-show_price {
+  @include media(pc) {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+
+.prpduct-show_btn {
+  border: none;
+  display: inline-block;
+  background-color: #3654b8;
+  color: #fff;
+  border-radius: 5px;
+  @include media(pc) {
+    padding: 10px;
+    font-size: 14px;
+    margin-left: 30px
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    @include font-size(15);
+    @include padding_vw(7, 8, 7, 8);
+  }
+}
+
 .product-select_design {
   display: inline-flex;
   overflow: hidden;
@@ -1772,12 +1978,10 @@ button {
     margin-left: auto;
     margin-right: auto;
     line-height: 1.8;
-
-
-    table{
+    table {
       width: 70%;
     }
-    tr{
+    tr {
       display: block;
     }
     th {
@@ -1850,6 +2054,7 @@ button {
     justify-content: space-between;
     max-width: 1100px;
     width: 100%;
+    font-size: 24px;
     margin-bottom: 40px;
   }
 
@@ -1862,6 +2067,37 @@ button {
     margin-bottom: calc(30 / 770 * 100vw);
   }
 }
+
+.order-table_flex {
+  @include media(pc) {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+    max-width: 1100px;
+    width: 100%;
+    margin-bottom: 40px;
+  }
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+
+.order-table_column {
+  @include media(pc) {
+    width: 100%;
+    margin-right: 15px;
+    margin-left: 15px;
+  }
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+
 .order-table {
   margin-left: auto;
   margin-right: auto;
@@ -1877,17 +2113,45 @@ button {
     @include width(600);
   }
 }
+.order-table_column_price {
+  @include media(pc) {
+    width: 70%;
+    margin-right: 15px;
+    margin-left: 15px;
+    th {
+    }
+    td {
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    th {
+      @include font-size(18);
+      @include padding_vw(10, 10, 10, 10);
+    }
+    td {
+      @include font-size(18);
+      @include padding_vw(15, 10, 15, 10);
+    }
+  }
+}
+
 .orde-table_row {
   text-align: left;
   border-bottom: 1px solid #000;
   th {
     font-weight: bold;
     background-color: #eee;
+    width: 35%;
   }
   td {
     padding: 10px;
   }
   @include media(pc) {
+    line-height: 1.7;
     th {
       padding: 10px;
     }
@@ -1900,6 +2164,70 @@ button {
   }
 
   @include media(sp) {
+    th {
+      @include font-size(18);
+      @include padding_vw(10, 10, 10, 10);
+    }
+    td {
+      @include font-size(18);
+      @include padding_vw(15, 10, 15, 10);
+    }
+  }
+}
+
+.order-table_title {
+  @include media(pc) {
+    margin-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+    max-width: 1100px;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    font-size: calc(22 / 770 * 100vw);
+  }
+}
+
+order-table {
+  margin-left: auto;
+  margin-right: auto;
+  @include media(pc) {
+    max-width: 1100px;
+    width: 100%;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    @include width(600);
+  }
+}
+
+.order-table_product {
+  margin-left: auto;
+  margin-right: auto;
+  @include media(pc) {
+    max-width: 1100px;
+    width: 100%;
+    th {
+    }
+    td {
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    @include width(600);
     th {
       @include font-size(18);
       @include padding_vw(10, 10, 10, 10);
