@@ -1,6 +1,6 @@
 <table class="cart-puroduct_table">
   <% if current_customer.cart_products.present? %>
-  
+
   <tr class="cart-puroduct_table_row">
     <th>商品名</th>
     <th>単価（税込）</th>
@@ -8,9 +8,9 @@
     <th>小計</th>
     <th></th>
   </tr>
-  
+
     <%  cart.each do |cart_product| %>
-    
+
   <tr class="cart-puroduct_table_row">
     <td><img class="cart-puroduct_image" src="" alt=""><%= cart_product.product.name %></td>
     <td><%= cart_product.product.price.to_s(:delimited) %></td>
@@ -38,7 +38,7 @@
   <% end %>
 </table>
   <div class="cart-product_other">
-  <%= link_to '買い物を続ける', products_path ,class: "cart-product_continue_btn"%>
+  <%= link_to '買い物を続ける', root_path ,class: "cart-product_continue_btn"%>
   <div class="price-total">
     <span class="price-total_text">合計金額</span>
     <span class="price-total_value">
