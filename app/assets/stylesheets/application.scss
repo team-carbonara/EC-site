@@ -142,13 +142,13 @@ a:hover {
   }
 
   @include media(sp) {
-    display: none;
+    display: none !important;
   }
 }
 
 .u-tb {
   @include media(pc) {
-    display: none;
+    display: none !important;
   }
 
   @include media(tb) {
@@ -161,7 +161,7 @@ a:hover {
 
 .u-sp {
   @include media(pc) {
-    display: none;
+    display: none !important;
   }
 
   @include media(tb) {
@@ -998,6 +998,7 @@ button {
     font-size: 24px;
     margin-bottom: 20px;
     margin-right: 10px;
+    display: inline-block;
   }
 
   @include media(tb) {
@@ -1831,6 +1832,7 @@ button {
     justify-content: space-between;
     max-width: 1100px;
     width: 100%;
+    font-size: 24px;
     margin-bottom: 40px;
   }
 
@@ -1843,6 +1845,38 @@ button {
     margin-bottom: calc(30 / 770 * 100vw);
   }
 }
+
+
+.order-table_flex{
+    @include media(pc) {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+    max-width: 1100px;
+    width: 100%;
+    margin-bottom: 40px;
+  }
+    @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+
+.order-table_column{
+    @include media(pc) {
+    width: 100%;
+    margin-right: 15px;
+    margin-left: 15px;
+  }
+    @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+
 .order-table {
   margin-left: auto;
   margin-right: auto;
@@ -1858,17 +1892,48 @@ button {
     @include width(600);
   }
 }
+.order-table_column_price{
+    @include media(pc) {
+      width: 70%;
+      margin-right: 15px;
+      margin-left: 15px;
+    th {
+
+    }
+    td {
+
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    th {
+      @include font-size(18);
+      @include padding_vw(10, 10, 10, 10);
+    }
+    td {
+      @include font-size(18);
+      @include padding_vw(15, 10, 15, 10);
+    }
+  }
+}
+
+
 .orde-table_row {
   text-align: left;
   border-bottom: 1px solid #000;
   th {
     font-weight: bold;
     background-color: #eee;
+    width: 35%;
   }
   td {
     padding: 10px;
   }
   @include media(pc) {
+    line-height: 1.7;
     th {
       padding: 10px;
     }
@@ -1891,6 +1956,73 @@ button {
     }
   }
 }
+
+.order-table_title{
+    @include media(pc) {
+    margin-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+    max-width: 1100px;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    font-size: calc(22 / 770 * 100vw);
+  }
+}
+
+
+order-table {
+  margin-left: auto;
+  margin-right: auto;
+  @include media(pc) {
+    max-width: 1100px;
+    width: 100%;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    @include width(600);
+  }
+}
+
+.order-table_product {
+  margin-left: auto;
+  margin-right: auto;
+  @include media(pc) {
+    max-width: 1100px;
+    width: 100%;
+    th {
+    }
+    td {
+
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    @include width(600);
+    th {
+      @include font-size(18);
+      @include padding_vw(10, 10, 10, 10);
+    }
+    td {
+      @include font-size(18);
+      @include padding_vw(15, 10, 15, 10);
+    }
+  }
+}
+
 
 /*----------------------------------/customers/orders/:id（注文詳細）----------------------------------*/
 
