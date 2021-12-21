@@ -1,51 +1,40 @@
+
+
 <div class="l-main_container">
-  <div class="row">
-    <div class="offset-1 col-md-4">
-      <div class="shadow p-1 mb-5 col-md-3 bg-light rounded-lg head-line text-center">会員情報編集</div>
-        <table class="table table-borderless">
-          
-          <tbody>
-            <%= form_with model: @customer, url: customers_path, local: true do |f| %>
-              <tr class="field form-group col-sm-12">
-                <th><%= f.label :"氏名", class: "control-label" %></th>
-                <td><%= f.text_field :last_name, autofocus: true, class:"form-control-static name rounded-lg" %></td>
-                <td><%= f.text_field :first_name, autofocus: true, class:"form-control-static name rounded-lg"%></td>
-              </tr>
 
-              <tr class="field form-group col-sm-12">
-                <th><%= f.label :"フリガナ", class: "control-label" %></th>
-                <td><%= f.text_field :last_name_kana, autofocus: true, class:"form-control-static name rounded-lg" %></td>
-                <td><%= f.text_field :first_name_kana, autofocus: true, class:"form-control-statsic name rounded-lg"%></td>
-              </div>
-
-              <tr class="field form-group col-sm-12">
-                <th><%= f.label :"郵便番号", class: "control-label" %></th>
-                <td><%= f.text_field :post_code, autofocus: true, class:"form-control-static rounded-lg" %></td>
-              </tr>
-
-              <tr class="field form-group col-sm-12">
-                <th><%= f.label :"住所", class: "control-label" %></th>
-                <td><%= f.text_field :address, autofocus: true, class:"form-control-static rounded-lg" %></td>
-              </tr>
-
-              <tr class="field form-group col-sm-12">
-                <th><%= f.label :"電話番号", class: "control-label" %></th>
-                <td><%= f.telephone_field :tel, autofocus: true, class:"form-control-static rounded-lg" %></td>
-              </tr>
-
-              <tr class="field form-group col-sm-12">
-                <th><%= f.label :"メールアドレス", class: "control-label" %></th>
-                <td><%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control-static rounded-lg" %></td>
-              </tr>
-
-              <tr class="actions col-sm-12">
-                <th></th>
-                <td><%= f.submit "編集内容を保存", class: "btn btn-success" %></td>
-                <td><%= link_to "退会する", unsubscribe_customers_path, class: "btn btn-danger" %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-    </div>
+  <h2 class="product_title">会員情報編集</h2>
+      <%= form_with model: @customer, url: customers_path, local: true do |f| %>
+  <table class="cutomer-edit_table">
+    <tr>
+      <th><%= f.label :"氏名", class: "" %></th>
+      <td><%= f.text_field :last_name, autofocus: true, class:"cutomer-edit_table_name" %>
+          <%= f.text_field :first_name, autofocus: true, class:"cutomer-edit_table_name"%></td>
+    </tr>
+    <tr>
+      <th><%= f.label :"フリガナ", class: "" %></th>
+      <td><%= f.text_field :last_name_kana, autofocus: true, class:"cutomer-edit_table_name" %>
+          <%= f.text_field :first_name_kana, autofocus: true, class:"cutomer-edit_table_name"%></td>
+    </tr>
+    <tr>
+      <th><%= f.label :"郵便番号", class: "" %></th>
+      <td><%= f.text_field :post_code, autofocus: true, class:"" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :"住所", class: "" %></th>
+      <td class="cutomer-edit_table_address"><%= f.text_field :address, autofocus: true, class:"" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :"電話番号", class: "" %></th>
+      <td><%= f.telephone_field :tel, autofocus: true, class:"" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :"メールアドレス", class: "" %></th>
+      <td><%= f.email_field :email, autofocus: true, autocomplete: "email", class:"" %></td>
+    </tr>
+  </table>
+  <div class="customer-info_other">
+    <%= f.submit "編集内容を保存", class: "customer-info_update_btn" %>
+    <%= link_to "退会する", unsubscribe_customers_path, class: "customer-info_withdrawal_btn" %>
   </div>
+    <% end %>
 </div>

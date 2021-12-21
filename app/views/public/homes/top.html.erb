@@ -1,18 +1,18 @@
 <div class="top-visual">
-    <div class="b"><%= image_tag('product-image-01_pc.png') %></div>
-    <div class="b"><%= image_tag('product-image-01_pc.png') %></div>
-    <div class="b"><%= image_tag('product-image-01_pc.png') %></div>
-
+  <div class="b"><%= image_tag('cat-christmas.jpg') %></div>
+  <div class="b"><%= image_tag('cup_cake.jpg') %></div>
+  <div class="b"><%= image_tag('chocolate_cake.jpg') %></div>
 </div>
 <div class="l-main_container flex">
   <aside class="m-sidebar">
     <span class=“m-sidebar_title”>ジャンル検索</span>
-    <%= render 'public/products/genre_search' %>
+      <%= render 'public/products/genre_search' %>
   </aside>
-  <article class="article">
+  <article class="m-article">
     <%= image_tag 'product-image-01_pc.png',class:"top-image" %>
     <h2 class="top-title">新着商品</h2>
     <%= render 'public/products/product_list' %>
     <%= link_to '全ての商品を見る >', products_path, class: 'to_index' %>
   </article>
 </div>
+

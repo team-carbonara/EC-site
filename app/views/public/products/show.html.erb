@@ -15,7 +15,9 @@
         <% if @product.sale_status %>
           <%= f.hidden_field :customer_id, value: current_customer.id %>
           <%= f.hidden_field :product_id, value: @product.id %>
-          <%= f.select :quantity, *[1..10], { include_blank: '個数選択'} %>
+          <div class="product-select_design">
+            <%= f.select :quantity, *[1..10], { include_blank: '個数選択'} %>
+          </div>
           <%= f.submit 'カートに入れる' %>
         <% else %>
           <p>※現在、販売しておりません。<p>
