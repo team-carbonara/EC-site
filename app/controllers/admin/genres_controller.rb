@@ -13,7 +13,6 @@ class Admin::GenresController < ApplicationController
     else
       @genre = Genre.new
       @genres = Genre.all
-      render 'index'
     end
   end
 
