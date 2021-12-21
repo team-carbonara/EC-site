@@ -71,3 +71,5 @@ gem 'kaminari','~> 1.2.1'
 gem "enum_help"
 gem 'hirb'
 gem 'hirb-unicode'
+gem 'rails-i18n', '~> 5.1'
+gem 'devise-i18n'
