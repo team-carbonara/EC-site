@@ -17,6 +17,7 @@
  @import "bootstrap";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
+ @import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
 
  html, body, div, span, applet, object, iframe,
  h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -259,6 +260,14 @@ button {
 }
 
 /* ----------------------top-page(トップページ)--------------------*/
+.new-blink {
+  animation: blinkAnimeS2 2s infinite alternate;
+  margin-right: 10px;
+}
+@keyframes blinkAnimeS2{
+   0%{ color : red;   background:white }
+ 100%{ color : white; background:red   }
+}
 
 .top-visual {
   width: 100vw;
@@ -724,7 +733,6 @@ button {
   @include media(pc) {
     height: 100px;
   }
-
   @include media(tb) {
   }
 
@@ -734,6 +742,8 @@ button {
 }
 
 .l-footer_copy {
+  font-size: 30px;
+  font-family: 'Sacramento', cursive;
   @include media(pc) {
   }
 
