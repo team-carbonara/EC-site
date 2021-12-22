@@ -1,13 +1,15 @@
 <div class="l-main_container">
+  <div class="unsubscribe-container">
     <h2 class="unsubscribe-title">本当に退会しますか？</h2>
-    <div class="unsubscribe-container">
-      <p>退会すると、会員登録情報や<br>
+    <p class="unsubscribe-text">
+      退会すると、会員登録情報や<br>
           これまでの購入履歴が閲覧できなくなります。</br>
-        退会する場合は、「退会する」をクリックしてください。</p>
-    </div>
+        退会する場合は、「退会する」をクリックしてください。
+    </p>
     <div class="unsubscribe-other">
       <%= link_to "退会しない", customers_path, class: "customer-info_update_btn" %>
       <%= link_to "退会する", withdrawal_customers_path, method: :PATCH, data: {confirm: "本当に退会してもよろしいですか？"}, class: "customer-info_withdrawal_btn" %>
     </div>
+  </div>
   </div>
 </div>
