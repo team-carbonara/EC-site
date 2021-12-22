@@ -3,26 +3,25 @@
     <span class="m-sidebar_title">ジャンル検索</span>
     <%= render 'genre_search' %>
   </aside>
-  <div class="row">
-    <div class="col-md-5">
-      <div class="product_image"><%= attachment_image_tag(@product, :image) %></div>
-    </div>
-    <div class="col-md-6">
-      <h2><%= @product.name %></h2>
-      <p class="mt-3"><%= @product.description %></p>
-      <p class="mt-5 mb-3"><%= @product.add_tax_price.to_s(:delimited, delimiter:',') %>(税込)</p>
-      <%= form_with model: @cart_product, local:true do |f| %>
-        <% if @product.sale_status %>
+  <article class="m-article">
+    <div class="product-show_container">
+      <div class="product_show_image"><%= attachment_image_tag(@product, :image) %></div>
+
+    <div class="product-show_container_product">
+      <h3 class="product-show_product_title"><%= @product.name %></h3>
+      <p class="product-show_text"><%= @product.description %></p>
+      <p class="product-show_price"><%= @product.add_tax_price.to_s(:delimited, delimiter:',') %>(税込)</p>
+          <%= form_with model: @cart_product, local:true do |f| %>
+          <div class="prpduct-show_other">
           <%= f.hidden_field :customer_id, value: current_customer.id %>
           <%= f.hidden_field :product_id, value: @product.id %>
           <div class="product-select_design">
-            <%= f.select :quantity, *[1..10], { include_blank: '個数選択'} %>
+          <%= f.select :quantity, *[1..10], { include_blank: '個数選択'} %>
+        </div>
+          <%= f.submit 'カートに入れる',class: "prpduct-show_btn" %>
           </div>
-          <%= f.submit 'カートに入れる' %>
-        <% else %>
-          <p>※現在、販売しておりません。<p>
-        <% end %>
-      <% end %>
+          <%end%>
     </div>
-  </div>
+    </div>
+  </article>
 </div>

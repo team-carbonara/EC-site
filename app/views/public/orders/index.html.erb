@@ -1,10 +1,10 @@
 <div class="l-main_container">
   <div class="m-page_title">
-    <h2 class="cart-puroduct_title">注文履歴一覧</h2>
+    <h2 class="order_title">注文履歴一覧</h2>
   </div>
 
-    <table class="cart-puroduct_table">
-      <tr class="cart-puroduct_table_row">
+    <table class="customer-order_table">
+      <tr class="customer-order_table_row">
         <th>注文日</th>
         <th>配送先</th>
         <th>注文商品</th>
@@ -13,17 +13,18 @@
         <th>注文詳細</th>
       </tr>
       <% @orders.each do |order| %>
-      <tr class="cart-puroduct_table_row">
-        <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
+      <tr class="customer-order_table_row">
+        <td><%= order.created_at.strftime('%Y') %><br class="u-sp"><%= order.created_at.strftime('%m/%d') %></td>
         <td><%= order.address %></td>
         <td><%  order.order_products.each do |order_item| %>
-        <%= order_item.product.name %>
+        <%= order_item.product.name %><br><br>
         <% end %>
         </td>
-        <td><%= order.total_price %></td>
+        <td><%= order.total_price.to_s(:delimited) %></td>
         <td><%= order.status %></td>
         <td><%= link_to "詳細", order_path(order.id) %></td>
       </tr>
       <% end %>
     </table>
+    <%= paginate @orders %>
 </div>
