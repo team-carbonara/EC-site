@@ -1,84 +1,47 @@
 <div class="l-main_container">
-  <div class="row">
-    <div class="col-sm-offset-1 col-sm-11">
-      <div class="shadow p-2 mb-5 col-md-1 bg-light rounded-lg head-line text-center">新規会員登録</div>
-    </div>
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        <%= render "public/shared/error_messages", resource: resource %>
-
-        <thead>
-          <table class="table table-borderless table-sm">
-            <tr>
-              <th><%= f.label :"名前", class: "control-label align-text-bottom" %></th>
-              <td><%= f.label :"(姓)", class: "control-label align-text-bottom" %></td>
-              <td><%= f.text_field :last_name, autofocus: true, placeholder: "令和", class: "form-control-static rounded-lg" %></td>
-              <td><%= f.label :"(名)", class: "control-label align-text-bottom" %></td>
-              <td><%= f.text_field :first_name, autofocus: true, placeholder: "道子", class: "form-control-static rounded-lg"%></td>
-            </tr>
-
-            <tr>
-              <th><%= f.label :"フリガナ", class: "control-label align-text-bottom" %></th>
-              <td><%= f.label :"(セイ)", class: "control-label align-text-bottom" %></td>
-              <td><%= f.text_field :last_name_kana, autofocus: true, placeholder: "レイワ", class: "form-control-static rounded-lg" %></td>
-              <td><%= f.label :"(メイ)", class: "control-label align-text-bottom" %></td>
-              <td><%= f.text_field :first_name_kana, autofocus: true, placeholder: "ミチコ", class: "form-control-static rounded-lg"%></td>
-            </tr>
-
-            <tr>
-              <th><%= f.label :"メールアドレス", class: "control-label align-text-bottom" %></th>
-              <td></td>
-              <td><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com", class: "form-control-static rounded-lg" %></td>
-            </tr>
-
-            <tr>
-              <th><%= f.label :"郵便番号(ハイフンなし)", placeholder: "令和", class: "control-label align-text-bottom" %></th>
-              <td></td>
-              <td><%= f.text_field :post_code, autofocus: true, placeholder: "0000000", class: "form-control-static rounded-lg" %></td>
-            </tr>
-
-            <tr>
-              <th><%= f.label :"住所", class: "control-label align-text-bottom" %></th>
-              <td></td>
-              <td><%= f.text_field :address, autofocus: true, placeholder: "東京都渋谷区代々木神園町0-0", class: "form-control-static rounded-lg" %></td>
-            </tr>
-
-            <tr>
-              <th><%= f.label :"電話番号(ハイフンなし)", class: "control-label align-text-bottom" %></th>
-              <td></td>
-              <td><%= f.telephone_field :tel, autofocus: true, placeholder: "00000000000", class: "form-control-static rounded-lg" %></td>
-            </tr>
-
-            <tr>
-              <th><%= f.label :"パスワード(6文字以上)", class: "control-label align-text-bottom" %></th>
-              <td></td>
-              <td>
-                <% if @minimum_password_length %>
-                <% end %>
-                <%= f.password_field :password, autocomplete: "new-password", class: "form-control-static rounded-lg" %>
-              </td>
-            </tr>
-
-            <tr>
-              <th><%= f.label :"パスワード確認用", class: "control-label align-text-bottom" %></th>
-              <td></td>
-              <td><%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control-static rounded-lg" %></td>
-            </tr>
-
-            <tr class="actions">
-              <th></th>
-              <td></td>
-              <td><%= f.submit "新規登録", class: "btn btn-success col-sm-11" %></td>
-            </tr>
+  <h2 class="product_title">新規会員登録</h2>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <table class="sign-up_table">
+    <tr>
+      <th><%= f.label :"名前", class: "" %></th>
+      <td><%= f.label :"(姓)", class: "cutomer-edit_table_label_name" %><%= f.text_field :last_name, autofocus: true, placeholder: "令和",class:"cutomer-edit_table_name" %><br class=u-sp>
+          <%= f.label :"(名)", class: "cutomer-edit_table_label_name"%><%= f.text_field :first_name, autofocus: true, placeholder: "道子",class:"cutomer-edit_table_name"%></td>
+    </tr>
+    <tr>
+      <th><%= f.label :"フリガナ", class: "" %></th>
+      <td><%= f.label :"(セイ)", class: "cutomer-edit_table_label_name"%><%= f.text_field :last_name_kana, autofocus: true, class:"cutomer-edit_table_name" %><br class=u-sp>
+          <%= f.label :"(メイ)", class: "cutomer-edit_table_label_name"%><%= f.text_field :first_name_kana, autofocus: true, class:"cutomer-edit_table_name"%></td>
+    </tr>
+    <tr>
+      <th><%= f.label :"メールアドレス", class: "" %></th>
+      <td><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :"郵便番号(ハイフンなし)", placeholder: "令和", class: "" %></th>
+      <td><%= f.text_field :post_code, autofocus: true, placeholder: "0000000" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :"住所", class: "" %></th>
+      <td class="cutomer-edit_table_address"><%= f.text_field :address, autofocus: true, placeholder: "東京都渋谷区代々木神園町0-0" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :"電話番号", class: "" %></th>
+      <td><%= f.telephone_field :tel, autofocus: true, placeholder: "00000000000" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :"パスワード(6文字以上)", class: "" %></th>
+      <td><% if @minimum_password_length %>
           <% end %>
-        </table>
-      </thead>
-
-        <tbody></br>
-            <div class="shadow p-2 mb-5 col-md-4 bg-light rounded-lg head-line text-center">既に登録済みの方</div>
-              <p class="ml-5"><%= link_to "こちら", new_customer_session_path %>からログインしてください。</p>
-        </tbody>
-
-      </div>
-    </div>
+          <%= f.password_field :password, autocomplete: "new-password", class: "form-control-static rounded-lg" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :"パスワード確認用", class: "control-label align-text-bottom" %></th>
+      <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+    </tr>
+  </table>
+  <div class="customer-info_other">
+    <td><%= f.submit "新規登録", class: "sign-up_btn" %></td>
   </div>
+
+    <% end %>
 </div>
