@@ -6,10 +6,10 @@ class Public::ProductsController < ApplicationController
       @products = Product.all
       @title = "商品"
     else
-      @products = Product.where(sale_status: true, genre_id: params[:genre_id])
+      # @products = Product.where(sale_status: true, genre_id: params[:genre_id])
+      @products = Product.where(genre_id: params[:genre_id])
       @title = params[:genre_name]
     end
-    # @product_count = @products.count
     @genres = Genre.all
   end
 
