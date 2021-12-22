@@ -39,16 +39,16 @@
   <% end %>
 </table>
   <div class="cart-product_other">
-  <%= link_to '買い物を続ける', products_path ,class: "cart-product_continue_btn"%>
+  <%= link_to '買い物を続ける', root_path ,class: "cart-product_continue_btn"%>
   <div class="price-total">
     <span class="price-total_text">合計金額</span>
     <span class="price-total_value">
-    <% totals = [] %>
-    <% cart.each do |cart_product|%>
-    <% totals << cart_product.product.add_tax_price * cart_product.quantity %>
-    <% end %>
-    <% total = totals.to_a.sum %>
-    <%= total.to_s(:delimited) %>
+      <% totals = [] %>
+      <% cart.each do |cart_product|%>
+      <% totals << cart_product.product.add_tax_price * cart_product.quantity %>
+      <% end %>
+      <% total = totals.to_a.sum %>
+      <%= total.to_s(:delimited) %>
     </span>
   </div>
 </div>
