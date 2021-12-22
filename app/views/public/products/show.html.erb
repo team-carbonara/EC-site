@@ -11,16 +11,16 @@
       <h3 class="product-show_product_title"><%= @product.name %></h3>
       <p class="product-show_text"><%= @product.description %></p>
       <p class="product-show_price"><%= @product.add_tax_price.to_s(:delimited, delimiter:',') %>(税込)</p>
-      <div class="prpduct-show_other">
           <%= form_with model: @cart_product, local:true do |f| %>
+          <div class="prpduct-show_other">
           <%= f.hidden_field :customer_id, value: current_customer.id %>
           <%= f.hidden_field :product_id, value: @product.id %>
           <div class="product-select_design">
           <%= f.select :quantity, *[1..10], { include_blank: '個数選択'} %>
         </div>
           <%= f.submit 'カートに入れる',class: "prpduct-show_btn" %>
+          </div>
           <%end%>
-      </div>
     </div>
     </div>
   </article>
