@@ -12,8 +12,10 @@
   </aside>
   <article class="m-article">
     <%= image_tag 'product-image-01_pc.png',class:"top-image" %>
-    <h2 class="top-title">新着商品</h2>
-    <%= render 'public/products/product_list' %>
+    
+    <h2 class="top-title"><span class="new-blink">New</span>新着商品</h2>
+
+        <%= render 'public/products/product_list' %>
     <%= link_to '全ての商品を見る >', products_path, class: 'to_index' %>
   </article>
 </div>
