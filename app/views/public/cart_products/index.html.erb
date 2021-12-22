@@ -1,10 +1,10 @@
   <div class="l-main_container">
         <div class="m-page_title">
-          <h2 class="cart-puroduct_title">ショッピングカート</h2>
+          <h2 class="cart-product_title">ショッピングカート</h2>
           <%= link_to 'カートを空にする', cart_products_path, method: :delete ,class: "cart_delete_btn"%>
         </div>
 
-        <div  id="cart-puroduct_table">
+        <div  id="cart-product_table">
           <%= render'table', cart: @cart_products %>
         </div>
 

@@ -1,18 +1,19 @@
-<table class="cart-puroduct_table">
+<table class="cart-product_table">
   <% if current_customer.cart_products.present? %>
-  
-  <tr class="cart-puroduct_table_row">
+
+  <tr class="cart-product_table_row">
     <th>商品名</th>
-    <th>単価（税込）</th>
+    <th>単価<br class="u-sp">(税込)</th>
     <th>数量</th>
     <th>小計</th>
-    <th></th>
+    <th class="u-pc"></th>
   </tr>
-  
+
     <%  cart.each do |cart_product| %>
-    
-  <tr class="cart-puroduct_table_row">
-    <td><img class="cart-puroduct_image" src="" alt=""><%= cart_product.product.name %></td>
+
+  <tr class="cart-product_table_row">
+    <td><img class="cart-product_image" src="" alt=""><%= cart_product.product.name %><br class=u-sp>
+    <%= link_to '削除', cart_product_path(cart_product), method: :delete ,class: "cart_delete_btn_table u-sp"%></td>
     <td><%= cart_product.product.price.to_s(:delimited) %></td>
     <td>
       <%= form_with model: cart_product, url: "/cart_products/#{cart_product.id}",method: :PATCH, remote: true  do |f| %>
@@ -25,7 +26,7 @@
       <% end %>
     </td>
     <td><%= total= (cart_product.product.add_tax_price * cart_product.quantity).to_s(:delimited)  %></td>
-    <td><%= link_to '削除', cart_product_path(cart_product), method: :delete ,class: "cart_delete_btn"%></td>
+    <td class="u-pc"><%= link_to '削除', cart_product_path(cart_product), method: :delete ,class: "cart_delete_btn u-pc"%></td>
   </tr>
 
     <% end %>

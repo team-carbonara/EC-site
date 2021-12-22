@@ -79,7 +79,6 @@
  height: auto;
  }
 
-
 @import url(http://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
 
 @mixin media($device) {
@@ -97,6 +96,47 @@
     }
   }
 }
+@mixin destroy-color {
+  background-color: darkred;
+}
+
+@mixin edit-color {
+  background-color: #3654b8;
+}
+
+@mixin next-color {
+  background-color:rgb(42, 36, 124);
+}
+
+
+@mixin btn-next {
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  border-radius: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  @include media(pc) {
+    margin-top: 80px;
+    padding: 20px;
+    font-size: 14px;
+    width: 300px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    margin-top: calc(200 / 770 * 100vw);
+    @include font-size(35);
+    @include padding_vw(20, 25, 20, 25);
+    @include width(500);
+  }
+}
+
+
 
 @mixin width($value) {
   width: calc(#{$value} / 770 * 100vw);
@@ -189,6 +229,22 @@ button {
   }
 }
 
+.search-count {
+  display: inline-block;
+  @include media(pc) {
+    font-size: 20px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    font-size: calc(30 / 770 * 100vw);
+  }
+}
+
+/* ----------------------top-page(トップページ)--------------------*/
+
 .top-visual {
   width: 100vw;
   height: 100vh;
@@ -258,6 +314,30 @@ button {
 
 .slick-track {
   height: 100vh;
+}
+
+.top-title {
+  font-weight: bold;
+  @include media(pc) {
+    font-size: 24px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    display: block;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    display: block;
+    font-size: calc(60 / 770 * 100vw);
+    width: calc(600 / 770 * 100vw);
+    margin: auto;
+    margin-top: calc(100 / 770 * 100vw);
+    margin-bottom: calc(80 / 770 * 100vw);
+    margin-right: calc(20 / 770 * 100vw);
+  }
 }
 
 // ----------------------------------------------------------
@@ -420,8 +500,8 @@ button {
   @include media(sp) {
     @include width(50);
     @include height(4);
+    @include edit-color;
     display: block;
-    background-color: #0168b7;
     display: flex;
     justify-content: center;
     transition: 0.3s;
@@ -676,7 +756,7 @@ button {
 
   @include media(sp) {
     width: calc(100 / 770 * 100vw);
-    height: calc(100 / 770 * 100vw);
+    height: calc(101 / 770 * 100vw);
   }
 }
 
@@ -855,6 +935,14 @@ button {
   }
 
   @include media(sp) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: calc(60 / 770 * 100vw);
+    width: calc(600 / 770 * 100vw);
+    margin-top: calc(60 / 770 * 100vw);
+    margin-bottom: calc(80 / 770 * 100vw);
+    margin-right: calc(20 / 770 * 100vw);
   }
 }
 
@@ -871,10 +959,10 @@ button {
   }
 }
 .customer-edit_btn {
+  @include edit-color;
   border: none;
-  display: inline-block;
+  display: flex;
   align-items: center;
-  background-color: #3654b8;
   color: #fff;
   border-radius: 5px;
   @include media(pc) {
@@ -886,8 +974,11 @@ button {
   }
 
   @include media(sp) {
-    @include font-size(15);
-    @include padding_vw(7, 8, 7, 8);
+    display: inline-block;
+    @include font-size(30);
+    @include width(200);
+    @include padding_vw(30, 10, 30, 10);
+    text-align: center;
   }
 }
 
@@ -935,14 +1026,16 @@ button {
     }
     th {
       display: block;
-      @include font-size(24);
+      @include font-size(45);
       @include padding_vw(10, 10, 20, 10);
       width: 100%;
+      line-height: calc(60 / 770 * 100vw);
     }
     td {
-      @include font-size(22);
-      @include padding_vw(5, 10, 20, 10);
+      @include font-size(35);
+      @include padding_vw(5, 10, 80, 10);
       width: calc(770 / 770 * 100vw);
+      line-height: calc(60 / 770 * 100vw);
     }
   }
 }
@@ -968,6 +1061,27 @@ button {
 }
 
 /* -----------------------------------/customers/:id/unsubscribe(退会画面)---------------------------*/
+.unsubscribe-container{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  @include media(pc) {
+    font-size: 40px;
+    height: calc(100vh - 400px);
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    font-size: calc(45 / 770 * 100vw);
+    height: calc(
+      100vh - 49vw
+    ); //l-headerのheightとl-mainのmargin-top計算後のの合計//
+  }
+}
 
 .customer-info_other {
   display: flex;
@@ -990,46 +1104,56 @@ button {
   }
 }
 .customer-info_update_btn {
+  @include edit-color;
   border: none;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #3654b8;
   color: #fff;
   border-radius: 5px;
   @include media(pc) {
-    padding: 15px;
-    font-size: 16px;
+    padding: 10px;
+    font-size: 14px;
+    width: 150px;
+    height: 50px;
   }
 
   @include media(tb) {
   }
 
   @include media(sp) {
-    margin-bottom: calc(50 / 770 * 100vw);
-    @include font-size(24);
-    @include padding_vw(20, 15, 20, 15);
+    display: inline-block;
+    @include font-size(30);
+    @include width(400);
+    @include padding_vw(30, 10, 30, 10);
+    text-align: center;
   }
 }
 .customer-info_withdrawal_btn {
+  @include destroy-color;
   border: none;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #a31c1c;
   color: #fff;
   border-radius: 5px;
   @include media(pc) {
-    padding: 10px 30px 10px 30px;
-    font-size: 16px;
+    padding: 10px;
+    font-size: 14px;
+    width: 150px;
+    height: 50px;
   }
 
   @include media(tb) {
   }
 
   @include media(sp) {
-    @include font-size(24);
-    @include padding_vw(20, 15, 20, 15);
+    display: inline-block;
+    @include font-size(30);
+    @include width(400);
+    @include padding_vw(30, 10, 30, 10);
+    text-align: center;
+    margin-top: calc(120 / 770 * 100vw);
   }
 }
 
@@ -1038,22 +1162,23 @@ button {
   @include media(pc) {
     font-size: 26px;
     margin-bottom: 40px;
+    margin-top: 60px
   }
 
   @include media(tb) {
   }
 
   @include media(sp) {
-    @include font-size(40);
+    @include font-size(55);
     margin-bottom: calc(100 / 770 * 100vw);
   }
 }
 
-.unsubscribe-container {
+.unsubscribe-text {
   text-align: center;
   @include media(pc) {
     font-size: 16px;
-    line-height: 1.7;
+    line-height: 2;
     margin-bottom: 60px;
   }
 
@@ -1062,7 +1187,7 @@ button {
 
   @include media(sp) {
     font-size: calc(26 / 770 * 100vw);
-    line-height: calc(50 / 770 * 100vw);
+    line-height: calc(60 / 770 * 100vw);
     margin-bottom: calc(120 / 770 * 100vw);
   }
 }
@@ -1105,10 +1230,11 @@ button {
   }
 
   @include media(sp) {
-    font-size: calc(30 / 770 * 100vw);
+    display: inline-block;
+    font-size: calc(60 / 770 * 100vw);
     width: calc(600 / 770 * 100vw);
     margin: auto;
-    margin-bottom: calc(40 / 770 * 100vw);
+    margin-bottom: calc(80 / 770 * 100vw);
     margin-right: calc(20 / 770 * 100vw);
   }
 }
@@ -1176,8 +1302,9 @@ button {
   }
 
   @include media(sp) {
-    font-size: calc(20 / 770 * 100vw);
-    margin-top: calc(20 / 770 * 100vw);
+    font-size: calc(35 / 770 * 100vw);
+    margin-top: calc(40 / 770 * 100vw);
+    line-height: calc(60 / 770 * 100vw);
   }
 }
 .product_list_item_price {
@@ -1190,8 +1317,9 @@ button {
   }
 
   @include media(sp) {
-    font-size: calc(20 / 770 * 100vw);
-    margin-top: calc(20 / 770 * 100vw);
+    font-size: calc(30 / 770 * 100vw);
+    margin-top: calc(30 / 770 * 100vw);
+    line-height: calc(60 / 770 * 100vw);
   }
 }
 .cell.is-empty {
@@ -1214,9 +1342,10 @@ button {
   }
 
   @include media(sp) {
+    margin-top: calc(40 / 770 * 100vw);
   }
 }
-.product-show_container_product{
+.product-show_container_product {
   @include media(pc) {
     margin-top: 50px;
     margin-left: 10px;
@@ -1226,6 +1355,7 @@ button {
   }
 
   @include media(sp) {
+    margin-top: calc(100 / 770 * 100vw);
   }
 }
 
@@ -1241,39 +1371,46 @@ button {
 
   @include media(sp) {
     img {
-      width: calc(300 / 770 * 100vw);
+      display: block;
+      width: calc(500 / 770 * 100vw);
+      margin: auto;
     }
   }
 }
-.product-show_product_title{
+.product-show_product_title {
   font-weight: bold;
   @include media(pc) {
     font-size: 24px;
     margin-bottom: 30px;
-
   }
 
   @include media(tb) {
   }
 
   @include media(sp) {
+    margin-bottom: calc(100 / 770 * 100vw);
+    font-size: calc(60 / 770 * 100vw);
   }
 }
 .product-show_text {
   @include media(pc) {
-    font-size: 15px;
     margin-bottom: 50px;
+    font-size: 15px;
   }
 
   @include media(tb) {
   }
 
   @include media(sp) {
+    font-size: calc(35 / 770 * 100vw);
+    margin-bottom: calc(70 / 770 * 100vw);
+    line-height: calc(70 / 770 * 100vw);
   }
 }
 
-.prpduct-show_other{
+.prpduct-show_other {
   display: flex;
+  justify-content: space-between;
 }
 .product-show_price {
   @include media(pc) {
@@ -1285,27 +1422,29 @@ button {
   }
 
   @include media(sp) {
+    font-size: calc(45 / 770 * 100vw);
+    margin-bottom: calc(70 / 770 * 100vw);
   }
 }
 
 .prpduct-show_btn {
+  @include edit-color;
   border: none;
   display: inline-block;
-  background-color: #3654b8;
   color: #fff;
   border-radius: 5px;
   @include media(pc) {
     padding: 10px;
     font-size: 14px;
-    margin-left: 30px
+    margin-left: 30px;
   }
 
   @include media(tb) {
   }
 
   @include media(sp) {
-    @include font-size(15);
-    @include padding_vw(7, 8, 7, 8);
+    @include font-size(30);
+    @include padding_vw(10, 30, 10, 30);
   }
 }
 
@@ -1325,8 +1464,10 @@ button {
   }
 
   @include media(sp) {
-    width: calc(45 / 770 * 100vw);
-    display: block;
+    width: calc(180 / 770 * 100vw);
+    height: calc(65 / 770 * 100vw);
+    display: flex;
+    align-items: center;
     margin-bottom: calc(25 / 770 * 100vw);
   }
 }
@@ -1353,9 +1494,9 @@ button {
   }
 
   @include media(sp) {
-    font-size: calc(10 / 770 * 100vw);
-    @include padding_vw(4, 10, 4, 4);
-    line-height: calc(25 / 770 * 100vw);
+    font-size: calc(30 / 770 * 100vw);
+    @include padding_vw(4, 8, 4, 4);
+    line-height: calc(40 / 770 * 100vw);
   }
 }
 .product-select_design select::-ms-expand {
@@ -1383,8 +1524,8 @@ button {
   @include media(sp) {
     border-top: calc(3 / 770 * 100vw) solid #ffffff; /*** 矢印の色 ***/
     border-right: calc(3 / 770 * 100vw) solid #ffffff; /*** 矢印の色 ***/
-    top: calc(10 / 770 * 100vw);
-    right: calc(7 / 770 * 100vw);
+    top: calc(15 / 770 * 100vw);
+    right: calc(13 / 770 * 100vw);
     width: calc(4 / 770 * 100vw);
     height: calc(4 / 770 * 100vw);
     padding: 0;
@@ -1409,7 +1550,7 @@ button {
     top: 0;
     right: 0;
     bottom: 0;
-    width: calc(16 / 770 * 100vw);
+    width: calc(30 / 770 * 100vw);
   }
 }
 
@@ -1468,7 +1609,7 @@ button {
 }
 //カート(cart_products)
 /*----------------------------------/customers/cart_products（カート一覧画面）-------------------------*/
-.cart-puroduct_title {
+.cart-product_title {
   @include media(pc) {
     font-size: 26px;
   }
@@ -1477,11 +1618,13 @@ button {
   }
 
   @include media(sp) {
+    font: calc(60 / 770 * 100vw);
+    margin-bottom: calc(50 / 770 * 100vw);
   }
 }
 .cart_delete_btn {
   border: none;
-  background-color: #b83636;
+  @include destroy-color;
   color: #fff;
   border-radius: 5px;
   @include media(pc) {
@@ -1493,12 +1636,15 @@ button {
   }
 
   @include media(sp) {
-    margin-top: calc(30 / 770 * 100vw);
-    @include font-size(15);
-    @include padding_vw(7, 7, 7, 7);
+    display: inline-block;
+    margin-top: calc(40 / 770 * 100vw);
+    @include font-size(30);
+    @include width(280);
+    @include padding_vw(20, 10, 20, 10);
+    text-align: center;
   }
 }
-.cart-puroduct_table {
+.cart-product_table {
   border: 1px solid #000;
   margin-left: auto;
   margin-right: auto;
@@ -1512,9 +1658,10 @@ button {
 
   @include media(sp) {
     width: calc(680 / 770 * 100vw);
+    margin-top: calc(80 / 770 * 100vw);
   }
 }
-.cart-puroduct_table_row {
+.cart-product_table_row {
   text-align: left;
   @include media(pc) {
     border-bottom: 1px solid #000;
@@ -1532,20 +1679,35 @@ button {
   }
 
   @include media(sp) {
+    :nth-child(1) {
+      width: 40%;
+    }
+    :nth-child(2) {
+      width: 20%;
+    }
+    :nth-child(3) {
+      width: 25%;
+    }
+    :nth-child(4) {
+      width: 15%;
+    }
     th {
-      @include font-size(15);
+      @include font-size(30);
       @include padding_vw(10, 10, 10, 10);
       border: calc(1 / 770 * 100vw) solid #000;
+      line-height: calc(60 / 770 * 100vw);
     }
     td {
-      @include font-size(15);
-      @include padding_vw(15, 8, 15, 8);
+      @include font-size(30);
+      @include padding_vw(15, 20, 15, 15);
       border: calc(1 / 770 * 100vw) solid #000;
+      line-height: calc(60 / 770 * 100vw);
+      width: 40%;
     }
   }
 }
 
-.cart-puroduct_image {
+.cart-product_image {
   @include media(pc) {
   }
 
@@ -1556,8 +1718,31 @@ button {
   }
 }
 
+.cart_delete_btn_table {
+  @include destroy-color;
+  border-radius: 5px;
+  color: #fff;
+  @include media(pc) {
+    padding: 10px;
+    margin-left: 20px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: calc(20 / 770 * 100vw);
+    @include font-size(15);
+    width: calc(80 / 770 * 100vw) !important;
+    @include padding_vw(5, 15, 5, 15);
+  }
+}
+
 .cart-product_update_btn {
-  background-color: rgb(46, 163, 41);
+  background-color: #2d8a66;
   border-radius: 5px;
   color: #fff;
   @include media(pc) {
@@ -1570,7 +1755,8 @@ button {
 
   @include media(sp) {
     @include font-size(15);
-    @include padding_vw(7, 7, 7, 7);
+    width: calc(80 / 770 * 100vw);
+    @include padding_vw(5, 15, 5, 15);
   }
 }
 
@@ -1590,13 +1776,13 @@ button {
   }
 
   @include media(sp) {
-    width: calc(45 / 770 * 100vw);
-    display: block;
+    width: calc(80 / 770 * 100vw) !important;
     margin-bottom: calc(25 / 770 * 100vw);
+    height: calc(50 / 770 * 100vw);
   }
 }
 .select_design select {
-  width: 100%;
+  width: 100% !important;
   cursor: pointer;
   text-indent: 0.01px;
   text-overflow: ellipsis;
@@ -1618,9 +1804,9 @@ button {
   }
 
   @include media(sp) {
-    font-size: calc(10 / 770 * 100vw);
+    font-size: calc(24 / 770 * 100vw);
     @include padding_vw(4, 10, 4, 4);
-    line-height: calc(25 / 770 * 100vw);
+    line-height: calc(30 / 770 * 100vw);
   }
 }
 .select_design select::-ms-expand {
@@ -1648,10 +1834,10 @@ button {
   @include media(sp) {
     border-top: calc(3 / 770 * 100vw) solid #ffffff; /*** 矢印の色 ***/
     border-right: calc(3 / 770 * 100vw) solid #ffffff; /*** 矢印の色 ***/
-    top: calc(10 / 770 * 100vw);
-    right: calc(7 / 770 * 100vw);
-    width: calc(4 / 770 * 100vw);
-    height: calc(4 / 770 * 100vw);
+    top: calc(20 / 770 * 100vw);
+    right: calc(10 / 770 * 100vw);
+    width: calc(6 / 770 * 100vw);
+    height: calc(6 / 770 * 100vw);
     padding: 0;
   }
 }
@@ -1674,7 +1860,8 @@ button {
     top: 0;
     right: 0;
     bottom: 0;
-    width: calc(16 / 770 * 100vw);
+    width: calc(25 / 770 * 100vw);
+    height: calc(50 / 770 * 100vw);
   }
 }
 
@@ -1694,15 +1881,15 @@ button {
     width: calc(600 / 770 * 100vw);
     margin-left: auto;
     margin-right: auto;
-    margin-top: calc(30 / 770 * 100vw);
+    margin-top: calc(100 / 770 * 100vw);
   }
 }
 
 .cart-product_continue_btn {
+  @include next-color;
   border: none;
   display: flex;
   align-items: center;
-  background-color: #3654b8;
   color: #fff;
   border-radius: 5px;
   @include media(pc) {
@@ -1714,8 +1901,11 @@ button {
   }
 
   @include media(sp) {
-    @include font-size(15);
-    @include padding_vw(7, 8, 7, 8);
+    display: inline-block;
+    @include font-size(30);
+    @include width(280);
+    @include padding_vw(30, 10, 30, 10);
+    text-align: center;
   }
 }
 .price-total {
@@ -1742,9 +1932,9 @@ button {
   }
 
   @include media(sp) {
-    @include padding_vw(10, 10, 10, 10);
+    @include padding_vw(30, 10, 30, 10);
     border-right: calc(1 / 770 * 100vw) solid #000;
-    @include font-size(15);
+    @include font-size(30);
   }
 }
 .price-total_value {
@@ -1758,17 +1948,17 @@ button {
 
   @include media(sp) {
     @include padding_vw(10, 10, 10, 10);
-    @include font-size(20);
+    @include font-size(30);
   }
 }
 
 .cart-product_info_btn {
+  @include next-color;
   margin-left: auto;
   margin-right: auto;
   display: flex;
   justify-content: center;
   border: none;
-  background-color: #28ad75;
   color: #fff;
   border-radius: 5px;
   @include media(pc) {
@@ -1782,16 +1972,17 @@ button {
   }
 
   @include media(sp) {
-    width: calc(300 / 770 * 100vw);
-    @include font-size(15);
-    @include padding_vw(15, 25, 15, 25);
-    margin-top: calc(100 / 770 * 100vw);
+    margin-top: calc(200 / 770 * 100vw);
+    @include font-size(45);
+    @include width(500);
+    @include padding_vw(30, 10, 30, 10);
+    text-align: center;
   }
 }
 
 //注文(orders)
 /*----------------------------------/customers/orders/new（注文入力画面）------------------------------*/
-.cart-puroduct_form_title {
+.cart-product_form_title {
   display: block;
   @include media(pc) {
     font-size: 22px;
@@ -1803,13 +1994,13 @@ button {
   }
 
   @include media(sp) {
-    font-size: calc(30 / 770 * 100vw);
-    margin-top: calc(20 / 770 * 100vw);
-    margin-bottom: calc(20 / 770 * 100vw);
+    font-size: calc(45 / 770 * 100vw);
+    margin-top: calc(50 / 770 * 100vw);
+    margin-bottom: calc(50 / 770 * 100vw);
   }
 }
 
-.cart-puroduct_payment_contents {
+.cart-product_payment_contents {
   @include media(pc) {
     label {
       font-size: 16px;
@@ -1823,7 +2014,7 @@ button {
 
   @include media(sp) {
     label {
-      font-size: calc(26 / 770 * 100vw);
+      font-size: calc(35 / 770 * 100vw);
       margin-top: calc(5 / 770 * 100vw);
       margin-bottom: calc(5 / 770 * 100vw);
       margin-right: calc(20 / 770 * 100vw);
@@ -1831,7 +2022,7 @@ button {
   }
 }
 
-.cart-puroduct_form_address {
+.cart-product_form_address {
   display: block;
   @include media(pc) {
     margin-top: 30px;
@@ -1842,10 +2033,11 @@ button {
   }
 
   @include media(sp) {
-    font-size: calc(22 / 770 * 100vw);
+    font-size: calc(30 / 770 * 100vw);
+    line-height: calc(60 / 770 * 100vw);
   }
 }
-.cart-puroduct_form_address_title {
+.cart-product_form_address_title {
   @include media(pc) {
     display: block;
   }
@@ -1854,11 +2046,11 @@ button {
   }
 
   @include media(sp) {
-    font-size: calc(26 / 770 * 100vw);
+    font-size: calc(35 / 770 * 100vw);
   }
 }
 
-.cart-puroduct_form_address_contents {
+.cart-product_form_address_contents {
   display: block;
   @include media(pc) {
     margin-left: 25px;
@@ -1880,7 +2072,7 @@ button {
     margin-left: calc(30 / 770 * 100vw);
     margin-top: calc(30 / 770 * 100vw);
     margin-bottom: calc(60 / 770 * 100vw);
-    line-height: calc(45 / 770 * 100vw);
+    line-height: calc(60 / 770 * 100vw);
     select {
       width: 100%;
     }
@@ -1889,7 +2081,7 @@ button {
     }
   }
 }
-.cart-puroduct_form_address_contents_table {
+.cart-product_form_address_contents_table {
   text-align: left;
 
   th {
@@ -1916,23 +2108,24 @@ button {
     }
     th {
       display: block;
-      @include font-size(22);
+      @include font-size(30);
       @include padding_vw(10, 10, 10, 10);
       width: 100%;
     }
     td {
-      @include font-size(22);
+      @include font-size(30);
       @include padding_vw(5, 10, 15, 10);
       width: calc(770 / 770 * 100vw);
     }
   }
 }
 
-.cart-puroduct_form_btn {
+.cart-product_form_btn {
+  @include next-color;
   border: none;
   display: flex;
+  justify-content: center;
   align-items: center;
-  background-color: #3654b8;
   color: #fff;
   border-radius: 5px;
   margin-left: auto;
@@ -1947,8 +2140,10 @@ button {
   }
 
   @include media(sp) {
-    @include font-size(24);
+    margin-top: calc(200 / 770 * 100vw);
+    @include font-size(35);
     @include padding_vw(20, 25, 20, 25);
+    @include width(500);
   }
 }
 
@@ -1984,31 +2179,33 @@ button {
 
   @include media(sp) {
     @include font-size(24);
-    @include padding_vw(20, 25, 20, 25);
+    margin-top: calc(100 / 770 * 100vw);
     tr {
       display: block;
     }
     th {
       display: block;
-      @include font-size(22);
-      @include padding_vw(10, 10, 10, 10);
+      @include font-size(35);
+      @include padding_vw(30, 10, 30, 10);
       width: 100%;
     }
     td {
-      @include font-size(22);
-      @include padding_vw(5, 10, 15, 10);
-      width: calc(770 / 770 * 100vw);
+      display: block;
+      @include font-size(30);
+      @include padding_vw(10, 10, 30, 10);
+      line-height: calc(60 / 770 * 100vw);
+      margin-left: calc(20 / 770 * 100vw);
     }
   }
 }
 
 .order_check_btn {
+  @include next-color;
   margin-left: auto;
   margin-right: auto;
   display: flex;
   justify-content: center;
   border: none;
-  background-color: #28ad75;
   color: #fff;
   border-radius: 5px;
   @include media(pc) {
@@ -2022,12 +2219,105 @@ button {
   }
 
   @include media(sp) {
-    width: calc(200 / 770 * 100vw);
-    @include font-size(15);
-    @include padding_vw(15, 15, 15, 15);
+    margin-top: calc(200 / 770 * 100vw);
+    @include font-size(35);
+    @include padding_vw(20, 25, 20, 25);
+    @include width(500);
   }
 }
 /*----------------------------------/customers/orders（注文履歴一覧）----------------------------------*/
+
+.customer-order_table {
+  border: 1px solid #000;
+  margin-left: auto;
+  margin-right: auto;
+  @include media(pc) {
+    max-width: 1000px;
+    width: 100%;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    width: calc(680 / 770 * 100vw);
+    margin-top: calc(80 / 770 * 100vw);
+  }
+}
+.customer-order_table_row {
+  text-align: left;
+  @include media(pc) {
+    border-bottom: 1px solid #000;
+    :nth-child(1) {
+      width: 5%;
+    }
+    :nth-child(2) {
+      width: 25%;
+    }
+    :nth-child(3) {
+      width: 27%;
+    }
+    :nth-child(4) {
+      width: 10%;
+    }
+    :nth-child(5) {
+      width: 17%;
+    }
+    :nth-child(6) {
+      width: 10%;
+    }
+    th {
+      font-weight: bold;
+      background-color: #eee;
+      padding: 10px;
+      line-height: 1.7;
+    }
+    td {
+      font-size: 12px;
+      padding: 10px;
+      line-height: 1.7;
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    :nth-child(1) {
+      @include width(80);
+    }
+    :nth-child(2) {
+      @include width(150);
+    }
+    :nth-child(3) {
+      @include width(120);
+    }
+    :nth-child(4) {
+      @include width(90);
+    }
+    :nth-child(5) {
+      @include width(100);
+    }
+    :nth-child(6) {
+      @include width(60);
+    }
+    th {
+      @include font-size(20);
+      @include padding_vw(10, 10, 10, 10);
+      border: calc(1 / 770 * 100vw) solid #000;
+      line-height: calc(60 / 770 * 100vw);
+    }
+    td {
+      @include font-size(16);
+      @include padding_vw(15, 20, 15, 15);
+      border: calc(1 / 770 * 100vw) solid #000;
+      line-height: calc(50 / 770 * 100vw);
+      width: 40%;
+    }
+  }
+}
+
+/*----------------------------------/customers/orders/:id（注文詳細）----------------------------------*/
 
 .m-page_title {
   margin-left: auto;
@@ -2046,8 +2336,8 @@ button {
 
   @include media(sp) {
     @include width(600);
-    @include font-size(40);
-    margin-bottom: calc(30 / 770 * 100vw);
+    @include font-size(55);
+    margin-bottom: calc(100 / 770 * 100vw);
   }
 }
 
@@ -2178,7 +2468,7 @@ button {
   }
 }
 
-order-table {
+.order-table {
   margin-left: auto;
   margin-right: auto;
   @include media(pc) {
@@ -2222,13 +2512,12 @@ order-table {
   }
 }
 
-/*----------------------------------/customers/orders/:id（注文詳細）----------------------------------*/
-
 /*---------------------------------/customers/orders/rend------------------------------------------------*/
 
 .order_thanks_message {
   text-align: center;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   @include media(pc) {
@@ -2240,7 +2529,7 @@ order-table {
   }
 
   @include media(sp) {
-    font-size: calc(30 / 770 * 100vw);
+    font-size: calc(45 / 770 * 100vw);
     height: calc(
       100vh - 49vw
     ); //l-headerのheightとl-mainのmargin-top計算後のの合計//
@@ -2454,12 +2743,13 @@ order-table {
 
   @include media(sp) {
     th {
-      @include font-size(18);
-      @include padding_vw(10, 10, 10, 10);
+      @include font-size(30);
+      @include padding_vw(30, 10, 30, 10);
+      line-height: calc(60 / 770 * 100vw);
     }
     td {
-      @include font-size(18);
-      @include padding_vw(15, 10, 15, 10);
+      @include font-size(25);
+      @include padding_vw(30, 10, 30, 10);
     }
   }
 }
@@ -2477,7 +2767,7 @@ order-table {
   @include media(sp) {
     margin-right: auto;
     width: 100%;
-    margin-top: calc(50 / 770 * 100vw);
+    margin-top: calc(100 / 770 * 100vw);
   }
 }
 .admin-orders_show_price_table_row {
@@ -2506,12 +2796,14 @@ order-table {
 
   @include media(sp) {
     th {
-      @include font-size(18);
-      @include padding_vw(10, 10, 10, 10);
+      @include font-size(30);
+      @include padding_vw(30, 10, 30, 10);
+      line-height: calc(60 / 770 * 100vw)
     }
     td {
-      @include font-size(18);
-      @include padding_vw(15, 10, 15, 10);
+      @include font-size(30);
+      @include padding_vw(30, 10, 30, 10);
+      line-height: calc(60 / 770 * 100vw)
     }
   }
 }
@@ -2569,8 +2861,8 @@ order-table {
   }
 }
 .update-btn {
+  @include edit-color;
   border: none;
-  background-color: #0168b7;
   color: #fff;
   @include media(pc) {
     margin-left: 20px;
@@ -2669,5 +2961,24 @@ order-table {
   &:hover::before {
     transform-origin: 0% 50%;
     transform: scaleX(1);
+  }
+}
+
+.pagination {
+  justify-content: center;
+  @include media(pc) {
+    margin-top: 50px;
+    span {
+      margin-left: 5px;
+      margin-right: 5px;
+      font-size: 18px;
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    @include width(600);
   }
 }
