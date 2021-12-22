@@ -2,14 +2,16 @@
   <% @products.each do |product| %>
     <li class="product_list_item">
       <span class="product_list_item_image"><%= link_to attachment_image_tag(product, :image, :fill, 250, 200), product_path(product) %></span>
-      <span class="product_list_item_title"><%= product.name %></span>
-      <span class="product_list_item_price">
-        <% if product.sale_status %>
-          ¥<%= product.add_tax_price.to_s(:delimited, delimiter:',') %>
-        <% else %>
-          ※販売停止中
-        <% end %>
-      </span>
+      
+          <span class="product_list_item_title"><%= product.name %></span>
+          <span class="product_list_item_price">
+            <% if product.sale_status %>
+              ¥<%= product.add_tax_price.to_s(:delimited, delimiter:',') %>
+            <% else %>
+              ※販売停止中
+            <% end %>
+          </span>
+
     </li>
   <% end %>
 </ul>

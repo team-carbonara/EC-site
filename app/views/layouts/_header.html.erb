@@ -65,7 +65,7 @@
           <div class="l-nav_item_other">
          <% if customer_signed_in? %>
            <span class="l-nav_item_other_name">
-            <%= current_customer.last_name %><%= current_customer.first_name %>
+            <%= current_customer.last_name %><%= current_customer.first_name %>さん
             </span>
           <% end %>
           <%= form_with url: search_path, method: :get, local: true do |f| %>

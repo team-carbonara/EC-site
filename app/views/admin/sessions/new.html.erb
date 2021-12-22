@@ -1,29 +1,17 @@
+<%= render 'layouts/login_errors' %>
 <div class="l-main_container">
-  <div class="row">
-    <div class="offset-1 col-sm-11 m-3 pb-4">
-      <div class="shadow p-2 mb-4 col-md-1 bg-light rounded-lg head-line text-center">管理者ログイン</div>
-      </div>
-        <tbody>
-          <div class="m-4 pb-4 mx-auto">
-          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-            <table class="table table-borderless table-sm">
-
-              <tr class="form-group">
-                <th><%= f.label :"メールアドレス", class: "control-label align-text-bottom" %></th>
-                <td><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com", class: "form-control-static ml-5 rounded-lg" %></td>
-              </tr>
-
-              <tr class="form-group">
-                <th><%= f.label :"パスワード", class: "control-label align-text-bottom" %></th>
-                <td><%= f.password_field :password, autocomplete: "current-password", class: "form-control-static ml-5 rounded-lg" %></td>
-              </tr>
-
-              <tr class="actions">
-                <th></th>
-                <td><%= f.submit "ログイン", class: "btn btn-primary ml-5 col-sm-7" %></td>
-              </tr>
-            </table>
-          <% end %>
-        </tbody>
-  </div>
+  <h2 class="admin-login_title">管理者ログイン</h2>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <table class="login-table">
+      <tr>
+        <th><%= f.label :"メールアドレス"%></th>
+        <td><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :"パスワード"%></th>
+        <td><%= f.password_field :password, autocomplete: "current-password"%></td>
+      </tr>
+    </table>
+    <%= f.submit "ログイン", class: "login-btn" %>
+  <% end %>
 </div>

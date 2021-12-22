@@ -2,7 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
 @import url(http://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
 
 @mixin media($device) {
@@ -189,6 +188,20 @@ button {
 }
 
 /* ----------------------top-page(トップページ)--------------------*/
+.new-blink {
+  animation: blinkAnimeS2 2s infinite alternate;
+  margin-right: 10px;
+}
+@keyframes blinkAnimeS2 {
+  0% {
+    color: red;
+    background: white;
+  }
+  100% {
+    color: white;
+    background: red;
+  }
+}
 
 .top-visual {
   width: 100vw;
@@ -664,6 +677,8 @@ button {
 }
 
 .l-footer_copy {
+  font-size: 30px;
+  font-family: "Sacramento", cursive;
   @include media(pc) {
   }
 
@@ -1063,7 +1078,7 @@ button {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 240px;
+    width: 300px;
   }
 
   @include media(tb) {
@@ -1074,8 +1089,8 @@ button {
     align-items: center;
     justify-content: space-between;
     font-size: calc(60 / 770 * 100vw);
-    width: calc(600 / 770 * 100vw);
-    margin-top: calc(60 / 770 * 100vw);
+    width: calc(650 / 770 * 100vw);
+    margin-top: calc(55 / 770 * 100vw);
     margin-bottom: calc(80 / 770 * 100vw);
     margin-right: calc(20 / 770 * 100vw);
   }
@@ -1223,7 +1238,7 @@ button {
   margin-left: auto;
   margin-right: auto;
   @include media(pc) {
-    max-width: 300px;
+    max-width: 500px;
     width: 100%;
     justify-content: space-between;
     margin-top: 100px;
@@ -1351,6 +1366,27 @@ button {
 /* -----------------------------------トップページ（新着商品）---------------------------*/
 
 /* -----------------------------------/customers/products（商品一覧[顧客用]）---------------------------*/
+.product-index_title {
+  margin-left: auto;
+  margin-right: auto;
+  @include media(pc) {
+    display: flex;
+    justify-content: start;
+    max-width: 1100px;
+    width: 100%;
+    font-size: 24px;
+    margin-bottom: 40px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    @include width(600);
+    @include font-size(55);
+    margin-bottom: calc(100 / 770 * 100vw);
+  }
+}
 
 .product_title {
   font-weight: bold;
@@ -2519,6 +2555,8 @@ button {
 
   @include media(sp) {
     @include width(600);
+    margin-top: calc(80 / 770 * 100vw);
+    margin-bottom: calc(100 / 770 * 100vw);
   }
 }
 .order-table_column_price {
@@ -2573,12 +2611,13 @@ button {
 
   @include media(sp) {
     th {
-      @include font-size(18);
+      @include font-size(30);
       @include padding_vw(10, 10, 10, 10);
     }
     td {
-      @include font-size(18);
+      @include font-size(30);
       @include padding_vw(15, 10, 15, 10);
+      line-height: calc(60 / 770 * 100vw);
     }
   }
 }
@@ -2599,23 +2638,7 @@ button {
   }
 
   @include media(sp) {
-    font-size: calc(22 / 770 * 100vw);
-  }
-}
-
-.order-table {
-  margin-left: auto;
-  margin-right: auto;
-  @include media(pc) {
-    max-width: 1100px;
-    width: 100%;
-  }
-
-  @include media(tb) {
-  }
-
-  @include media(sp) {
-    @include width(600);
+    font-size: calc(40 / 770 * 100vw);
   }
 }
 
@@ -2635,14 +2658,29 @@ button {
   }
 
   @include media(sp) {
+    margin-top: calc(80 / 770 * 100vw);
     @include width(600);
+    :nth-child(1) {
+      @include width(250);
+    }
+    :nth-child(2) {
+      @include width(120);
+    }
+    :nth-child(3) {
+      @include width(80);
+    }
+    :nth-child(4) {
+      @include width(80);
+    }
     th {
-      @include font-size(18);
+      @include font-size(26);
       @include padding_vw(10, 10, 10, 10);
+      line-height: calc(60 / 770 * 100vw);
     }
     td {
-      @include font-size(18);
+      @include font-size(22);
       @include padding_vw(15, 10, 15, 10);
+      line-height: calc(60 / 770 * 100vw);
     }
   }
 }
@@ -2807,21 +2845,21 @@ button {
   }
 
   @include media(sp) {
-    margin-top: calc(80 / 770 * 100vw);
-    tr{
-    :nth-child(1) {
-      width: calc(150 / 770 * 100vw);
+    margin-top: calc(100 / 770 * 100vw);
+    tr {
+      :nth-child(1) {
+        width: calc(150 / 770 * 100vw);
+      }
+      :nth-child(2) {
+        width: calc(300 / 770 * 100vw);
+      }
+      :nth-child(3) {
+        width: calc(150 / 770 * 100vw);
+      }
+      :nth-child(4) {
+        width: calc(140 / 770 * 100vw);
+      }
     }
-    :nth-child(2) {
-      width: calc(300 / 770 * 100vw);
-    }
-    :nth-child(3) {
-      width: calc(150 / 770 * 100vw);
-    }
-    :nth-child(4) {
-      width: calc(140 / 770 * 100vw);
-    }
-  }
     th {
       @include font-size(28);
       @include padding_vw(10, 10, 10, 10);
@@ -2854,7 +2892,7 @@ button {
   }
 }
 .delivery-index_edit_btn {
-  @include next-color;
+  @include edit-color;
   @include btn-small;
   @include media(pc) {
     width: 70px !important;
@@ -2885,9 +2923,108 @@ button {
 
 /*----------------------------------/deliveries/:id/edit（宛先編集画面の表示）-------------------------*/
 
+.delivery-edit_table {
+  tr {
+  }
+  th {
+  }
+  td {
+  }
+  @include media(pc) {
+    width: 800px;
+    margin-right: auto;
+    tr {
+      display: flex;
+      justify-content: left;
+      align-items: center;
+      margin: auto;
+      &:nth-child(2) {
+        input {
+          max-width: 400px;
+          width: 100%;
+        }
+      }
+    }
+    th {
+      width: 250px;
+      text-align: left;
+      font-size: 18px;
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+    td {
+      width: 100%;
+      max-width: 400px;
+      input {
+        font-size: 18px;
+      }
+    }
+  }
+
+  @include media(tb) {
+    tr {
+    }
+    th {
+    }
+    td {
+    }
+  }
+
+  @include media(sp) {
+    margin-left: auto;
+    margin-right: auto;
+    width: calc(600 / 770 * 100vw);
+    tr {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: calc(50 / 770 * 100vw);
+    }
+    th {
+      font-size: calc(40 / 770 * 100vw);
+      text-align: left;
+      @include padding_vw(40, 5, 40, 5);
+    }
+    td {
+      input {
+        font-size: calc(40 / 770 * 100vw);
+        margin-left: auto;
+        margin-right: auto;
+        width: calc(600 / 770 * 100vw);
+      }
+    }
+  }
+}
+.delivery-edit_btn {
+  @include btn-next;
+  @include next-color;
+  @include media(pc) {
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+
 //管理者(admins)
 
 /*---------------------------------/admins/sign_in（管理者ログイン）---------------------------------------*/
+
+.admin-login_title {
+  @include media(pc) {
+    margin-bottom: 50px;
+    font-size: 26px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    font-size: calc(50 / 770 * 100vw);
+    margin-bottom: calc(50 / 770 * 100vw);
+  }
+}
 
 /*---------------------------------/admins/genres（ジャンル一覧画面）---------------------------------------*/
 
