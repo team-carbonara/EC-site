@@ -123,9 +123,8 @@
 }
 
 @mixin next-color {
-  background-color:rgb(42, 36, 124);
+  background-color: rgb(42, 36, 124);
 }
-
 
 @mixin btn-next {
   border: none;
@@ -153,8 +152,6 @@
     @include width(500);
   }
 }
-
-
 
 @mixin width($value) {
   width: calc(#{$value} / 770 * 100vw);
@@ -934,8 +931,199 @@ button {
 //顧客(customers)
 /* -----------------------------------/customers/sign_in（ログイン画面）---------------------------*/
 
-/* -----------------------------------/customers/sign_up（新規登録画面）---------------------------*/
+.login-title {
+  @include media(pc) {
+    font-size: 26px;
+  }
 
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    font-size: calc(50 / 770 * 100vw);
+  }
+}
+.login-sub_title {
+  @include media(pc) {
+    font-size: 16px;
+    margin-top: 60px;
+    margin-bottom: 30px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    font-size: calc(40 / 770 * 100vw);
+    margin-top: calc(150 / 770 * 100vw);
+    margin-bottom: calc(60 / 770 * 100vw);
+  }
+}
+.login-table {
+
+  tr {
+  }
+  th {
+  }
+  td {
+  }
+  @include media(pc) {
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    tr {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 400px;
+      margin: auto;
+    }
+    th {
+      width: 150px;
+      font-size: 18px;
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+    td {
+    }
+  }
+
+  @include media(tb) {
+    tr {
+    }
+    th {
+    }
+    td {
+    }
+  }
+
+  @include media(sp) {
+    margin-left: auto;
+    margin-right: auto;
+    width: calc(600 / 770 * 100vw);
+    tr {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: calc(50 / 770 * 100vw);
+    }
+    th {
+      font-size: calc(40 / 770 * 100vw);
+      text-align: left;
+      @include padding_vw(40, 5, 40, 5)
+    }
+    td {
+      input{
+        font-size: calc(40 / 770 * 100vw);
+        margin-left: auto;
+        margin-right: auto;
+        width: calc(600 / 770 * 100vw);
+      }
+    }
+  }
+}
+.login-btn{
+  @include next-color;
+  @include btn-next;
+  @include media(pc) {
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+
+.login-text {
+  @include media(pc) {
+    font-size: 16px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    font-size: calc(35 / 770 * 100vw);
+  }
+}
+
+/* -----------------------------------/customers/sign_up（新規登録画面）---------------------------*/
+.sign-up_table{
+  @include media(pc) {
+    max-width: 1100px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    tr {
+      align-items: center;
+      display: flex;
+    }
+    th {
+      font-size: 16px;
+      padding: 25px 10px 25px 10px;
+      width: 10%;
+      min-width: 160px;
+    }
+    td {
+      font-size: 16px;
+      padding: 25px 10px 25px 10px;
+      width: 100%;
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    @include font-size(24);
+    @include padding_vw(20, 25, 20, 25);
+    input {
+      width: 100%;
+    }
+    tr {
+      display: block;
+    }
+    th {
+      display: block;
+      @include font-size(45);
+      @include padding_vw(10, 10, 20, 10);
+      width: 100%;
+      line-height: calc(60 / 770 * 100vw);
+    }
+    td {
+      @include font-size(35);
+      @include padding_vw(5, 10, 80, 10);
+      width: calc(770 / 770 * 100vw);
+      line-height: calc(60 / 770 * 100vw);
+    }
+  }
+}
+
+.cutomer-edit_table_label_name{
+  @include media(pc) {
+    font-size: 14px;
+    width: 40px;
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    width: calc(100 / 770 * 100vw);
+    margin-top: calc(20 / 770 * 100vw);
+    margin-right: calc(20 / 770 * 100vw);
+    margin-bottom: calc(30 / 770 * 100vw);
+  }
+}
+
+.sign-up_btn{
+  @include btn-next;
+  @include next-color;
+}
 /* -----------------------------------/customers/:id（顧客詳細画面[マイページ]）---------------------------*/
 
 /* -----------------------------------/customers/:id/edit（顧客編集画面）---------------------------*/
@@ -1079,7 +1267,7 @@ button {
 }
 
 /* -----------------------------------/customers/:id/unsubscribe(退会画面)---------------------------*/
-.unsubscribe-container{
+.unsubscribe-container {
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -1180,7 +1368,7 @@ button {
   @include media(pc) {
     font-size: 26px;
     margin-bottom: 40px;
-    margin-top: 60px
+    margin-top: 60px;
   }
 
   @include media(tb) {
@@ -2816,12 +3004,12 @@ button {
     th {
       @include font-size(30);
       @include padding_vw(30, 10, 30, 10);
-      line-height: calc(60 / 770 * 100vw)
+      line-height: calc(60 / 770 * 100vw);
     }
     td {
       @include font-size(30);
       @include padding_vw(30, 10, 30, 10);
-      line-height: calc(60 / 770 * 100vw)
+      line-height: calc(60 / 770 * 100vw);
     }
   }
 }
@@ -2984,6 +3172,8 @@ button {
 
 .pagination {
   justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
   @include media(pc) {
     margin-top: 50px;
     span {
@@ -2997,6 +3187,12 @@ button {
   }
 
   @include media(sp) {
+    margin-top: calc(150 / 770 * 100vw);
     @include width(600);
+    span {
+      font-size: calc(30 / 770 * 100vw);
+      margin-left: calc(10 / 770 * 100vw);
+      margin-right: calc(10 / 770 * 100vw);
+    }
   }
 }
