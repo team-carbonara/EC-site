@@ -1,6 +1,7 @@
 class Admin::OrdersController < ApplicationController
   def index
-    @orders = Order.all
+    # @orders = Order.all
+    @orders = Order.all.order("created_at DESC")
   end
 
   def show
@@ -23,6 +24,7 @@ class Admin::OrdersController < ApplicationController
 
   def edit
     @customers = Customer.find(params[:id])
+    @orders = @customers.orders.order("created_at DESC")
   end
 
   private
