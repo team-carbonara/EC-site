@@ -1771,12 +1771,29 @@ button {
 }
 
 /* -----------------------------------aboutページ--------------------------------------------------*/
+.about-main-text {
+  position   : absolute;                   /* 親要素からの絶対位置 */
+  box-sizing : border-box;
+  white-space: nowrap;                     /* 折返しなし */
+  display    : inline-block;               /* 文字囲みのBOXにする */
+  color      : rgba(0, 0, 0, 0.80);    /* 文字色（透明度） */
+  background : rgba(255, 255, 255, 0.50);  /* 背景色（透明度） */
+  top        : 50%;                        /* 親要素からの上位置 */
+  left       : 50%;                        /* 親要素からの左位置 */
+  transform  : translate(-50%, -50%);      /* 文字BOXの位置ずらし */
+  padding    : 25px;                       /* BOX内の余白 */
+
+}
+
+
+
 .about-title {
   font-weight: bold;
   text-align: center;
+  font-family: 'Sacramento', cursive;
+
   @include media(pc) {
-    font-size: 60px;
-    margin-bottom: 40px;
+    font-size: 80px;
   }
 
   @include media(tb) {
@@ -1794,7 +1811,6 @@ button {
   @include media(pc) {
     font-size: 23px;
     line-height: 2;
-    margin-bottom: 80px;
   }
 
   @include media(tb) {
@@ -1808,11 +1824,19 @@ button {
 }
 
 .about-image {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-item: center;
+  background-image: image-url("about_page.png");
+  background-size: cover;
+  background-position: center;
   margin-left: auto;
   margin-right: auto;
+  height: 100vh;
+
   @include media(pc) {
-    max-width: 1000px;
+    // max-width: 1000px;
     width: 100%;
   }
 
