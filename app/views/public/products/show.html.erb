@@ -7,20 +7,25 @@
     <div class="product-show_container">
       <div class="product_show_image"><%= attachment_image_tag(@product, :image) %></div>
 
-    <div class="product-show_container_product">
-      <h3 class="product-show_product_title"><%= @product.name %></h3>
-      <p class="product-show_text"><%= @product.description %></p>
-      <p class="product-show_price"><%= @product.add_tax_price.to_s(:delimited, delimiter:',') %>(税込)</p>
-          <%= form_with model: @cart_product, local:true do |f| %>
+      <div class="product-show_container_product">
+        <h3 class="product-show_product_title"><%= @product.name %></h3>
+        <p class="product-show_text"><%= @product.description %></p>
+        <p class="product-show_price"><%= @product.add_tax_price.to_s(:delimited, delimiter:',') %>(税込)</p>
+        <%= form_with model: @cart_product, local:true do |f| %>
           <div class="prpduct-show_other">
-          <%= f.hidden_field :product_id, value: @product.id %>
-          <div class="product-select_design">
-          <%= f.select :quantity, *[1..10], { include_blank: '個数選択'} %>
-        </div>
-          <%= f.submit 'カートに入れる',class: "prpduct-show_btn" %>
+            <%= f.hidden_field :product_id, value: @product.id %>
+
+            <% if @product.sale_status %>
+              <div class="product-select_design">
+                <%= f.select :quantity, *[1..10], { include_blank: '個数選択'} %>
+              </div>
+              <%= f.submit 'カートに入れる',class: "prpduct-show_btn" %>
+            <% else %>
+              <div class="product-not-buy">※現在販売しておりません</div>
+            <% end %>
           </div>
-          <%end%>
-    </div>
+        <%end%>
+      </div>
     </div>
   </article>
 </div>
