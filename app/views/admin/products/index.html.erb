@@ -1,45 +1,39 @@
 <div class="l-main_container">
   <h3>商品一覧</h3>
   <div class="row">
-    <div class="col-md-8 text-right">
+    <div class="col-auto ml-auto">
       <%= link_to new_admin_product_path, class: 'btn btn-light rounded-circle' do %>
         <i class="fas fa-plus "></i>
       <% end %>
     </div>
   </div>
-  <div class="row">
-    <div class="mx-auto col-md-8">
-      <div class="table">
-        <table>
-          <thead>
-            <tr>
-              <th>商品ID</th>
-              <th>商品名</th>
-              <th>税抜価格</th>
-              <th>ジャンル</th>
-              <th>ステータス</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @products.each do |product| %>
-              <tr>
-                <td><%= product.id %></td>
-                <td><%= link_to product.name, admin_product_path(product) %></td>
-                <td><%= product.price %></td>
-                <td><%= product.genre.name %></td>
-                <td>
-                  <% if product.sale_status %>
-                    販売中
-                  <% else %>
-                    販売停止中
-                  <% end %>
-                </td>
-              </tr>
+  <table class="table table-inverse">
+    <thead>
+      <tr>
+        <th>商品ID</th>
+        <th>商品名</th>
+        <th>税抜価格</th>
+        <th>ジャンル</th>
+        <th>ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @products.each do |product| %>
+        <tr>
+          <td><%= product.id %></td>
+          <td><%= link_to product.name, admin_product_path(product) %></td>
+          <td><%= product.price %></td>
+          <td><%= product.genre.name %></td>
+          <td>
+            <% if product.sale_status %>
+              販売中
+            <% else %>
+              販売停止中
             <% end %>
-          </tbody>
-        </table>
-        <%= paginate @products %>
-      </div>
-    </div>
-  </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= paginate @products %>
 </div>

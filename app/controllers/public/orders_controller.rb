@@ -10,13 +10,13 @@ class Public::OrdersController < ApplicationController
 
   def new
     if current_customer.cart_products.count != 0
-  @cart_products = current_customer.cart_products.all
-  total = [] #空の配列を用意
-     @cart_products.each do |cart_product|
-      total << cart_product.product.add_tax_price * cart_product.quantity
+      @cart_products = current_customer.cart_products.all
+      total = [] #空の配列を用意
+      @cart_products.each do |cart_product|
+        total << cart_product.product.add_tax_price * cart_product.quantity
       end
-  @total = total.to_a.sum
-  @order = Order.new
+      @total = total.to_a.sum
+      @order = Order.new
     else
       redirect_to cart_products_path,notice: 'カートに商品を入れてください'
     end
@@ -96,6 +96,6 @@ class Public::OrdersController < ApplicationController
     params.require(:order).permit(:name,:post_code, :address)
   end
   def orders_params
-    params.require(:order).permit(:post_code, :address, :name, :postage, :total_price, )
+    params.require(:order).permit(:post_code, :address, :name, :postage, :total_price, :payment_method )
   end
 end
