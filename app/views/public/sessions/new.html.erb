@@ -1,4 +1,3 @@
-
 <div class="l-main_container">
   <h2 class="login-title">ログイン</h2>
   <h3 class="login-sub_title">会員の方はこちらからログイン</h3>
@@ -16,5 +15,5 @@
     <%= f.submit "ログイン", class: "login-btn" %>
   <% end %>
   <h3 class="login-sub_title">登録すみでない方</h3>
-  <p class="login-text"><a href="">こちら</a>新規登録を行ってください</p>
+  <p class="login-text"><%= link_to "こちら" ,"/customers/sign_up "%>新規登録を行ってください</p>
 </div>

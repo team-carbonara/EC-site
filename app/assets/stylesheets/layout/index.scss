@@ -1,0 +1,3336 @@
+// Place all the styles related to the orders controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+@import url(http://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
+
+@mixin media($device) {
+  @if $device== "pc" {
+    @media print, screen and (min-width: 771px) {
+      @content;
+    }
+    // } @else if $device== "tb" {
+    //   @media print, screen and (max-width: 1440px) and (min-width: 771px) {
+    //     @content;
+    //   }
+  } @else if $device== "sp" {
+    @media screen and (max-width: 770px) {
+      @content;
+    }
+  }
+}
+@mixin destroy-color {
+  background-color: darkred;
+}
+
+@mixin edit-color {
+  background-color: #3654b8;
+}
+
+@mixin next-color {
+  background-color: rgb(42, 36, 124);
+}
+
+@mixin btn-next {
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  border-radius: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  @include media(pc) {
+    margin-top: 80px;
+    padding: 20px;
+    font-size: 14px;
+    width: 300px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    margin-top: calc(200 / 770 * 100vw);
+    @include font-size(35);
+    @include padding_vw(20, 25, 20, 25);
+    @include width(500);
+  }
+}
+
+@mixin btn-small {
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  border-radius: 5px;
+  @include media(pc) {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    display: inline-block;
+    @include font-size(30);
+    @include width(280);
+    @include padding_vw(30, 10, 30, 10);
+    text-align: center;
+  }
+}
+
+@mixin width($value) {
+  width: calc(#{$value} / 770 * 100vw);
+}
+
+@mixin height($value) {
+  height: calc(#{$value} / 770 * 100vw);
+}
+
+@mixin font-size($value) {
+  font-size: calc(#{$value} / 770 * 100vw);
+}
+
+@mixin line-heght($value) {
+  line-height: calc(#{$value} / 770 * 100vw);
+}
+
+@mixin padding_vw($top, $right, $bottom, $left) {
+  padding-top: calc(#{$top} / 770 * 100vw);
+  padding-right: calc(#{$right} / 770 * 100vw);
+  padding-bottom: calc(#{$bottom} / 770 * 100vw);
+  padding-left: calc(#{$left} / 770 * 100vw);
+}
+
+@mixin margin_vw($top, $right, $bottom, $left) {
+  margin-top: calc(#{$top} / 770 * 100vw);
+  margin-right: calc(#{$right} / 770 * 100vw);
+  margin-bottom: calc(#{$bottom} / 770 * 100vw);
+  margin-left: calc(#{$left} / 770 * 100vw);
+}
+
+a:hover {
+  opacity: 0.7;
+  transition: 0.3s;
+}
+
+.u-pc {
+  @include media(pc) {
+  }
+
+  @include media(tb) {
+    display: none;
+  }
+
+  @include media(sp) {
+    display: none !important;
+  }
+}
+
+.u-tb {
+  @include media(pc) {
+    display: none !important;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    display: none;
+  }
+}
+
+.u-sp {
+  @include media(pc) {
+    display: none !important;
+  }
+
+  @include media(tb) {
+    display: none;
+  }
+
+  @include media(sp) {
+  }
+}
+
+button {
+  border: none;
+}
+.notice {
+  color: rgb(223, 128, 74);
+  @include media(pc) {
+    margin-bottom: 20px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    margin-bottom: calc(20 / 770 * 100vw);
+  }
+}
+
+.search-count {
+  display: inline-block;
+  @include media(pc) {
+    font-size: 20px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    font-size: calc(30 / 770 * 100vw);
+  }
+}
+
+/* ----------------------top-page(トップページ)--------------------*/
+
+.top-visual {
+  width: 100vw;
+  height: 100vh;
+
+  @include media(pc) {
+    margin-top: -110px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    margin-top: calc(-120 / 770 * 100vw);
+    object-fit: cover;
+  }
+}
+
+.slick-next {
+  display: none !important ;
+}
+
+.top-visual_1 {
+  background-size: cover;
+  @include media(pc) {
+    background-position: center;
+    background-image: image-url("cat-christmas.jpg");
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    // background-position: bottom;
+    background-image: image-url("cookie_01_sp.jpg");
+  }
+}
+
+.top-visual_2 {
+  background-position: center;
+  background-size: cover;
+  @include media(pc) {
+    background-image: image-url("chocolate_cake.jpg");
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    background-image: image-url("ice_01_sp.jpg");
+  }
+}
+
+.top-visual_3 {
+  background-position: center;
+  background-size: cover;
+  @include media(pc) {
+    background-image: image-url("peropero_candy.png");
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    background-image: image-url("candy_01_sp.png");
+  }
+}
+
+.slick-track {
+  height: 100vh;
+}
+
+.top-title {
+  font-weight: bold;
+  @include media(pc) {
+    font-size: 24px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    display: block;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    display: block;
+    font-size: calc(60 / 770 * 100vw);
+    width: calc(600 / 770 * 100vw);
+    margin: auto;
+    margin-top: calc(100 / 770 * 100vw);
+    margin-bottom: calc(80 / 770 * 100vw);
+    margin-right: calc(20 / 770 * 100vw);
+  }
+}
+
+// ----------------------------------------------------------
+.l-header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  z-index: 100;
+
+  @include media(pc) {
+    width: 100%;
+    height: 110px;
+    position: fixed;
+    transition: 0.4s;
+    background-color: khaki;
+  }
+
+  @include media(tb) {
+    width: 100%;
+    height: 110px;
+    padding-right: 30px;
+    position: fixed;
+    transition: 0.4s;
+  }
+
+  @include media(sp) {
+    @include height(120);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1;
+  }
+}
+
+.l-header_title {
+  display: flex;
+
+  @include media(pc) {
+    height: 110px;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  @include media(tb) {
+    height: 110px;
+    align-items: center;
+  }
+
+  @include media(sp) {
+    background-color: #ffffffaa;
+  }
+  img {
+    @include media(pc) {
+      height: 110px;
+      width: auto;
+    }
+
+    @include media(tb) {
+      height: 110px;
+      align-items: center;
+    }
+
+    @include media(sp) {
+      height: calc(120 / 770 * 100vw);
+      width: auto;
+    }
+  }
+}
+
+/* ------------------------------------- スクロール時 -------------------------------------------------*/
+.UpMove {
+  animation: UpAnime 0.5s forwards;
+  // position: fixed;
+}
+
+@keyframes UpAnime {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+}
+
+/*　上に上がる動き　*/
+.t {
+  background-color: rgba(0, 0, 0, 0) !important;
+}
+
+.l-header.UpMove {
+  animation: UpAnime 0.5s forwards;
+  background-color: rgba(0, 0, 0, 0);
+  // position: fixed;
+}
+
+@keyframes UpAnime {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+}
+
+/*　下に下がる動き　*/
+
+.l-header.DownMove {
+  animation: DownAnime 0.5s forwards;
+  // background-color: #fff;
+  transition: 0.2s;
+}
+
+@keyframes DownAnime {
+  from {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*-----------------------------------ヘッダーボタン-------------------------------------------*/
+.l-nav_btn {
+  @include media(pc) {
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    cursor: pointer;
+    z-index: 5;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #000;
+    @include width(120);
+    @include height(120);
+    @include padding_vw(45, 35, 45, 35);
+  }
+}
+
+.l-nav_btn_bar {
+  @include media(pc) {
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    @include width(50);
+    @include height(4);
+    @include edit-color;
+    display: block;
+    display: flex;
+    justify-content: center;
+    transition: 0.3s;
+    position: absolute;
+
+    &:nth-child(1) {
+      top: calc(46 / 770 * 100vw);
+    }
+
+    &:nth-child(2) {
+      top: calc(58 / 770 * 100vw);
+    }
+
+    &:nth-child(3) {
+      top: calc(70 / 770 * 100vw);
+    }
+  }
+}
+
+.open {
+  position: absolute;
+
+  &:nth-child(1) {
+    top: calc(56 / 770 * 100vw);
+    transition: 0.3s;
+    transform: rotate(45deg);
+  }
+
+  &:nth-child(2) {
+    transition: 0.3s;
+    display: none;
+  }
+
+  &:nth-child(3) {
+    top: calc(55 / 770 * 100vw);
+    transition: 0.3s;
+    transform: rotate(-45deg);
+  }
+}
+
+/*----------------------------------------------ナビ---------------------------------------------------------------*/
+
+.l-nav {
+  @include media(pc) {
+    padding-left: 10px;
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    opacity: 0.1;
+    background-color: #f5f5f7;
+    position: absolute;
+    top: 0;
+    // margin-top: calc(120 / 770 * 100vw);
+    left: 100%;
+    height: 100vh;
+    width: 100vw;
+    @include padding_vw(150, 40, 150, 40);
+    transition: 0.4s;
+  }
+}
+
+.show {
+  position: absolute;
+  position: fixed;
+  overflow: scroll;
+  top: 0;
+  left: 0%;
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  transition: 0.4s;
+  opacity: 1;
+}
+
+.l-navbar {
+  @include media(pc) {
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+.l-navbarnav_list {
+  display: flex;
+
+  @include media(pc) {
+    justify-content: flex-end;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    height: 100%;
+  }
+}
+
+.l-nav_item {
+  @include media(pc) {
+    height: 110px;
+    justify-content: flex-end;
+    width: 100px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    justify-content: space-between;
+  }
+}
+
+.l-nav_item_anchor {
+  background-color: rgb(245, 228, 202);
+  display: inline-block;
+  color: rgb(61, 57, 16);
+  transition-duration: 0.3s;
+  @include media(pc) {
+    padding: 10px;
+    border-radius: inherit;
+    display: flex;
+    font-size: 14px;
+    height: 100%;
+    align-items: center;
+    margin: auto;
+    justify-content: center;
+    &:hover {
+      transform: scale(1.2);
+      transition-duration: 0.3s;
+      color: #fdf4d5;
+      background-color: rgb(170, 128, 121);
+    }
+  }
+
+  @include media(tb) {
+    margin-left: 10px;
+  }
+
+  @include media(sp) {
+    margin-left: calc(28 / 770 * 100vw);
+    @include padding_vw(10, 10, 10, 10);
+    border-radius: 5px;
+  }
+}
+
+.l-nav_item_other {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @include media(pc) {
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+.l-nav_item_other_name {
+  @include media(pc) {
+    margin-bottom: 15px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+
+.l-search {
+  @include media(pc) {
+    height: 30px;
+    margin: auto;
+    margin-right: 40px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    display: none;
+  }
+}
+/*-----------------------------------footer--------------------------------------------*/
+.l-footer {
+  color: #fff;
+  background-color: #472712;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include media(pc) {
+    height: 100px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    height: calc(100 / 770 * 100vw);
+  }
+}
+
+.l-footer_copy {
+  @include media(pc) {
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+.top-btn {
+  background-color: rgb(207, 202, 138);
+  color: beige;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 0;
+  bottom: 0px;
+  transition-duration: 0.3s;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.2);
+    color: rgb(168, 99, 99);
+  }
+  @include media(pc) {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    bottom: -100px;
+    right: -100px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    width: calc(100 / 770 * 100vw);
+    height: calc(101 / 770 * 100vw);
+  }
+}
+
+.top-btn_text {
+  @include media(pc) {
+    font-size: 20px;
+    transform: translate(-35px, -45px);
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    @include font-size(22);
+  }
+}
+
+/*-----------------------------------main--------------------------------------------*/
+.l-main {
+  background-color: ivory;
+  @include media(pc) {
+    padding-top: 110px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    padding-top: calc(120 / 770 * 100vw);
+    min-height: 100vh;
+  }
+}
+
+.l-main_container {
+  @include media(pc) {
+    justify-content: space-between;
+    padding-left: 70px;
+    padding-right: 70px;
+    padding-top: 70px;
+    padding-bottom: 120px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    padding-top: calc(100 / 770 * 100vw);
+    padding-left: calc(45 / 770 * 100vw);
+    padding-right: calc(45 / 770 * 100vw);
+    padding-bottom: calc(100 / 770 * 100vw);
+  }
+}
+
+.flex {
+  display: flex;
+  @include media(pc) {
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    flex-direction: column-reverse;
+  }
+}
+
+/* -----------------------------------------l-main------------------------------------------------------*/
+.m-sidebar {
+  @include media(pc) {
+    max-width: calc(280 / 1440 * 100%);
+    height: 100%;
+    min-width: 175px;
+    margin-right: 80px;
+    border: 1px solid black;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+.m-sidebar_title {
+  @include media(pc) {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+.m-sidebar_list {
+  @include media(pc) {
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+.m-sidebar_list_item {
+  @include media(pc) {
+    height: 40px;
+    max-width: 100%;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+.m-sidebar_list_item_anchor {
+  @include media(pc) {
+    padding: 10px 20px 10px 20px;
+    font-size: 15px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    transition-duration: 0.3s;
+    &:hover {
+      transition-duration: 0.3s;
+      color: #fdf4d5;
+      background-color: rgb(170, 128, 121);
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+
+.m-article {
+  @include media(pc) {
+    max-width: calc(1150 / 1440 * 100vw);
+    min-width: calc(810 / 1440 * 100vw);
+    width: 100%;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    width: calc(680 / 770 * 100vw);
+  }
+}
+
+//顧客(customers)
+/* -----------------------------------/customers/sign_in（ログイン画面）---------------------------*/
+
+.login-title {
+  @include media(pc) {
+    font-size: 26px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    font-size: calc(50 / 770 * 100vw);
+  }
+}
+.login-sub_title {
+  @include media(pc) {
+    font-size: 16px;
+    margin-top: 60px;
+    margin-bottom: 30px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    font-size: calc(40 / 770 * 100vw);
+    margin-top: calc(150 / 770 * 100vw);
+    margin-bottom: calc(60 / 770 * 100vw);
+  }
+}
+.login-table {
+  tr {
+  }
+  th {
+  }
+  td {
+  }
+  @include media(pc) {
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    tr {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 400px;
+      margin: auto;
+    }
+    th {
+      width: 150px;
+      font-size: 18px;
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+    td {
+    }
+  }
+
+  @include media(tb) {
+    tr {
+    }
+    th {
+    }
+    td {
+    }
+  }
+
+  @include media(sp) {
+    margin-left: auto;
+    margin-right: auto;
+    width: calc(600 / 770 * 100vw);
+    tr {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: calc(50 / 770 * 100vw);
+    }
+    th {
+      font-size: calc(40 / 770 * 100vw);
+      text-align: left;
+      @include padding_vw(40, 5, 40, 5);
+    }
+    td {
+      input {
+        font-size: calc(40 / 770 * 100vw);
+        margin-left: auto;
+        margin-right: auto;
+        width: calc(600 / 770 * 100vw);
+      }
+    }
+  }
+}
+.login-btn {
+  @include next-color;
+  @include btn-next;
+  @include media(pc) {
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+
+.login-text {
+  @include media(pc) {
+    font-size: 16px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    font-size: calc(35 / 770 * 100vw);
+  }
+}
+
+/* -----------------------------------/customers/sign_up（新規登録画面）---------------------------*/
+.sign-up_table {
+  @include media(pc) {
+    max-width: 1100px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    tr {
+      align-items: center;
+      display: flex;
+    }
+    th {
+      font-size: 16px;
+      padding: 25px 10px 25px 10px;
+      width: 10%;
+      min-width: 160px;
+    }
+    td {
+      font-size: 16px;
+      padding: 25px 10px 25px 10px;
+      width: 100%;
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    @include font-size(24);
+    @include padding_vw(20, 25, 20, 25);
+    input {
+      width: 100%;
+    }
+    tr {
+      display: block;
+    }
+    th {
+      display: block;
+      @include font-size(45);
+      @include padding_vw(10, 10, 20, 10);
+      width: 100%;
+      line-height: calc(60 / 770 * 100vw);
+    }
+    td {
+      @include font-size(35);
+      @include padding_vw(5, 10, 80, 10);
+      width: calc(770 / 770 * 100vw);
+      line-height: calc(60 / 770 * 100vw);
+    }
+  }
+}
+
+.cutomer-edit_table_label_name {
+  @include media(pc) {
+    font-size: 14px;
+    width: 40px;
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    width: calc(100 / 770 * 100vw);
+    margin-top: calc(20 / 770 * 100vw);
+    margin-right: calc(20 / 770 * 100vw);
+    margin-bottom: calc(30 / 770 * 100vw);
+  }
+}
+
+.sign-up_btn {
+  @include btn-next;
+  @include next-color;
+}
+/* -----------------------------------/customers/:id（顧客詳細画面[マイページ]）---------------------------*/
+
+/* -----------------------------------/customers/:id/edit（顧客編集画面）---------------------------*/
+
+.cutomer-edit_subtitle {
+  @include media(pc) {
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 240px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: calc(60 / 770 * 100vw);
+    width: calc(600 / 770 * 100vw);
+    margin-top: calc(60 / 770 * 100vw);
+    margin-bottom: calc(80 / 770 * 100vw);
+    margin-right: calc(20 / 770 * 100vw);
+  }
+}
+
+.cutomer-edit_subtitle_text {
+  @include media(pc) {
+    font-size: 20px;
+    display: inline-block;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+.customer-edit_btn {
+  @include edit-color;
+  border: none;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  border-radius: 5px;
+  @include media(pc) {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    display: inline-block;
+    @include font-size(30);
+    @include width(200);
+    @include padding_vw(30, 10, 30, 10);
+    text-align: center;
+  }
+}
+
+.cutomer-edit_table {
+  tr {
+  }
+  th {
+  }
+  td {
+  }
+  @include media(pc) {
+    max-width: 1100px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    tr {
+      display: flex;
+    }
+    th {
+      font-size: 16px;
+      padding: 10px;
+      width: 10%;
+      min-width: 160px;
+    }
+    td {
+      font-size: 16px;
+      padding: 10px;
+      width: 100%;
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    @include font-size(24);
+    @include padding_vw(20, 25, 20, 25);
+    input {
+      width: 48%;
+    }
+    tr {
+      display: block;
+    }
+    th {
+      display: block;
+      @include font-size(45);
+      @include padding_vw(10, 10, 20, 10);
+      width: 100%;
+      line-height: calc(60 / 770 * 100vw);
+    }
+    td {
+      @include font-size(35);
+      @include padding_vw(5, 10, 80, 10);
+      width: calc(770 / 770 * 100vw);
+      line-height: calc(60 / 770 * 100vw);
+    }
+  }
+}
+
+.cutomer-edit_table_address {
+  input {
+  }
+  @include media(pc) {
+    input {
+      width: 70%;
+      min-width: 500px;
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    input {
+      width: 100%;
+    }
+  }
+}
+
+/* -----------------------------------/customers/:id/unsubscribe(退会画面)---------------------------*/
+.unsubscribe-container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  @include media(pc) {
+    font-size: 40px;
+    height: calc(100vh - 400px);
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    font-size: calc(45 / 770 * 100vw);
+    height: calc(
+      100vh - 49vw
+    ); //l-headerのheightとl-mainのmargin-top計算後のの合計//
+  }
+}
+
+.customer-info_other {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  @include media(pc) {
+    max-width: 300px;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 100px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    flex-direction: column;
+    margin-top: calc(100 / 770 * 100vw);
+    width: calc(450 / 770 * 100vw);
+  }
+}
+.customer-info_update_btn {
+  @include edit-color;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  border-radius: 5px;
+  @include media(pc) {
+    padding: 10px;
+    font-size: 14px;
+    width: 150px;
+    height: 50px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    display: inline-block;
+    @include font-size(30);
+    @include width(400);
+    @include padding_vw(30, 10, 30, 10);
+    text-align: center;
+  }
+}
+.customer-info_withdrawal_btn {
+  @include destroy-color;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  border-radius: 5px;
+  @include media(pc) {
+    padding: 10px;
+    font-size: 14px;
+    width: 150px;
+    height: 50px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    display: inline-block;
+    @include font-size(30);
+    @include width(400);
+    @include padding_vw(30, 10, 30, 10);
+    text-align: center;
+    margin-top: calc(120 / 770 * 100vw);
+  }
+}
+
+.unsubscribe-title {
+  text-align: center;
+  @include media(pc) {
+    font-size: 26px;
+    margin-bottom: 40px;
+    margin-top: 60px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    @include font-size(55);
+    margin-bottom: calc(100 / 770 * 100vw);
+  }
+}
+
+.unsubscribe-text {
+  text-align: center;
+  @include media(pc) {
+    font-size: 16px;
+    line-height: 2;
+    margin-bottom: 60px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    font-size: calc(26 / 770 * 100vw);
+    line-height: calc(60 / 770 * 100vw);
+    margin-bottom: calc(120 / 770 * 100vw);
+  }
+}
+
+.unsubscribe-other {
+  display: flex;
+  @include media(pc) {
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 60px;
+    max-width: 600px;
+    width: 100%;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    flex-direction: column;
+    font-size: calc(50 / 770 * 100vw);
+  }
+}
+
+/* -----------------------------------トップページ（新着商品）---------------------------*/
+
+/* -----------------------------------/customers/products（商品一覧[顧客用]）---------------------------*/
+
+.product_title {
+  font-weight: bold;
+  @include media(pc) {
+    font-size: 24px;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    display: inline-block;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    display: inline-block;
+    font-size: calc(60 / 770 * 100vw);
+    width: calc(600 / 770 * 100vw);
+    margin: auto;
+    margin-bottom: calc(80 / 770 * 100vw);
+    margin-right: calc(20 / 770 * 100vw);
+  }
+}
+.product_list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  @include media(pc) {
+    position: relative;
+    right: 10px;
+    margin-top: 60px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    width: calc(680 / 770 * 100vw);
+    margin: auto;
+    margin-top: calc(40 / 770 * 100vw);
+  }
+}
+.product_list_item {
+  display: flex;
+  flex-direction: column;
+  @include media(pc) {
+    margin: 0 5px 20px 5px;
+    width: 205px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    @include width(300);
+    @include margin_vw(10, 20, 10, 20);
+  }
+}
+.product_list_item_image {
+  @include media(pc) {
+    img {
+      max-width: 205px;
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    img {
+      width: calc(300 / 770 * 100vw);
+    }
+  }
+}
+.product_list_item_title {
+  font-weight: bold;
+  @include media(pc) {
+    font-size: 17px;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    line-height: 1.5;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    font-size: calc(35 / 770 * 100vw);
+    margin-top: calc(40 / 770 * 100vw);
+    line-height: calc(60 / 770 * 100vw);
+  }
+}
+.product_list_item_price {
+  @include media(pc) {
+    font-size: 16px;
+    margin-top: 10px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    font-size: calc(30 / 770 * 100vw);
+    margin-top: calc(30 / 770 * 100vw);
+    line-height: calc(60 / 770 * 100vw);
+  }
+}
+.cell.is-empty {
+  width: 200px;
+  height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* ----------------------------/customers/products/:id（商品詳細[顧客用]）------------------------*/
+
+.product-show_container {
+  @include media(pc) {
+    margin-top: 50px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    margin-top: calc(40 / 770 * 100vw);
+  }
+}
+.product-show_container_product {
+  @include media(pc) {
+    margin-top: 50px;
+    margin-left: 10px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    margin-top: calc(100 / 770 * 100vw);
+  }
+}
+
+.product_show_image {
+  @include media(pc) {
+    img {
+      max-width: 300px;
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    img {
+      display: block;
+      width: calc(500 / 770 * 100vw);
+      margin: auto;
+    }
+  }
+}
+.product-show_product_title {
+  font-weight: bold;
+  @include media(pc) {
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    margin-bottom: calc(100 / 770 * 100vw);
+    font-size: calc(60 / 770 * 100vw);
+  }
+}
+.product-show_text {
+  @include media(pc) {
+    margin-bottom: 50px;
+    font-size: 15px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    font-size: calc(35 / 770 * 100vw);
+    margin-bottom: calc(70 / 770 * 100vw);
+    line-height: calc(70 / 770 * 100vw);
+  }
+}
+
+.prpduct-show_other {
+  display: flex;
+  justify-content: space-between;
+}
+.product-show_price {
+  @include media(pc) {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    font-size: calc(45 / 770 * 100vw);
+    margin-bottom: calc(70 / 770 * 100vw);
+  }
+}
+
+.prpduct-show_btn {
+  @include edit-color;
+  border: none;
+  display: inline-block;
+  color: #fff;
+  border-radius: 5px;
+  @include media(pc) {
+    padding: 10px;
+    font-size: 14px;
+    margin-left: 30px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    @include font-size(30);
+    @include padding_vw(10, 30, 10, 30);
+  }
+}
+
+.product-select_design {
+  display: inline-flex;
+  overflow: hidden;
+  text-align: center;
+  position: relative;
+  border: 1px solid #bbbbbb; /*** セレクトボックスのボーター設定 ***/
+  border-radius: 5px; /*** セレクトボックスの角丸 ***/
+  background: #ffffff; /*** セレクトボックスの背景色 ***/
+  @include media(pc) {
+    width: 90px; /*** セレクトボックスの横幅 ***/
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    width: calc(180 / 770 * 100vw);
+    height: calc(65 / 770 * 100vw);
+    display: flex;
+    align-items: center;
+    margin-bottom: calc(25 / 770 * 100vw);
+  }
+}
+.product-select_design select {
+  width: 100%;
+  cursor: pointer;
+  text-indent: 0.01px;
+  text-overflow: ellipsis;
+  border: none;
+  outline: none;
+  background: transparent;
+  background-image: none;
+  box-shadow: none;
+  -webkit-appearance: none;
+  appearance: none;
+  color: #666666;
+  @include media(pc) {
+    line-height: 1.5;
+    padding: 8px 10px 8px 4px;
+    font-size: 14px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    font-size: calc(30 / 770 * 100vw);
+    @include padding_vw(4, 8, 4, 4);
+    line-height: calc(40 / 770 * 100vw);
+  }
+}
+.product-select_design select::-ms-expand {
+  display: none;
+}
+.product-select_design::before {
+  position: absolute;
+  content: "";
+  pointer-events: none;
+  z-index: 1;
+  transform: rotate(135deg);
+  @include media(pc) {
+    border-top: 2px solid #ffffff; /*** 矢印の色 ***/
+    border-right: 2px solid #ffffff; /*** 矢印の色 ***/
+    top: 12px;
+    right: 8px;
+    width: 4px;
+    height: 4px;
+    padding: 0;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    border-top: calc(3 / 770 * 100vw) solid #ffffff; /*** 矢印の色 ***/
+    border-right: calc(3 / 770 * 100vw) solid #ffffff; /*** 矢印の色 ***/
+    top: calc(15 / 770 * 100vw);
+    right: calc(13 / 770 * 100vw);
+    width: calc(4 / 770 * 100vw);
+    height: calc(4 / 770 * 100vw);
+    padding: 0;
+  }
+}
+.product-select_design:after {
+  position: absolute;
+  content: "";
+  background: #76c0c3; /*** 右側の背景色 ***/
+  pointer-events: none;
+  @include media(pc) {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 20px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: calc(30 / 770 * 100vw);
+  }
+}
+
+/* -----------------------------------aboutページ--------------------------------------------------*/
+.about-title {
+  font-weight: bold;
+  text-align: center;
+  @include media(pc) {
+    font-size: 60px;
+    margin-bottom: 40px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    font-size: calc(40 / 770 * 100vw);
+    margin-bottom: calc(40 / 770 * 100vw);
+  }
+}
+
+.about-text {
+  display: block;
+  text-align: center;
+  @include media(pc) {
+    font-size: 23px;
+    line-height: 2;
+    margin-bottom: 80px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    font-size: calc(25 / 770 * 100vw);
+    line-height: calc(40 / 770 * 100vw);
+    margin-bottom: calc(60 / 770 * 100vw);
+  }
+}
+
+.about-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  @include media(pc) {
+    max-width: 1000px;
+    width: 100%;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    width: calc(500 / 770 * 100vw);
+  }
+}
+//カート(cart_products)
+/*----------------------------------/customers/cart_products（カート一覧画面）-------------------------*/
+.cart-product_title {
+  @include media(pc) {
+    font-size: 26px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    font: calc(60 / 770 * 100vw);
+    margin-bottom: calc(50 / 770 * 100vw);
+  }
+}
+.cart_delete_btn {
+  border: none;
+  @include destroy-color;
+  color: #fff;
+  border-radius: 5px;
+  @include media(pc) {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    display: inline-block;
+    margin-top: calc(40 / 770 * 100vw);
+    @include font-size(30);
+    @include width(280);
+    @include padding_vw(20, 10, 20, 10);
+    text-align: center;
+  }
+}
+.cart-product_table {
+  border: 1px solid #000;
+  margin-left: auto;
+  margin-right: auto;
+  @include media(pc) {
+    max-width: 1000px;
+    width: 100%;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    width: calc(680 / 770 * 100vw);
+    margin-top: calc(80 / 770 * 100vw);
+  }
+}
+.cart-product_table_row {
+  text-align: left;
+  @include media(pc) {
+    border-bottom: 1px solid #000;
+    th {
+      font-weight: bold;
+      background-color: #eee;
+      padding: 10px;
+    }
+    td {
+      padding: 10px;
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    :nth-child(1) {
+      width: 40%;
+    }
+    :nth-child(2) {
+      width: 20%;
+    }
+    :nth-child(3) {
+      width: 25%;
+    }
+    :nth-child(4) {
+      width: 15%;
+    }
+    th {
+      @include font-size(30);
+      @include padding_vw(10, 10, 10, 10);
+      border: calc(1 / 770 * 100vw) solid #000;
+      line-height: calc(60 / 770 * 100vw);
+    }
+    td {
+      @include font-size(30);
+      @include padding_vw(15, 20, 15, 15);
+      border: calc(1 / 770 * 100vw) solid #000;
+      line-height: calc(60 / 770 * 100vw);
+      width: 40%;
+    }
+  }
+}
+
+.cart-product_image {
+  @include media(pc) {
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+
+.cart_delete_btn_table {
+  @include destroy-color;
+  border-radius: 5px;
+  color: #fff;
+  @include media(pc) {
+    padding: 10px;
+    margin-left: 20px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: calc(20 / 770 * 100vw);
+    @include font-size(15);
+    width: calc(80 / 770 * 100vw) !important;
+    @include padding_vw(5, 15, 5, 15);
+  }
+}
+
+.cart-product_update_btn {
+  background-color: #2d8a66;
+  border-radius: 5px;
+  color: #fff;
+  @include media(pc) {
+    padding: 10px;
+    margin-left: 20px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    @include font-size(15);
+    width: calc(80 / 770 * 100vw);
+    @include padding_vw(5, 15, 5, 15);
+  }
+}
+
+.select_design {
+  display: inline-flex;
+  overflow: hidden;
+  text-align: center;
+  position: relative;
+  border: 1px solid #bbbbbb; /*** セレクトボックスのボーター設定 ***/
+  border-radius: 5px; /*** セレクトボックスの角丸 ***/
+  background: #ffffff; /*** セレクトボックスの背景色 ***/
+  @include media(pc) {
+    width: 50px; /*** セレクトボックスの横幅 ***/
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    width: calc(80 / 770 * 100vw) !important;
+    margin-bottom: calc(25 / 770 * 100vw);
+    height: calc(50 / 770 * 100vw);
+  }
+}
+.select_design select {
+  width: 100% !important;
+  cursor: pointer;
+  text-indent: 0.01px;
+  text-overflow: ellipsis;
+  border: none;
+  outline: none;
+  background: transparent;
+  background-image: none;
+  box-shadow: none;
+  -webkit-appearance: none;
+  appearance: none;
+  color: #666666;
+  @include media(pc) {
+    line-height: 1.5;
+    padding: 8px 10px 8px 4px;
+    font-size: 14px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    font-size: calc(24 / 770 * 100vw);
+    @include padding_vw(4, 10, 4, 4);
+    line-height: calc(30 / 770 * 100vw);
+  }
+}
+.select_design select::-ms-expand {
+  display: none;
+}
+.select_design::before {
+  position: absolute;
+  content: "";
+  pointer-events: none;
+  z-index: 1;
+  transform: rotate(135deg);
+  @include media(pc) {
+    border-top: 2px solid #ffffff; /*** 矢印の色 ***/
+    border-right: 2px solid #ffffff; /*** 矢印の色 ***/
+    top: 12px;
+    right: 8px;
+    width: 4px;
+    height: 4px;
+    padding: 0;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    border-top: calc(3 / 770 * 100vw) solid #ffffff; /*** 矢印の色 ***/
+    border-right: calc(3 / 770 * 100vw) solid #ffffff; /*** 矢印の色 ***/
+    top: calc(20 / 770 * 100vw);
+    right: calc(10 / 770 * 100vw);
+    width: calc(6 / 770 * 100vw);
+    height: calc(6 / 770 * 100vw);
+    padding: 0;
+  }
+}
+.select_design:after {
+  position: absolute;
+  content: "";
+  background: #76c0c3; /*** 右側の背景色 ***/
+  pointer-events: none;
+  @include media(pc) {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 20px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: calc(25 / 770 * 100vw);
+    height: calc(50 / 770 * 100vw);
+  }
+}
+
+.cart-product_other {
+  justify-content: space-between;
+  display: flex;
+  @include media(pc) {
+    margin: 40px auto 0px;
+    max-width: 1100px;
+    width: 100%;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    width: calc(600 / 770 * 100vw);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: calc(100 / 770 * 100vw);
+  }
+}
+
+.cart-product_continue_btn {
+  @include next-color;
+  border: none;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  border-radius: 5px;
+  @include media(pc) {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    display: inline-block;
+    @include font-size(30);
+    @include width(280);
+    @include padding_vw(30, 10, 30, 10);
+    text-align: center;
+  }
+}
+.price-total {
+  border: 1px solid #000;
+  display: flex;
+  align-items: center;
+  @include media(pc) {
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+.price-total_text {
+  @include media(pc) {
+    font-size: 16px;
+    padding: 10px;
+    border-right: 1px solid #000;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    @include padding_vw(30, 10, 30, 10);
+    border-right: calc(1 / 770 * 100vw) solid #000;
+    @include font-size(30);
+  }
+}
+.price-total_value {
+  @include media(pc) {
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    @include padding_vw(10, 10, 10, 10);
+    @include font-size(30);
+  }
+}
+
+.cart-product_info_btn {
+  @include next-color;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+  @include media(pc) {
+    margin-top: 50px;
+    padding: 10px;
+    font-size: 18px;
+    max-width: 200px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    margin-top: calc(200 / 770 * 100vw);
+    @include font-size(45);
+    @include width(500);
+    @include padding_vw(30, 10, 30, 10);
+    text-align: center;
+  }
+}
+
+//注文(orders)
+/*----------------------------------/customers/orders/new（注文入力画面）------------------------------*/
+.cart-product_form_title {
+  display: block;
+  @include media(pc) {
+    font-size: 22px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    font-size: calc(45 / 770 * 100vw);
+    margin-top: calc(50 / 770 * 100vw);
+    margin-bottom: calc(50 / 770 * 100vw);
+  }
+}
+
+.cart-product_payment_contents {
+  @include media(pc) {
+    label {
+      font-size: 16px;
+      margin-top: 30px;
+      margin-bottom: 20px;
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    label {
+      font-size: calc(35 / 770 * 100vw);
+      margin-top: calc(5 / 770 * 100vw);
+      margin-bottom: calc(5 / 770 * 100vw);
+      margin-right: calc(20 / 770 * 100vw);
+    }
+  }
+}
+
+.cart-product_form_address {
+  display: block;
+  @include media(pc) {
+    margin-top: 30px;
+    margin-bottom: 40px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    font-size: calc(30 / 770 * 100vw);
+    line-height: calc(60 / 770 * 100vw);
+  }
+}
+.cart-product_form_address_title {
+  @include media(pc) {
+    display: block;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    font-size: calc(35 / 770 * 100vw);
+  }
+}
+
+.cart-product_form_address_contents {
+  display: block;
+  @include media(pc) {
+    margin-left: 25px;
+    margin-top: 15px;
+    margin-bottom: 40px;
+    line-height: 1.8;
+    select {
+      width: 70%;
+    }
+    input {
+      width: 100%;
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    margin-left: calc(30 / 770 * 100vw);
+    margin-top: calc(30 / 770 * 100vw);
+    margin-bottom: calc(60 / 770 * 100vw);
+    line-height: calc(60 / 770 * 100vw);
+    select {
+      width: 100%;
+    }
+    input {
+      width: 100%;
+    }
+  }
+}
+.cart-product_form_address_contents_table {
+  text-align: left;
+
+  th {
+  }
+  td {
+    padding: 10px;
+  }
+  @include media(pc) {
+    width: 70%;
+    th {
+      padding: 10px;
+    }
+    td {
+      padding: 10px;
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    tr {
+      display: block;
+    }
+    th {
+      display: block;
+      @include font-size(30);
+      @include padding_vw(10, 10, 10, 10);
+      width: 100%;
+    }
+    td {
+      @include font-size(30);
+      @include padding_vw(5, 10, 15, 10);
+      width: calc(770 / 770 * 100vw);
+    }
+  }
+}
+
+.cart-product_form_btn {
+  @include next-color;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  border-radius: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  @include media(pc) {
+    margin-top: 80px;
+    padding: 20px;
+    font-size: 14px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    margin-top: calc(200 / 770 * 100vw);
+    @include font-size(35);
+    @include padding_vw(20, 25, 20, 25);
+    @include width(500);
+  }
+}
+
+/*----------------------------------/customers/orders/check(確認画面)----------------------------------*/
+
+.order_check_other {
+  @include media(pc) {
+    max-width: 1100px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.8;
+    table {
+      width: 70%;
+    }
+    tr {
+      display: block;
+    }
+    th {
+      font-size: 16px;
+      padding: 10px;
+      width: 10%;
+    }
+    td {
+      font-size: 16px;
+      padding: 10px;
+      width: 20%;
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    @include font-size(24);
+    margin-top: calc(100 / 770 * 100vw);
+    tr {
+      display: block;
+    }
+    th {
+      display: block;
+      @include font-size(35);
+      @include padding_vw(30, 10, 30, 10);
+      width: 100%;
+    }
+    td {
+      display: block;
+      @include font-size(30);
+      @include padding_vw(10, 10, 30, 10);
+      line-height: calc(60 / 770 * 100vw);
+      margin-left: calc(20 / 770 * 100vw);
+    }
+  }
+}
+
+.order_check_btn {
+  @include next-color;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+  @include media(pc) {
+    margin-top: 50px;
+    padding: 10px;
+    font-size: 18px;
+    max-width: 200px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    margin-top: calc(200 / 770 * 100vw);
+    @include font-size(35);
+    @include padding_vw(20, 25, 20, 25);
+    @include width(500);
+  }
+}
+/*----------------------------------/customers/orders（注文履歴一覧）----------------------------------*/
+
+.customer-order_table {
+  border: 1px solid #000;
+  margin-left: auto;
+  margin-right: auto;
+  @include media(pc) {
+    max-width: 1000px;
+    width: 100%;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    width: calc(680 / 770 * 100vw);
+    margin-top: calc(80 / 770 * 100vw);
+  }
+}
+.customer-order_table_row {
+  text-align: left;
+  @include media(pc) {
+    border-bottom: 1px solid #000;
+    :nth-child(1) {
+      width: 5%;
+    }
+    :nth-child(2) {
+      width: 25%;
+    }
+    :nth-child(3) {
+      width: 27%;
+    }
+    :nth-child(4) {
+      width: 10%;
+    }
+    :nth-child(5) {
+      width: 17%;
+    }
+    :nth-child(6) {
+      width: 10%;
+    }
+    th {
+      font-weight: bold;
+      background-color: #eee;
+      padding: 10px;
+      line-height: 1.7;
+    }
+    td {
+      font-size: 12px;
+      padding: 10px;
+      line-height: 1.7;
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    :nth-child(1) {
+      @include width(80);
+    }
+    :nth-child(2) {
+      @include width(150);
+    }
+    :nth-child(3) {
+      @include width(120);
+    }
+    :nth-child(4) {
+      @include width(90);
+    }
+    :nth-child(5) {
+      @include width(100);
+    }
+    :nth-child(6) {
+      @include width(60);
+    }
+    th {
+      @include font-size(20);
+      @include padding_vw(10, 10, 10, 10);
+      border: calc(1 / 770 * 100vw) solid #000;
+      line-height: calc(60 / 770 * 100vw);
+    }
+    td {
+      @include font-size(16);
+      @include padding_vw(15, 20, 15, 15);
+      border: calc(1 / 770 * 100vw) solid #000;
+      line-height: calc(50 / 770 * 100vw);
+      width: 40%;
+    }
+  }
+}
+
+/*----------------------------------/customers/orders/:id（注文詳細）----------------------------------*/
+
+.m-page_title {
+  margin-left: auto;
+  margin-right: auto;
+  @include media(pc) {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1100px;
+    width: 100%;
+    font-size: 24px;
+    margin-bottom: 40px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    @include width(600);
+    @include font-size(55);
+    margin-bottom: calc(100 / 770 * 100vw);
+  }
+}
+
+.order-table_flex {
+  @include media(pc) {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+    max-width: 1100px;
+    width: 100%;
+    margin-bottom: 40px;
+  }
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+
+.order-table_column {
+  @include media(pc) {
+    width: 100%;
+    margin-right: 15px;
+    margin-left: 15px;
+  }
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+
+.order-table {
+  margin-left: auto;
+  margin-right: auto;
+  @include media(pc) {
+    max-width: 1100px;
+    width: 100%;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    @include width(600);
+  }
+}
+.order-table_column_price {
+  @include media(pc) {
+    width: 70%;
+    margin-right: 15px;
+    margin-left: 15px;
+    th {
+    }
+    td {
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    th {
+      @include font-size(18);
+      @include padding_vw(10, 10, 10, 10);
+    }
+    td {
+      @include font-size(18);
+      @include padding_vw(15, 10, 15, 10);
+    }
+  }
+}
+
+.orde-table_row {
+  text-align: left;
+  border-bottom: 1px solid #000;
+  th {
+    font-weight: bold;
+    background-color: #eee;
+    width: 35%;
+  }
+  td {
+    padding: 10px;
+  }
+  @include media(pc) {
+    line-height: 1.7;
+    th {
+      padding: 10px;
+    }
+    td {
+      padding: 10px;
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    th {
+      @include font-size(18);
+      @include padding_vw(10, 10, 10, 10);
+    }
+    td {
+      @include font-size(18);
+      @include padding_vw(15, 10, 15, 10);
+    }
+  }
+}
+
+.order-table_title {
+  @include media(pc) {
+    margin-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+    max-width: 1100px;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    font-size: calc(22 / 770 * 100vw);
+  }
+}
+
+.order-table {
+  margin-left: auto;
+  margin-right: auto;
+  @include media(pc) {
+    max-width: 1100px;
+    width: 100%;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    @include width(600);
+  }
+}
+
+.order-table_product {
+  margin-left: auto;
+  margin-right: auto;
+  @include media(pc) {
+    max-width: 1100px;
+    width: 100%;
+    th {
+    }
+    td {
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    @include width(600);
+    th {
+      @include font-size(18);
+      @include padding_vw(10, 10, 10, 10);
+    }
+    td {
+      @include font-size(18);
+      @include padding_vw(15, 10, 15, 10);
+    }
+  }
+}
+
+/*---------------------------------/customers/orders/rend------------------------------------------------*/
+
+.order_thanks_message {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  @include media(pc) {
+    font-size: 40px;
+    height: calc(100vh - 450px);
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    font-size: calc(45 / 770 * 100vw);
+    height: calc(
+      100vh - 49vw
+    ); //l-headerのheightとl-mainのmargin-top計算後のの合計//
+  }
+}
+
+//宛先(deliveries)
+/*----------------------------------/deliveries/index（宛先一覧画面）---------------------------*/
+.delivery-title {
+  font-weight: bold;
+  @include media(pc) {
+    font-size: 24px;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    display: inline-block;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    display: inline-block;
+    font-size: calc(60 / 770 * 100vw);
+    width: calc(600 / 770 * 100vw);
+    margin: auto;
+    margin-bottom: calc(80 / 770 * 100vw);
+    margin-right: calc(20 / 770 * 100vw);
+  }
+}
+.delivery-index_form_table {
+  tr {
+  }
+  th {
+  }
+  td {
+  }
+  @include media(pc) {
+    max-width: 1100px;
+    width: 100%;
+    margin-right: auto;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    tr {
+      display: flex;
+      align-items: center;
+    }
+    th {
+      font-size: 14px;
+      padding: 10px;
+      width: 30%;
+      min-width: 160px;
+      text-align: left;
+    }
+    td {
+      font-size: 16px;
+      padding: 10px;
+      width: 40%;
+      input {
+        max-width: 300px;
+        width: 100%;
+        font-size: inherit;
+      }
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    @include font-size(24);
+    @include padding_vw(20, 25, 20, 25);
+    input {
+      width: 48%;
+    }
+    tr {
+      display: block;
+    }
+    th {
+      display: block;
+      @include font-size(45);
+      @include padding_vw(10, 10, 20, 10);
+      width: 100%;
+      line-height: calc(60 / 770 * 100vw);
+    }
+    td {
+      @include font-size(35);
+      @include padding_vw(5, 10, 80, 10);
+      width: calc(770 / 770 * 100vw);
+      line-height: calc(60 / 770 * 100vw);
+    }
+  }
+}
+.delivery-index_btn {
+  @include next-color;
+  @include btn-small;
+  @include media(pc) {
+    width: 120px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+
+.delivery-index_list_table {
+  text-align: left;
+  @include media(pc) {
+    margin-top: 50px;
+    max-width: 950px;
+    width: 100%;
+    font-size: 14px;
+    tr {
+      border-bottom: 1px solid #000;
+      :nth-child(1) {
+        width: 5%;
+      }
+      :nth-child(2) {
+        width: 50%;
+      }
+      :nth-child(3) {
+        width: 15%;
+      }
+      :nth-child(4) {
+        width: 100%;
+      }
+    }
+    th {
+      font-weight: bold;
+      background-color: #eee;
+      padding: 15px;
+    }
+    td {
+      padding: 15px;
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    margin-top: calc(80 / 770 * 100vw);
+    tr{
+    :nth-child(1) {
+      width: calc(150 / 770 * 100vw);
+    }
+    :nth-child(2) {
+      width: calc(300 / 770 * 100vw);
+    }
+    :nth-child(3) {
+      width: calc(150 / 770 * 100vw);
+    }
+    :nth-child(4) {
+      width: calc(140 / 770 * 100vw);
+    }
+  }
+    th {
+      @include font-size(28);
+      @include padding_vw(10, 10, 10, 10);
+      border: calc(1 / 770 * 100vw) solid #000;
+      line-height: calc(60 / 770 * 100vw);
+    }
+    td {
+      @include font-size(24);
+      @include padding_vw(10, 15, 10, 15);
+      border: calc(1 / 770 * 100vw) solid #000;
+      line-height: calc(60 / 770 * 100vw);
+      width: 40%;
+    }
+  }
+}
+
+.delivery-index_btns {
+  @include media(pc) {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+}
+.delivery-index_edit_btn {
+  @include next-color;
+  @include btn-small;
+  @include media(pc) {
+    width: 70px !important;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    width: calc(100 / 770 * 100vw) !important;
+  }
+}
+.delivery-index_destroy_btn {
+  @include destroy-color();
+  @include btn-small;
+  @include media(pc) {
+    width: 70px !important;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    margin-top: calc(50 / 770 * 100vw);
+    width: calc(100 / 770 * 100vw) !important;
+  }
+}
+
+/*----------------------------------/deliveries/:id/edit（宛先編集画面の表示）-------------------------*/
+
+//管理者(admins)
+
+/*---------------------------------/admins/sign_in（管理者ログイン）---------------------------------------*/
+
+/*---------------------------------/admins/genres（ジャンル一覧画面）---------------------------------------*/
+
+/*---------------------------------/admins/genres/:id/edit（ジャンル編集画面）---------------------------------------*/
+
+/*---------------------------------/admins/products（商品一覧画面[管理者用]）---------------------------------------*/
+
+/*---------------------------------/admins/products/:id（商品詳細画面[管理者用]）---------------------------------------*/
+
+/*---------------------------------/admins/products/:id/edit（商品編集画面[管理者用]）------------------------------*/
+
+/*--------------------------------/admins/products（新規商品登録画面[管理者用]）---------------------------------------*/
+
+/*-------------------------------/customers（顧客一覧画面[管理者用]）---------------------------------------*/
+
+/*-------------------------------/customers/:id（顧客詳細画面[管理者用]）---------------------------------------*/
+
+/*-------------------------------/customers/:id/edit（顧客編集画面[管理者用]）---------------------------------------*/
+
+/*------------------------/admins/orders（注文履歴一覧画面（管理者トップページ））-------------------------*/
+
+.admin-orders_table {
+  margin-left: auto;
+  margin-right: auto;
+  @include media(pc) {
+    max-width: 1100px;
+    width: 100%;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    @include width(600);
+  }
+}
+.admin-orders_table_row {
+  text-align: left;
+  border-bottom: 1px solid #000;
+  th {
+    font-weight: bold;
+    background-color: #eee;
+  }
+  td {
+    padding: 10px;
+  }
+  @include media(pc) {
+    th {
+      padding: 10px;
+    }
+    td {
+      padding: 10px;
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    th {
+      @include font-size(18);
+      @include padding_vw(10, 10, 10, 10);
+    }
+    td {
+      @include font-size(18);
+      @include padding_vw(15, 10, 15, 10);
+    }
+  }
+}
+
+/*-------------------------------/admins/orders/:id（注文履歴一覧画面（個人ごと））------------------------*/
+.admin-orders_show_table {
+  margin-right: auto;
+  margin-left: auto;
+  @include media(pc) {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1100px;
+    width: 100%;
+    margin-bottom: 40px;
+    tbody {
+      width: 100%;
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    width: 100%;
+  }
+}
+.admin-orders_show_table_row {
+  text-align: left;
+  border-bottom: 1px solid #000;
+  th {
+    font-weight: bold;
+    background-color: #eee;
+  }
+  td {
+  }
+  @include media(pc) {
+    th {
+      width: 30%;
+      padding: 10px;
+    }
+    td {
+      width: 100%;
+      line-height: 1.5;
+      padding: 10px;
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    th {
+      @include width(200);
+      @include font-size(18);
+      @include padding_vw(10, 10, 10, 10);
+    }
+    td {
+      line-height: calc(30 / 770 * 100vw);
+      @include width(570);
+      @include font-size(18);
+      @include padding_vw(15, 10, 15, 10);
+    }
+  }
+}
+.admin-orders_show_column {
+  @include media(pc) {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 100px;
+    max-width: 1100px;
+    width: 100%;
+    margin-bottom: 40px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+
+.admin-orders_show_product_table {
+  tr:nth-of-type(1) {
+    background-color: #eee;
+  }
+  @include media(pc) {
+    max-width: 650px;
+    min-width: 400px;
+    width: 100%;
+    margin-right: 40px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+    margin-top: calc(50 / 770 * 100vw);
+  }
+}
+
+.admin-orders_show_product_table_row {
+  text-align: left;
+  border-bottom: 1px solid #000;
+  th {
+    font-weight: bold;
+    background-color: #eee;
+    vertical-align: middle;
+  }
+  td {
+    padding: 10px;
+    vertical-align: middle;
+  }
+  @include media(pc) {
+    th {
+      padding: 10px;
+      font-size: 13px;
+    }
+    td {
+      padding: 10px;
+      font-size: 12px;
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    th {
+      @include font-size(30);
+      @include padding_vw(30, 10, 30, 10);
+      line-height: calc(60 / 770 * 100vw);
+    }
+    td {
+      @include font-size(25);
+      @include padding_vw(30, 10, 30, 10);
+    }
+  }
+}
+
+.admin-orders_show_price_table {
+  @include media(pc) {
+    max-width: 250px;
+    width: 100%;
+    line-height: 1.5;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    margin-right: auto;
+    width: 100%;
+    margin-top: calc(100 / 770 * 100vw);
+  }
+}
+.admin-orders_show_price_table_row {
+  border-bottom: 1px solid #000;
+  th {
+    text-align: left;
+    font-weight: bold;
+    background-color: #eee;
+  }
+  td {
+    padding: 10px;
+  }
+  @include media(pc) {
+    th {
+      padding: 10px;
+      font-size: 15px;
+    }
+    td {
+      padding: 10px;
+      font-size: 15px;
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    th {
+      @include font-size(30);
+      @include padding_vw(30, 10, 30, 10);
+      line-height: calc(60 / 770 * 100vw);
+    }
+    td {
+      @include font-size(30);
+      @include padding_vw(30, 10, 30, 10);
+      line-height: calc(60 / 770 * 100vw);
+    }
+  }
+}
+
+/*-------------------------------/admins/orders/:id/edit（注文履歴詳細画面[管理者用]）--------------------------*/
+
+.order-edit_info {
+  @include media(pc) {
+    margin-bottom: 50px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+.order-edit_info_row {
+  @include media(pc) {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+.order-edit_info_row_title {
+  font-weight: bold;
+  display: inline-block;
+  @include media(pc) {
+    max-width: 200px;
+    width: 100%;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+.order-edit_info_row_text {
+  @include media(pc) {
+    display: inline-block;
+    padding: 5px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+.update-btn {
+  @include edit-color;
+  border: none;
+  color: #fff;
+  @include media(pc) {
+    margin-left: 20px;
+    padding: 3px 6px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+
+.order-edit_table {
+  margin-right: auto;
+  @include media(pc) {
+    max-width: 700px;
+    width: 100%;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    @include width(600);
+  }
+}
+/*------------other--------------*/
+.top-contact_btn {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 18px;
+  border-radius: 10px;
+  width: 300px;
+  height: 60px;
+  font-weight: bold;
+  border: 2px solid #333333;
+  transition: 0.3s;
+  box-shadow: 5px 5px 0px 0px rgba(51, 51, 51, 1);
+  &:hover {
+    box-shadow: 0 0 #333;
+    color: #fff;
+    background-color: #558b2f;
+  }
+
+  background-color: #496da9;
+  @include media(pc) {
+    margin-left: 20px;
+    padding: 3px 6px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+
+.top-contacts_btn {
+  width: 200px;
+  text-align: center;
+  color: rgb(51, 51, 51);
+  font-size: 16px;
+  font-weight: bold;
+  background: transparent;
+  padding: 18px 30px;
+  border: 3px solid #333;
+  border-radius: 6px;
+  position: relative;
+  z-index: 1;
+  transition: 0.3s;
+
+  &:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background: rgb(116, 82, 31);
+    transform-origin: 100% 50%;
+    transform: scaleX(0);
+    transition: transform ease 0.3s;
+  }
+  &:hover {
+    color: #fff;
+  }
+  &:hover::before {
+    transform-origin: 0% 50%;
+    transform: scaleX(1);
+  }
+}
+
+.pagination {
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  @include media(pc) {
+    margin-top: 50px;
+    span {
+      margin-left: 5px;
+      margin-right: 5px;
+      font-size: 18px;
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    margin-top: calc(150 / 770 * 100vw);
+    @include width(600);
+    span {
+      font-size: calc(30 / 770 * 100vw);
+      margin-left: calc(10 / 770 * 100vw);
+      margin-right: calc(10 / 770 * 100vw);
+    }
+  }
+}

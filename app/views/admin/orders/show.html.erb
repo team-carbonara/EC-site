@@ -22,7 +22,7 @@
           <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
           <td><%= order.product.name %></td>
           <td><%= order.quantity %></td>
-          <td><%= order.product.add_tax_price %></td>
+          <td><%= order.product.add_tax_price.to_s(:delimited)  %></td>
           <td>
             <%= form_with model: order ,url: admin_order_product_path(order.id) ,method: :patch ,local: true  do |f| %>
               <%= f.select :production_status , OrderProduct.production_statuses.keys.map %>
@@ -36,11 +36,11 @@
     <table class="admin-orders_show_price_table">
       <tr class="admin-orders_show_price_table_row">
         <th>商品合計</th>
-        <td><%= @orders.total_price %></td>
+        <td><%= @orders.total_price.to_s(:delimited)  %></td>
       </tr>
       <tr class="admin-orders_show_price_table_row">
         <th>送料</th>
-        <td><%= @orders.postage %></td>
+        <td><%= @orders.postage.to_s(:delimited)  %></td>
       </tr>
       <tr class="admin-orders_show_price_table_row">
         <th>請求金額合計</th>
