@@ -37,6 +37,32 @@
   }
 }
 
+.top-main-text {
+    position: absolute; /* 親要素からの絶対位置 */
+    box-sizing: border-box;
+    white-space: nowrap; /* 折返しなし */
+    display: inline-block; /* 文字囲みのBOXにする */
+    color: rgba(0, 0, 0, 0.8); /* 文字色（透明度） */
+    background: rgba(255, 255, 255, 0.25); /* 背景色（透明度） */
+    top: 50%; /* 親要素からの上位置 */
+    left: 50%; /* 親要素からの左位置 */
+    transform: translate(-50%, -50%); /* 文字BOXの位置ずらし */
+    padding: 40px; /* BOX内の余白 */
+    line-height: 1.5;
+    font-family: 'Yusei Magic', sans-serif;
+
+  @include media(pc) {
+    font-size: 35px;
+  }
+  @include media(sp) {
+    padding-top: calc(15 / 770 * 100vw);
+    padding-bottom: calc(15 / 770 * 100vw);
+    width: calc(700 / 770 * 100vw);
+    background: rgba(255, 255, 255, 0.5); /* 背景色（透明度） */
+    font-size: calc(30 / 770 * 100vw);
+  }
+}
+
 .to_index {
   margin-right : auto;
   @include media(pc) {
