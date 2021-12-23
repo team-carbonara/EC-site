@@ -12,9 +12,15 @@
 
 
 <div class="l-main_container flex">
-  <aside class="m-sidebar">
-    <span class=“m-sidebar_title”>ジャンル検索</span>
+  <aside>
+    <%= form_with url: search_path, method: :get, local: true do |f| %>
+      <%= f.text_field :keyword, placeholder: "search",class: "l-search " %>
+      <% f.submit %>
+    <% end %>
+    <div  class="m-sidebar">
+      <span class="m-sidebar_title">ジャンル検索</span>
       <%= render 'public/products/genre_search' %>
+    </div>
   </aside>
   <article class="m-article">
     <h2 class="top-title"><span class="new-blink">New</span>新着商品</h2>
