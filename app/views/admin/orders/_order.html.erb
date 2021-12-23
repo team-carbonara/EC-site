@@ -17,11 +17,11 @@
   <td><%= orders.payment_method %></td>
 </tr>
 <tr class="admin-orders_show_table_row">
-  <th>注文ステータス</th>
+  <th>注文<br class="">ステータス</th>
   <td>
     <%= form_with model: orders ,url: admin_order_path(orders.id),method: :patch ,local: true  do |f| %>
       <%= f.select :status , Order.statuses.keys.map %>
-      <%= f.submit '変更', class: "cart-product_update_btn" %>
+      <%= f.submit '変更', class: "admin-orders_show_customer_table_btn" %>
     <% end %>
   </td>
 </tr>

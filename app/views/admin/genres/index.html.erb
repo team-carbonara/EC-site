@@ -1,28 +1,20 @@
 <div class="l-main_container">
-  <h3>ジャンル一覧・追加</h3>
-  <div class="row">
-    <%= form_with model: [:admin, @genre], remote: true do |f| %>
-      <div class="form-group">
-        <%= f.label :ジャンル名, class: "control-label" %>
-        <%= f.text_field :name, class: "form-control-static" %>
-        <%= f.submit '新規登録' %>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="table">
-    <table>
-      <thead>
-        <tr>
-          <th>ジャンル</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <div id="genre_list">
-          <%= render 'genre_list', genres: @genres %>
-        </div>
-      </tbody>
-    </table>
-  </div>
+  <h2 class="ganre-title">ジャンル一覧・追加</h2>
+  <table class="ganre-index_form_table">
+    <tr>
+      <%= form_with model: [:admin, @genre], remote: true do |f| %>
+        <td><%= f.label :ジャンル名 %></td>
+        <td><%= f.text_field :name %></td>
+        <td><%= f.submit '新規登録',class: "ganre-index_form_table_btn" %></td>
+      <% end %>
+    </tr>
+  </table>
+  <table class="ganre-index_list_table">
+    <tr>
+      <th>ジャンル</th>
+    </tr>
+    <div id="genre_list">
+      <%= render 'genre_list', genres: @genres %>
+    </div>
+  </table>
 </div>
