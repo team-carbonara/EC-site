@@ -1,6 +1,6 @@
 <% @genres.each do |genre| %>
   <tr>
-    <td><%= genre.name %></td>
-    <td><%= link_to '編集する', edit_admin_genre_path(genre), class: "btn btn-success" %></td>
+    <th><%= genre.name %></th>
+    <td><%= link_to '編集する', edit_admin_genre_path(genre), class: "ganre-index_list_table_btn" %></td>
   </tr>
 <% end %>
