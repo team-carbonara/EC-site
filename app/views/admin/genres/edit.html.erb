@@ -1,12 +1,12 @@
 <div class="l-main_container">
-  <h3>ジャンル編集</h3>
-  <div class="row">
+  <h2 class="admin-title">ジャンル編集</h2>
+  <table class="ganre-index_form_table">
     <%= form_with model: [:admin, @genre], local: true do |f| %>
-      <div class="form-group">
-        <%= f.label :ジャンル名, class: "control-label" %>
-        <%= f.text_field :name, class: "form-control-static" %>
-        <%= f.submit '変更を保存' %>
-      </div>
+    <tr>
+      <td><%= f.label :ジャンル名 %></td>
+      <td><%= f.text_field :name %></td>
+      <td><%= f.submit '変更を保存',class: "ganre-edit_form_table_btn" %></td>
+    </tr>
     <% end %>
-  </div>
+  </table>
 </div>

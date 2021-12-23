@@ -874,6 +874,7 @@ button {
 
   @include media(sp) {
     padding-top: calc(120 / 770 * 100vw);
+    min-height: 94vh;
   }
 }
 
@@ -3230,7 +3231,7 @@ button {
       input {
         font-size: 18px;
       }
-  }
+    }
   }
   @include media(tb) {
   }
@@ -3262,13 +3263,13 @@ button {
     }
   }
 }
-.ganre-index_form_table_btn{
+.ganre-index_form_table_btn {
   margin-left: auto;
   margin-right: auto;
   @include next-color;
   @include btn-small;
   @include media(pc) {
-    width:110px !important;
+    width: 110px !important;
   }
 
   @include media(tb) {
@@ -3281,69 +3282,69 @@ button {
 }
 
 .ganre-index_list_table {
-  @include media(pc){
-  width: 500px;
-  margin-right: auto;
-  margin-bottom: 50px;
-  tr {
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    margin: auto;
-    border: 1px solid #000;
-    &:nth-child(2) {
+  @include media(pc) {
+    width: 500px;
+    margin-right: auto;
+    margin-bottom: 50px;
+    tr {
+      display: flex;
+      justify-content: left;
+      align-items: center;
+      margin: auto;
+      border: 1px solid #000;
+      &:nth-child(2) {
+        input {
+          max-width: 400px;
+          width: 100%;
+        }
+      }
+    }
+    th {
+      width: 250px;
+      text-align: left;
+      font-size: 18px;
+      padding: 15px 15px 15px 15px;
+    }
+    td {
+      width: 100%;
+      max-width: 300px;
+      padding: 15px 15px 15px 15px;
       input {
-        max-width: 400px;
-        width: 100%;
+        font-size: 18px;
       }
     }
   }
-  th {
-    width: 250px;
-    text-align: left;
-    font-size: 18px;
-    padding: 15px 15px 15px 15px;
+
+  @include media(tb) {
   }
-  td {
-    width: 100%;
-    max-width: 300px;
-    padding: 15px 15px 15px 15px;
-    input {
-      font-size: 18px;
+
+  @include media(sp) {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: calc(100 / 770 * 100vw);
+    width: calc(600 / 770 * 100vw);
+    tr {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: calc(50 / 770 * 100vw);
     }
-}
-}
-
-@include media(tb) {
-}
-
-@include media(sp) {
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: calc(100 / 770 * 100vw);
-  width: calc(600 / 770 * 100vw);
-  tr {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: calc(50 / 770 * 100vw);
-  }
-  th {
-    font-size: calc(40 / 770 * 100vw);
-    text-align: left;
-    @include padding_vw(50, 5, 50, 5);
-  }
-  td {
-    input {
+    th {
       font-size: calc(40 / 770 * 100vw);
-      margin-left: auto;
-      margin-right: auto;
-      width: calc(600 / 770 * 100vw);
+      text-align: left;
+      @include padding_vw(50, 5, 50, 5);
+    }
+    td {
+      input {
+        font-size: calc(40 / 770 * 100vw);
+        margin-left: auto;
+        margin-right: auto;
+        width: calc(600 / 770 * 100vw);
+      }
     }
   }
 }
-}
-.ganre-index_list_table_btn{
+.ganre-index_list_table_btn {
   margin-left: auto;
   margin-right: auto;
   @include edit-color;
@@ -3356,17 +3357,220 @@ button {
   }
 
   @include media(sp) {
-
     width: calc(200 / 770 * 100vw) !important;
   }
 }
 
-
 /*---------------------------------/admins/genres/:id/edit（ジャンル編集画面）---------------------------------------*/
+
+.ganre-edit_form_table_btn{
+  @include btn-small;
+  @include edit-color;
+  @include media(pc) {
+    margin-left: 50px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    margin-top: calc(200 / 770 * 100vw);
+  }
+}
 
 /*---------------------------------/admins/products（商品一覧画面[管理者用]）---------------------------------------*/
 
+.admin-product_plus {
+  animation: 5s rotation infinite linear;
+  align-items: center;
+  background-color: #eee;
+  border-radius: 50%;
+  &::after {
+    display: flex;
+    content: "＋";
+    color: darkred;
+  }
+  @include media(pc) {
+    display: flex;
+    font-size: 30px;
+    padding: 10px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    display: inline-block;
+    margin-top: calc(100 / 770 * 100vw);
+    font-size: calc(40 / 770 * 100vw);
+    @include padding_vw(20, 20, 20, 20);
+  }
+}
+@keyframes rotation {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.admin-product_table {
+  margin-left: auto;
+  margin-right: auto;
+  tr {
+    text-align: left;
+    border-bottom: 1px solid #000;
+    line-height: 1.5;
+  }
+  th {
+    font-weight: bold;
+    background-color: #eee;
+    font-size: 14px;
+  }
+  td {
+    padding: 10px;
+    font-size: 15px;
+  }
+  @include media(pc) {
+    max-width: 1100px;
+    width: 100%;
+    th {
+      padding: 25px;
+    }
+    td {
+      padding: 25px;
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    @include width(600);
+    margin-bottom: calc(100 / 770 * 100vw);
+    th {
+      @include font-size(24);
+      @include padding_vw(30, 7, 30, 7);
+      line-height: calc(60 / 770 * 100vw);
+    }
+    td {
+      @include font-size(22);
+      @include padding_vw(30, 7, 30, 7);
+      line-height: calc(60 / 770 * 100vw);
+    }
+  }
+}
+
 /*---------------------------------/admins/products/:id（商品詳細画面[管理者用]）---------------------------------------*/
+
+.admin-product_show_container {
+  @include media(pc) {
+    display: flex;
+    justify-content: center;
+    img {
+      max-width: 280px;
+      height: auto;
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    img {
+      display: block;
+      width: calc(500 / 770 * 100vw);
+      margin: auto;
+    }
+  }
+}
+.admin-product_show_product {
+  @include media(pc) {
+    margin-left: 50px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+  }
+}
+
+.admin-product_show_product_table {
+  @include media(pc) {
+    tr {
+      display: flex;
+
+    }
+    th {
+      display: flex;
+      padding: 10px;
+      width: 200px;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    td {
+      display: flex;
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      min-width: 180px;
+      max-width: 500px;
+      line-height: 1.5;
+    }
+  }
+
+  @include media(tb) {
+    tr {
+    }
+    th {
+    }
+    td {
+    }
+  }
+
+  @include media(sp) {
+    margin-top: calc(100 / 770 * 100vw);
+    tr {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      margin-bottom: calc(50 / 770 * 100vw)
+    }
+    th {
+      @include padding_vw(20, 10, 20, 10);
+      font-size: calc(40 / 770 * 100vw);
+      line-height: calc(60 / 770 * 100vw)
+    }
+    td {
+      @include padding_vw(20, 10, 20, 10);
+      font-size: calc(35 / 770 * 100vw);
+      line-height: calc(60 / 770 * 100vw)
+    }
+  }
+}
+
+.admin-product_show_product_btn {
+  margin-right: auto;
+  @include edit-color;
+  @include btn-small;
+  @include media(pc) {
+    margin-top: 70px;
+    width: 110px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    margin-top: calc(50 / 770 * 100vw);
+    display: block;
+    margin-left: auto;
+    width: calc(600 / 770 * 100vw) !important;
+  }
+}
 
 /*---------------------------------/admins/products/:id/edit（商品編集画面[管理者用]）------------------------------*/
 
@@ -3374,9 +3578,26 @@ button {
 
 /*-------------------------------/customers（顧客一覧画面[管理者用]）---------------------------------------*/
 
+.admin-product_table_name{
+  @include media(pc) {
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    width: calc(110 / 770 * 100vw);
+  }
+}
+
 /*-------------------------------/customers/:id（顧客詳細画面[管理者用]）---------------------------------------*/
 
 /*-------------------------------/customers/:id/edit（顧客編集画面[管理者用]）---------------------------------------*/
+
+.admin-customer_edit_btn{
+  @include edit-color;
+  @include btn-next;
+}
 
 /*------------------------/admins/orders（注文履歴一覧画面（管理者トップページ））-------------------------*/
 
@@ -3956,5 +4177,28 @@ button {
       margin-left: calc(10 / 770 * 100vw);
       margin-right: calc(10 / 770 * 100vw);
     }
+  }
+}
+
+.admin-title {
+  margin-left: auto;
+  margin-right: auto;
+  @include media(pc) {
+    display: flex;
+    justify-content: start;
+    max-width: 1100px;
+    width: 100%;
+    font-size: 24px;
+    margin-bottom: 40px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    @include width(600);
+    @include font-size(55);
+    margin-bottom: calc(100 / 770 * 100vw);
+    line-height: calc(80 / 770 * 100vw);
   }
 }

@@ -1,11 +1,9 @@
- <div class="l-main_container">
-  <h3>商品詳細</h3>
-  <div class="row">
-    <div class="col-md-4">
-      <%= attachment_image_tag(@product, :image, size: "300x217") %>
-    </div>
-    <div class="col-md-8">
-      <table class="table table-borderless admin_product_detail">
+<div class="l-main_container">
+  <h2 class="admin-title">商品詳細</h2>
+  <div class="admin-product_show_container">
+    <div class=""><%= attachment_image_tag(@product, :image, size: "300x217") %></div>
+    <div class="admin-product_show_product">
+      <table class="admin-product_show_product_table">
         <tr>
           <th>商品名</th>
           <td><%= @product.name %></td>
@@ -19,7 +17,7 @@
           <td><%= @product.genre.name %></td>
         </tr>
         <tr>
-          <th>税込価格<br>(税抜価格)</th>
+          <th>税込価格<br class="u-pc">(税抜価格)</th>
           <td><%= "#{@product.add_tax_price.to_s(:delimited, delimiter:',')} (#{@product.price.to_s(:delimited, delimiter:',')}) 円" %></td>
         </tr>
         <tr>
@@ -33,9 +31,7 @@
           </td>
         </tr>
       </table>
-      <div class="mx-auto col-md-8 mt-3">
-        <%= link_to '編集する', edit_admin_product_path(@product), class: "btn btn-success btn-lg" %>
-      </div>
+      <%= link_to '編集する', edit_admin_product_path(@product), class: "admin-product_show_product_btn" %>
     </div>
   </div>
 </div>
