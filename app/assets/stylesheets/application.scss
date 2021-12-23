@@ -215,6 +215,7 @@
 a:hover {
   opacity: 0.7;
   transition: 0.3s;
+  color: #eee;
 }
 
 .u-pc {
@@ -805,15 +806,16 @@ button {
 }
 
 .l-footer_copy {
-  font-size: 30px;
   font-family: "Sacramento", cursive;
   @include media(pc) {
+    font-size: 30px;
   }
 
   @include media(tb) {
   }
 
   @include media(sp) {
+    font-size: calc(50 / 770 * 100vw);
   }
 }
 .top-btn {
@@ -931,6 +933,11 @@ button {
   }
 
   @include media(sp) {
+    margin-top: calc(150 / 770 * 100vw);
+    margin-bottom: calc(100 / 770 * 100vw);
+    span {
+      font-size: calc(45 / 770 * 100vw);
+    }
   }
 }
 
@@ -942,6 +949,7 @@ button {
   }
 
   @include media(sp) {
+    margin-top: calc(80 / 770 * 100vw);
   }
 }
 .m-sidebar_list_item {
@@ -954,6 +962,8 @@ button {
   }
 
   @include media(sp) {
+    margin-left: calc(15 / 770 * 100vw);
+    margin-top: calc(45 / 770 * 100vw);
   }
 }
 .m-sidebar_list_item_anchor {
@@ -976,6 +986,11 @@ button {
   }
 
   @include media(sp) {
+    font-size: calc(35 / 770 * 100vw);
+    &:hover {
+      transition-duration: 0.3s;
+      color: darkred;
+    }
   }
 }
 
@@ -1230,7 +1245,7 @@ button {
   }
 }
 .customer-edit_btn {
-  @include edit-color;
+  @include next-color();
   border: none;
   display: flex;
   align-items: center;
@@ -2065,7 +2080,7 @@ button {
 }
 
 .cart-product_update_btn {
-  background-color: #2d8a66;
+  @include edit-color;
   border-radius: 5px;
   color: #fff;
   @include media(pc) {
@@ -2288,7 +2303,7 @@ button {
     margin-top: 50px;
     padding: 10px;
     font-size: 18px;
-    max-width: 200px;
+    width: 300px;
   }
 
   @include media(tb) {
@@ -2457,6 +2472,7 @@ button {
     margin-top: 80px;
     padding: 20px;
     font-size: 14px;
+    width: 300px;
   }
 
   @include media(tb) {
@@ -2535,7 +2551,7 @@ button {
     margin-top: 50px;
     padding: 10px;
     font-size: 18px;
-    max-width: 200px;
+    width: 300px;
   }
 
   @include media(tb) {
@@ -3363,7 +3379,7 @@ button {
 
 /*---------------------------------/admins/genres/:id/edit（ジャンル編集画面）---------------------------------------*/
 
-.ganre-edit_form_table_btn{
+.ganre-edit_form_table_btn {
   @include btn-small;
   @include edit-color;
   @include media(pc) {
@@ -3393,7 +3409,7 @@ button {
   @include media(pc) {
     display: flex;
     font-size: 30px;
-    padding: 10px;
+    padding: 20px;
   }
 
   @include media(tb) {
@@ -3502,7 +3518,6 @@ button {
   @include media(pc) {
     tr {
       display: flex;
-
     }
     th {
       display: flex;
@@ -3537,17 +3552,17 @@ button {
       display: flex;
       flex-direction: column;
       text-align: left;
-      margin-bottom: calc(50 / 770 * 100vw)
+      margin-bottom: calc(50 / 770 * 100vw);
     }
     th {
       @include padding_vw(20, 10, 20, 10);
       font-size: calc(40 / 770 * 100vw);
-      line-height: calc(60 / 770 * 100vw)
+      line-height: calc(60 / 770 * 100vw);
     }
     td {
       @include padding_vw(20, 10, 20, 10);
       font-size: calc(35 / 770 * 100vw);
-      line-height: calc(60 / 770 * 100vw)
+      line-height: calc(60 / 770 * 100vw);
     }
   }
 }
@@ -3576,9 +3591,120 @@ button {
 
 /*--------------------------------/admins/products（新規商品登録画面[管理者用]）---------------------------------------*/
 
+.admin-product_new_table {
+  margin-left: auto;
+  margin-right: auto;
+  tr {
+    text-align: left;
+    line-height: 1.5;
+  }
+  th {
+    font-weight: bold;
+    font-size: 14px;
+  }
+  td {
+    padding: 10px;
+    font-size: 15px;
+  }
+  @include media(pc) {
+    max-width: 1100px;
+    width: 100%;
+    tr {
+      display: flex;
+      margin: auto;
+      margin: auto;
+      width: 650px;
+    }
+    th {
+      vertical-align: baseline;
+      padding: 20px;
+      width: 200px;
+    }
+    td {
+      padding: 20px;
+    }
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    @include width(600);
+    tr {
+      display: flex;
+      flex-direction: column;
+      &:nth-child(6) {
+        input {
+          width: calc(20 / 770 * 100vw);
+        }
+      }
+    }
+    margin-bottom: calc(100 / 770 * 100vw);
+    th {
+      @include font-size(40);
+      @include padding_vw(30, 7, 30, 7);
+      line-height: calc(60 / 770 * 100vw);
+    }
+    td {
+      @include font-size(40);
+      @include padding_vw(30, 7, 30, 7);
+      line-height: calc(60 / 770 * 100vw);
+      input {
+        height: calc(70 / 770 * 100vw);
+        font-size: calc(40 / 770 * 100vw);
+        width: calc(600 / 770 * 100vw);
+      }
+      textarea {
+        height: calc(300 / 770 * 100vw);
+        width: calc(600 / 770 * 100vw);
+      }
+      select{
+        width: calc(600 / 770 * 100vw);
+        height: calc(70 / 770 * 100vw);
+        font-size: calc(40 / 770 * 100vw);
+      }
+    }
+  }
+}
+
+.admin-product_new_radio {
+  @include media(sp) {
+    input {
+      width: calc(20 / 770 * 100vw);
+    }
+  }
+}
+
+.admin-product_new_btn {
+  @include next-color;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+  @include media(pc) {
+    margin-top: 50px;
+    padding: 10px;
+    font-size: 18px;
+    width: 300px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    margin-top: calc(200 / 770 * 100vw);
+    @include font-size(35);
+    @include padding_vw(20, 25, 20, 25);
+    @include width(500);
+  }
+}
+
 /*-------------------------------/customers（顧客一覧画面[管理者用]）---------------------------------------*/
 
-.admin-product_table_name{
+.admin-product_table_name {
   @include media(pc) {
   }
 
@@ -3594,7 +3720,7 @@ button {
 
 /*-------------------------------/customers/:id/edit（顧客編集画面[管理者用]）---------------------------------------*/
 
-.admin-customer_edit_btn{
+.admin-customer_edit_btn {
   @include edit-color;
   @include btn-next;
 }

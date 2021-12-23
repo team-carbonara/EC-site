@@ -1,44 +1,38 @@
 <%= form_with model: [:admin, product], local: true do |f| %>
-
-  <div class="form-group">
-    <%= f.label :"商品画像", class: "col-md-3" %>
-    <%= f.attachment_field :image, class:"col-md-8" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :"商品名", class: "col-md-3" %>
-    <%= f.text_field :name, :placeholder => "商品名", size:"50", class:"col-md-8" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :"商品説明", class: "col-md-3" %>
-    <%= f.text_area :description, :placeholder => "ここに説明文を記述します", size:"35x10", class:"col-md-8" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :"ジャンル", class: "col-md-3" %>
-    <%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt => "--選択してください--", size:"35", class:"col-md-8" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :"税込価格", class: "col-md-3" %>
-    <%= f.text_field :price, :placeholder => "1000", size:"35", class:"col-md-8" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :販売ステータス, class: "col-sm-3" %>
-    <%= f.radio_button :sale_status, :true, checked: true %>
-    <%= f.label "販売中" %>
-    <%= f.radio_button :sale_status, :false %>
-    <%= f.label "販売停止中" %>
-  </div>
-  <div class="mx-auto">
-    <div class="form-action">
-      <% if @action == "new" %>
-        <%= f.submit "新規登録", class: "btn btn-success btn-lg" %>
-      <% else %>
-        <%= f.submit "変更を保存", class: "btn btn-success btn-lg" %>
-      <% end %>
-    </div>
-  </div>
-<% end %>
+  <table class="admin-product_new_table">
+    <tr>
+      <th><%= f.label :"商品画像"%></th>
+      <td><%= f.attachment_field :image %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :"商品名" %></th>
+      <td><%= f.text_field :name, :placeholder => "商品名"%></td>
+    </tr>
+    <tr>
+      <th><%= f.label :"商品説明"%></th>
+      <td><%= f.text_area :description, :placeholder => "ここに説明文を記述します" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :"ジャンル" %></th>
+      <td><%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt => "--選択してください--" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :"税込価格"%></th>
+      <td><%= f.text_field :price, :placeholder => "1000"%></td>
+    </tr>
+    <tr>
+      <th><%= f.label :販売ステータス %></th>
+      <td class="admin-product_new_radio">
+        <%= f.radio_button :sale_status, :true, checked: true %>
+        <%= f.label "販売中" %>
+        <%= f.radio_button :sale_status, :false %>
+        <%= f.label "販売停止中" %>
+      </td>
+    </tr>
+  </table>
+  <% if @action == "new" %>
+    <%= f.submit "新規登録", class: "admin-product_new_btn" %>
+  <% else %>
+    <%= f.submit "変更を保存", class: "admin-product_new_btn" %>
+  <% end %>
+<% end%>
