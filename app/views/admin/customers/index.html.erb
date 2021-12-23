@@ -12,7 +12,7 @@
         <td><%= customer.id %></td>
         <td class="admin-product_table_name">
           <%= link_to admin_customer_path(customer) do %>
-          <%= customer.last_name %><br class="u-sp">あ<%= customer.first_name %>
+          <%= customer.last_name %><br class="u-sp"><%= customer.first_name %>
           <% end %>
         </td>
         <td><%= customer.email %></td>
