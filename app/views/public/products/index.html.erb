@@ -1,13 +1,19 @@
 <div class="l-main_container flex">
-  <aside class="m-sidebar">
-    <span class="m-sidebar_title">ジャンル検索</span>
-    <%= render 'public/products/genre_search' %>
-  </aside>
-  <article class="m-article">
-    <div class="product-index_title">
-      <h2 class="cart-puroduct_title"><%= @title %>一覧</h2>
-      <span class="search-count">（全<%= @products.count %>件）</span>
+  <aside>
+    <%= form_with url: search_path, method: :get, local: true do |f| %>
+      <%= f.text_field :keyword, placeholder: "search",class: "l-search " %>
+      <% f.submit %>
+    <% end %>
+    <div  class="m-sidebar">
+      <span class="m-sidebar_title">ジャンル検索</span>
+      <%= render 'public/products/genre_search' %>
     </div>
-    <%= render 'public/products/product_list' %>
-  </article>
+    </aside>
+    <article class="m-article">
+      <div class="product-index_title">
+        <h2 class="cart-puroduct_title"><%= @title %>一覧</h2>
+        <span class="search-count">（全<%= @products.count %>件）</span>
+      </div>
+      <%= render 'public/products/product_list' %>
+    </article>
 </div>
