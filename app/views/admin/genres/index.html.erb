@@ -1,14 +1,14 @@
 <div class="l-main_container">
   <h2 class="ganre-title">ジャンル一覧・追加</h2>
-  <table class="ganre-index_form_table">
-    <tr>
-      <%= form_with model: [:admin, @genre], remote: true do |f| %>
-        <td><%= f.label :ジャンル名 %></td>
-        <td><%= f.text_field :name %></td>
-        <td><%= f.submit '新規登録',class: "ganre-index_form_table_btn" %></td>
-      <% end %>
-    </tr>
-  </table>
+  <%= form_with model: [:admin, @genre], remote: true do |f| %>
+    <table class="ganre-index_form_table">
+      <tr>
+          <td><%= f.label :ジャンル名 %></td>
+          <td><%= f.text_field :name %></td>
+          <td><%= f.submit '新規登録',class: "ganre-index_form_table_btn" %></td>
+      </tr>
+    </table>
+  <% end %>
   <table class="ganre-index_list_table">
     <tr>
       <th>ジャンル</th>
