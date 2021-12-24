@@ -15,6 +15,6 @@
           <td><%= f.text_field :name, autofocus: true, class:"form-control-static name rounded-lg" %></td>
         </tr>
       </table>
-      <div class="delivery-edit_btn">変更内容を保存</div>
+      <%= f.submit "変更内容を保存", class: "delivery-edit_btn" %>
     <% end %>
 </div>
