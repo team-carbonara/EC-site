@@ -1143,7 +1143,6 @@ button {
       align-items: center;
       display: flex;
       :nth-child(1) {
-        width: 5%;
       }
     }
     th {
@@ -2062,26 +2061,62 @@ button {
   }
 }
 
-.cart_delete_btn_table {
+.cart-delete_btn {
   @include destroy-color;
-  border-radius: 5px;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  border: none;
   color: #fff;
+  border-radius: 5px;
   @include media(pc) {
-    padding: 10px;
-    margin-left: 20px;
+    margin-left: auto;
+    align-items: center;
+    font-size: 18px;
+    width: 290px;
+    height: 40px;
   }
 
   @include media(tb) {
   }
 
   @include media(sp) {
+    @include font-size(35);
+    @include padding_vw(20, 25, 20, 25);
+    @include width(500);
+  }
+}
+
+.cart-delete_btn_table{
+  @include destroy-color;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+  @include media(pc) {
+    margin-left: auto;
+    align-items: center;
+    font-size: 18px;
+    width: 100px;
+    height: 40px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    align-items: center;
+    font-size: calc(35 / 770 * 100vw);
+    padding-top: calc(20 / 770 * 100vw);
+    padding-right: calc(25 / 770 * 100vw);
+    padding-bottom: calc(20 / 770 * 100vw);
+    padding-left: calc(25 / 770 * 100vw);
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin-top: calc(20 / 770 * 100vw);
-    @include font-size(15);
-    width: calc(80 / 770 * 100vw) !important;
-    @include padding_vw(5, 15, 5, 15);
+    width: calc(140 / 770 * 100vw) !important;
+    height: calc(82 / 770 * 100vw) !important;
   }
 }
 
@@ -2098,8 +2133,8 @@ button {
   }
 
   @include media(sp) {
-    @include font-size(15);
-    width: calc(80 / 770 * 100vw);
+    @include font-size(30);
+    width: calc(120 / 770 * 100vw);
     @include padding_vw(5, 15, 5, 15);
   }
 }
@@ -4331,6 +4366,30 @@ button {
 }
 
 .admin-title {
+  margin-left: auto;
+  margin-right: auto;
+  @include media(pc) {
+    display: flex;
+    justify-content: start;
+    max-width: 1100px;
+    width: 100%;
+    font-size: 24px;
+    margin-bottom: 40px;
+  }
+
+  @include media(tb) {
+  }
+
+  @include media(sp) {
+    @include width(600);
+    @include font-size(55);
+    margin-bottom: calc(100 / 770 * 100vw);
+    line-height: calc(80 / 770 * 100vw);
+  }
+}
+
+
+.puplic-title{
   margin-left: auto;
   margin-right: auto;
   @include media(pc) {
