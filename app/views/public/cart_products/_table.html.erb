@@ -13,7 +13,7 @@
 
   <tr class="cart-product_table_row">
     <td><img class="cart-product_image" src="" alt=""><%= cart_product.product.name %><br class=u-sp>
-    <%= link_to '削除', cart_product_path(cart_product), method: :delete ,class: "cart_delete_btn_table u-sp"%></td>
+    <%= link_to '削除', cart_product_path(cart_product), method: :delete ,class: "cart-delete_btn_table u-sp"%></td>
     <td><%= cart_product.product.price.to_s(:delimited) %></td>
     <td>
       <%= form_with model: cart_product, url: "/cart_products/#{cart_product.id}",method: :PATCH, remote: true  do |f| %>
